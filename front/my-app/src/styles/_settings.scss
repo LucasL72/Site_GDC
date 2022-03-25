@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+$font-1: 'Dancing Script', cursive;
+
+$color-1: #61dafb;
+$color-2: #9cf181;
+$color-3: #282c34;
+$color-4: rgb(32, 35, 42);
+$color-5:#fceb00;
+$white: rgb(243, 243, 243);
+
+main{
+    background-color:$color-2 ;
+}
+* {
+    box-sizing: border-box;
+    font-family: $font-1;
+}
+
+body {
+    margin: auto;
+    font-family: $font-1;
+    background-color: $color-2;
+    color: $color-3;
+}
+
+li {
+    list-style-type: none;
+}
