@@ -2,6 +2,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "react-bootstrap/Button";
 const Navigbar = () => {
   return (
     <div>
@@ -11,8 +12,8 @@ const Navigbar = () => {
             <img
               alt="Logo association"
               src="./logoGDC.png"
-              width="30"
-              height="30"
+              width="40"
+              height="40"
               className="d-inline-block align-top"
             />{" "}
           </Navbar.Brand>
@@ -32,6 +33,14 @@ const Navigbar = () => {
               <Nav.Item>
                 <Nav.Link href="/Admin">Admin</Nav.Link>
               </Nav.Item>
+              <Button
+                href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+                variant="dark"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Adhérer
+              </Button>
             </Nav>
             <Nav className="justify-content-end">
               <NavDropdown title="Action" id="collasible-nav-dropdown">

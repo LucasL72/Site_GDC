@@ -3,3 +3,17 @@
     color:$white;
     min-height: 30vh;
 }
+
+.ftitle {
+    margin-bottom: 30px;
+  }
+  
+  .ftitle:after {
+      display: block;
+      height: 2px;
+      background-color: $white;
+      width: 50px;
+      content: "";
+      margin: 0 auto;
+  }
+  

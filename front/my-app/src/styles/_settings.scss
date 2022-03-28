@@ -1,25 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 
-$font-1: 'Inconsolata', monospace;
+$font-1: "Inconsolata", monospace;
 
 $color-1: #61dafb;
-$color-2: #409b40 ;
+$color-2: #409b40;
 $color-3: #282c34;
-$color-4: rgb(32, 35, 42);
-$color-5:#fceb00;
+$black: rgb(32, 35, 42);
+$color-5: #fceb00;
 $white: rgb(243, 243, 243);
 
 * {
-    box-sizing: border-box;
-    font-family: $font-1;
+  box-sizing: border-box;
+  font-family: $font-1;
 }
 
 body {
-    margin: auto;
-    font-family: $font-1;
-    color: $color-3;
+  margin: auto;
+  font-family: $font-1;
+  color:$black;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
+}
+.ssligne {
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+.ssligne:after {
+    display: block;
+    height: 2px;
+    background-color:$color-2 ;
+    width: 100px;
+    content: "";
+    margin: 0 auto;
 }
