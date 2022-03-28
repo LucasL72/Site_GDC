@@ -1,0 +1,117 @@
+/* Header 
+============================*/
+.Header {
+    background-image: linear-gradient(
+        90deg,
+        rgba(3, 71, 1, 0.6),
+        rgba(54, 129, 39, 0.7),
+        rgba(253, 208, 5, 0.363)
+      ),
+      url(../../assets/mtfcolor1.webp);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 70vh;
+}
+
+.home-title {
+  position: absolute;
+  top: 30%;
+}
+
+.home-title h1 {
+  font-size: 340%;
+  color: rgb(6, 253, 6);
+}
+
+.welcome {
+  color: white;
+  padding-bottom: 3px;
+  padding-bottom: 3px;
+  font-size: 30px;
+  font-weight: 325;
+  line-height: 20px;
+}
+
+/* Effet machine à écrire 
+  ============================*/
+.typewriter-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.typewriter p {
+  font-size: 20px;
+  font-weight: lighter;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  animation: typing 5s steps(26);
+  animation-iteration-count: infinite;
+}
+
+.typewriter p::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 1px;
+  background: #fff;
+  right: 0;
+  top: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+    header {
+        background-image: linear-gradient(90deg, rgba(3, 71, 1, 0.6), rgba(54, 129, 39, 0.7), rgba(253, 208, 5, 0.432)), url(../../assets/mtfcolor1.webp);
+        background-position: 100% 100%;
+        background-size: cover;
+        height: 50vh;
+    }
+
+    header {
+        height: 60vh;
+    }
+
+    .home-title {
+        position: relative;
+        top: 30%;
+    }
+}
+
+@media (max-width: 576px) {
+
+
+    header {
+        background-image: linear-gradient(90deg, rgba(3, 71, 1, 0.6), rgba(54, 129, 39, 0.7), rgba(253, 208, 5, 0.432)), url(../../assets/mtfcolor1.webp);
+        background-position: 100% 100%;
+        background-size: cover;
+        height: 50vh;
+    }
+}
+
+

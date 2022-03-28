@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
+import MainLayout from "../layouts/MainLayout";
 
 const Photos = () => {
-    return (
-        <div>
-            <h1>Photos</h1>
-            
-        </div>
-    );
+  return (
+    <div>
+      <MainLayout>
+        <h1>Photos</h1>
+      </MainLayout>
+    </div>
+  );
 };
 
 export default Photos;

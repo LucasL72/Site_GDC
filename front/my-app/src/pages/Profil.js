@@ -1,16 +1,14 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
 
-const Blog = () => {
+const Profile = () => {
   return (
-    <>
+    <div>
       <MainLayout>
-        <div>
-          <h1>Blog</h1>
-        </div>
+        <h1>Je suis la page profil</h1>
       </MainLayout>
-    </>
+    </div>
   );
 };
 
-export default Blog;
+export default Profile;
