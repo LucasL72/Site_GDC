@@ -1,12 +1,12 @@
-// require('dotenv').config()
+require('dotenv').config()
 
 const dbOptions = {
     // host: process.env.HOST,
-    host: 'localhost',
-    user: 'lucas',
-    password: 'rfn2K22$',
-    port: 3306,
-    database: 'react_db'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    port:process.env.PORT_MYSQL,
+    database: process.env.DATABASE
 };
 
 module.exports = dbOptions;
