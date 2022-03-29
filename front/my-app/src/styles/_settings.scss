@@ -24,15 +24,25 @@ li {
   list-style-type: none;
 }
 .ssligne {
-  margin-top: 35px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .ssligne:after {
     display: block;
     height: 2px;
     background-color:$color-2 ;
-    width: 100px;
+    width: 85px;
     content: "";
     margin: 0 auto;
 }
+
+a.nav-link {
+  color:$white;
+}
+
+a.nav-link:hover{
+  color:rgb(212, 212, 212);
+}
+
+

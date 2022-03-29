@@ -39,6 +39,9 @@ const Footer = () => {
                   <Nav.Link href="/Photos">Photos</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
+                <Nav.Link href="/Contact">Contact</Nav.Link>
+              </Nav.Item>
+                <Nav.Item>
                   <Nav.Link href="/Admin">Admin</Nav.Link>
                 </Nav.Item>
               </Nav>
@@ -56,7 +59,7 @@ const Footer = () => {
               </p>
               <p>
                 <LocalPhoneIcon color="disabled" sx={{ fontSize: 30 }} />
-                06 51 40 26 42
+                A check
               </p>
               <p>
                 {" "}

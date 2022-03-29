@@ -5,7 +5,7 @@ const Photos = () => {
   return (
     <div>
       <MainLayout>
-        <h1>Photos</h1>
+      <h2 className="text-center ssligne">Notre Album</h2>
       </MainLayout>
     </div>
   );

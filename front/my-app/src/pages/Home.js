@@ -1,14 +1,17 @@
 import React from "react";
-import Contact from "../components/Contact";
+import ContForm from "../components/Contact/ContForm";
+import Banner from "../components/core/Banner";
+import Accueil from "../components/Home/Accueil";
 import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   return (
     <div>
       <MainLayout>
-        <h2 className="text-center ssligne">Accueil</h2>
+        <Accueil />
+        <Banner />
         <h2 className="text-center ssligne">Actualités</h2>
-        <Contact />
+        <ContForm />
       </MainLayout>
     </div>
   );

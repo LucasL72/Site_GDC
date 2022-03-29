@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <div>
       <MainLayout>
-        <h1>Je suis la page profil</h1>
+      <h2 className="text-center ssligne">Mon Profil</h2>
       </MainLayout>
     </div>
   );

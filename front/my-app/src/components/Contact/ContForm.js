@@ -6,7 +6,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import Button from "react-bootstrap/Button";
-const Contact = () => {
+const ContForm = () => {
   return (
     <div className="contact">
       <h2 className="text-center ssligne">Nous Contacter</h2>
@@ -28,7 +28,7 @@ const Contact = () => {
               <Col md={6}>
                 <p>
                   <LocalPhoneIcon color="success" sx={{ fontSize: 20 }} />
-                  06 51 40 26 42
+                 A check
                 </p>
               </Col>
             </Row>
@@ -83,4 +83,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContForm;

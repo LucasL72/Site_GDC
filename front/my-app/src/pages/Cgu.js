@@ -5,7 +5,7 @@ const Cgu = () => {
     return (
         <div>
             <Navigbar />
-            <h2>je suis la page CGU</h2>
+            <h2 className="text-center ssligne">Mentions légales</h2>
             
         </div>
     );

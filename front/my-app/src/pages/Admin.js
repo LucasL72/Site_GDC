@@ -5,7 +5,8 @@ const Admin = () => {
     return (
         <div>
             <Navigbar />
-            <h1>Je suis la page admin</h1>
+            <h2 className="text-center ssligne">Admin</h2>
+            <a href="https://grainedecitoyenmlg.nohost.me/nextcloud/login" target="_blank"> Lien collaboratif</a>
             
         </div>
     );

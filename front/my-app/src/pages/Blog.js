@@ -6,7 +6,7 @@ const Blog = () => {
     <>
       <MainLayout>
         <div>
-          <h1>Blog</h1>
+          <h2 className="text-center ssligne">Nos Actualités</h2>
         </div>
       </MainLayout>
     </>
