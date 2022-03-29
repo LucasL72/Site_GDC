@@ -16,7 +16,7 @@ const Footer = () => {
         <Nav.Link href="/">
           <img
             alt="Logo association"
-            src="./logoGDC.png"
+            src="../logoGDC.png"
             width="50"
             height="50"
           />
@@ -79,7 +79,7 @@ const Footer = () => {
           <Col md={12}>
             <div className="text-center">
               <a href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal" target="_blank" rel="noreferrer"><FacebookIcon fontSize="large" /></a>
-              <a href="#"  target="_blank" rel="noreferrer"><InstagramIcon fontSize="large" /></a>
+              <a href="/"  target="_blank" rel="noreferrer"><InstagramIcon fontSize="large" /></a>
               <a href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ" target="_blank" rel="noreferrer"><YouTubeIcon fontSize="large" /></a>
             </div>
           </Col>

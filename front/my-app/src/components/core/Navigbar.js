@@ -7,7 +7,6 @@ import React from "react";
 const Navigbar = () => {
   const CustomToggle = React.forwardRef(({ onClick }, ref) => (
     <a
-      href="./logoGDC.png"
       ref={ref}
       onClick={(e) => {
         e.preventDefault();
@@ -15,7 +14,7 @@ const Navigbar = () => {
       }}
     >
       <img
-        src="./logoGDC.png"
+        src="../logoGDC.png"
         width="40"
         height="40"
         alt="Logo association"
@@ -29,7 +28,7 @@ const Navigbar = () => {
           <Navbar.Brand href="/">
             <img
               alt="Logo association"
-              src="./logoGDC.png"
+              src="../logoGDC.png"
               width="40"
               height="40"
               className="d-inline-block align-top"
@@ -63,15 +62,15 @@ const Navigbar = () => {
               </Button>
             </Nav>
             <Nav className="justify-content-end">
-              <Dropdown>
-                <Dropdown.Toggle
-                  as={CustomToggle}
-                  id="dropdown-custom-components"
-                ></Dropdown.Toggle>
-                <Dropdown.Menu>
+              <Dropdown drop="start">
+                  <Dropdown.Toggle
+                    as={CustomToggle}
+                    id="dropdown-button-dark-example1"
+                  ></Dropdown.Toggle>
+                <Dropdown.Menu variant="dark">
                   <Dropdown.Item href="/Profil">Profil</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#action/3.4">Log out</Dropdown.Item>
+                  <Dropdown.Item href="#">Log out</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>

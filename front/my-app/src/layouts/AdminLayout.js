@@ -1,8 +1,9 @@
-import React from 'react';
+import Navigbar from "../components/core/Navigbar";
 
 const AdminLayout = ({ children }) => {
     return (
         <div>
+            <Navigbar />
            <main>{children}</main> 
         </div>
     );

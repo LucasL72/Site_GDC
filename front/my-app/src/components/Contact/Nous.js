@@ -9,14 +9,21 @@ const Nous = () => {
         <h2 className="text-center ssligne"> Qui Sommes Nous ? </h2>
         <Row>
           <Col md={6}>
-            <img
-              className="img-fluid"
-              src="./Docs/logo.png"
-              alt="Logo GDC"
-            ></img>
+            <div className="text-center">
+              <img
+                className="img-fluid"
+                src="./Docs/logo.png"
+                alt="Logo GDC"
+                width="500"
+                height="350"
+              ></img>
+            </div>
           </Col>
           <Col md={6}>
-            <h2 className="text-center ssligne"> "Graine de citoyen Montgesnois"  </h2>
+            <h2 className="text-center ssligne">
+              {" "}
+              "Graine de citoyen Montgesnois"{" "}
+            </h2>
             <p className="text-justify">Lorem Lorem </p>
           </Col>
         </Row>

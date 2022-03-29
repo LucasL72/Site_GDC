@@ -8,7 +8,7 @@ import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import Button from "react-bootstrap/Button";
 const ContForm = () => {
   return (
-    <div className="contact">
+    <div className="contact mb-3">
       <h2 className="text-center ssligne">Nous Contacter</h2>
 
       <Container>
