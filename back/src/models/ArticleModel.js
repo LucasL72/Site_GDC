@@ -17,7 +17,6 @@ class Article {
         if (error) throw error;
         conn.query(`SELECT * FROM articles`, (error, data) => {
           if (error) reject(error);
-          console.log("model data", data);
           resolve(data);
           // Mettre fin à la connexion avec la db
           conn.release();
