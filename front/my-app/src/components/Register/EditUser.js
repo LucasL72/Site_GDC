@@ -9,6 +9,7 @@ const EditUser = () => {
   return (
     <div>
       <Container>
+      <h2 className="text-center ssligne">Modifier mes informations</h2>
         <Row>
           <Form>
             <Col md={12}>

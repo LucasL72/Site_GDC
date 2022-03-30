@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 const Qui = () => {
   return (
     <div>
-      <Card border="success">
+      <Card border="success" className="scale">
         <Card.Img className="img-fluid" variant="top" src="../Docs/logo.png" />
         <Card.Body>
           <Card.Title>Qui Sommes Nous ? </Card.Title>

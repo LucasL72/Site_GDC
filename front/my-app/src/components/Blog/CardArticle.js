@@ -26,7 +26,7 @@ const CardArticle = (props) => {
 
   return (
     <Col md={4} className="g-4">
-      <Card key={item.id}>
+      <Card key={item.id} className="scale">
         <Card.Img variant="top" src="../Docs/creative1.jpg" alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>

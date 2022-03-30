@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const Adhe = () => {
   return (
     <div>
-      <Card border="success">
+      <Card border="success" className="scale">
         <Card.Img
           className="img-fluid"
           variant="top"

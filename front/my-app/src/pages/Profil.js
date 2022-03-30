@@ -1,13 +1,15 @@
-import React from "react";
+
 import EditUser from "../components/Register/EditUser";
 import MainLayout from "../layouts/MainLayout";
+import User from "../components/User";
+
 
 const Profile = () => {
   return (
     <div>
       <MainLayout>
-      <h2 className="text-center ssligne">Mon Profil</h2>
-      <EditUser />
+        <User />
+        <EditUser />
       </MainLayout>
     </div>
   );

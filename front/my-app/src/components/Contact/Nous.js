@@ -11,7 +11,7 @@ const Nous = () => {
           <Col md={6}>
             <div className="text-center">
               <img
-                className="img-fluid"
+                className="img-fluid scale"
                 src="./Docs/logo.png"
                 alt="Logo GDC"
                 width="500"
