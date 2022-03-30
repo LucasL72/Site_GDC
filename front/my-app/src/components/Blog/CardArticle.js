@@ -25,7 +25,7 @@ const CardArticle = (props) => {
   const toggler = (bool) => setEditToggle(bool);
 
   return (
-    <Col sm={4} className="g-4">
+    <Col md={4} className="g-4">
       <Card key={item.id}>
         <Card.Img variant="top" src="../Docs/creative1.jpg" alt={item.title} />
         <Card.Body>

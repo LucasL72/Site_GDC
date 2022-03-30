@@ -60,7 +60,7 @@ const ContForm = () => {
               </FloatingLabel>
               <div className="text-center">
                 <Button variant="outline-success" type="submit">
-                  envoyer
+                  Envoyer
                 </Button>
               </div>
             </Form>

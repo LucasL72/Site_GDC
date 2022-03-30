@@ -22,8 +22,8 @@ const DetailBlog = () => {
                 className="img-fluid"
                 src="../Docs/creative1.jpg"
                 alt={state && state.item.title}
-                width="600"
-                height="450"
+                width="700"
+                height="550"
               ></img>
             </div>
           </Col>

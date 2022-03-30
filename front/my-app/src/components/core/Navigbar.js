@@ -14,10 +14,11 @@ const Navigbar = () => {
       }}
     >
       <img
-        src="../logoGDC.png"
-        width="40"
-        height="40"
-        alt="Logo association"
+        src="../Docs/creative1.jpg"
+        width="50"
+        height="50"
+        alt="profil pic"
+        className="rounded-circle icon"
       ></img>
     </a>
   ));
@@ -29,8 +30,8 @@ const Navigbar = () => {
             <img
               alt="Logo association"
               src="../logoGDC.png"
-              width="40"
-              height="40"
+              width="50"
+              height="50"
               className="d-inline-block align-top"
             />{" "}
           </Navbar.Brand>
@@ -62,15 +63,16 @@ const Navigbar = () => {
               </Button>
             </Nav>
             <Nav className="justify-content-end">
+              <a className="btn btn-full" href="/Register">S'inscrire</a>
               <Dropdown drop="start">
                   <Dropdown.Toggle
                     as={CustomToggle}
                     id="dropdown-button-dark-example1"
                   ></Dropdown.Toggle>
                 <Dropdown.Menu variant="dark">
-                  <Dropdown.Item href="/Profil">Profil</Dropdown.Item>
+                  <Dropdown.Item href="/Profil">Mon Profil</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#">Log out</Dropdown.Item>
+                  <Dropdown.Item href="#">Se déconnecter</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>

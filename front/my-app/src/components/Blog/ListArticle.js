@@ -8,7 +8,7 @@ const ListArticle = (props) => {
   return (
     <div className="listCard mt-3">
       <Container>
-        <Row xs={2} md={3} className="g-4">
+        <Row md={4} className="g-4">
           {list.length > 0 &&
             list.map((item) => {
               return <CardArticle key={item.id} item={item} />;

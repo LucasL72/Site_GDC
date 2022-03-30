@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import DetailBlog from "../components/Id.js/DetailBlog";
+import AddComs from "../components/Id.js/AddComs";
+import Coms from "../components/Id.js/Coms";
 
 const BlogID = () => {
   const { state } = useLocation();
@@ -17,6 +19,8 @@ const BlogID = () => {
     <div>
       <MainLayout>
           <DetailBlog />
+          <Coms />
+          <AddComs />
       </MainLayout>
     </div>
   );

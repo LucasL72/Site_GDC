@@ -17,7 +17,7 @@ $white: rgb(243, 243, 243);
 body {
   margin: auto;
   font-family: $font-1;
-  color:$black;
+  color: $black;
 }
 
 li {
@@ -29,20 +29,48 @@ li {
 }
 
 .ssligne:after {
-    display: block;
-    height: 2px;
-    background-color:$color-2 ;
-    width: 85px;
-    content: "";
-    margin: 0 auto;
+  display: block;
+  height: 2px;
+  background-color: $color-2;
+  width: 85px;
+  content: "";
+  margin: 0 auto;
 }
 
 a.nav-link {
-  color:$white;
+  color: $white;
 }
 
-a.nav-link:hover{
-  color:rgb(212, 212, 212);
+a.nav-link:hover {
+  color: rgb(212, 212, 212);
 }
 
+a.btn {
+  display: inline-block;
+  padding: 10px 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 1s, color 1s, border 1s;
+}
 
+a.btn-full {
+  background-color: azure;
+  color: #00719e;
+  margin-right: 15px;
+}
+
+a.btn-full:hover {
+  background-color: #00719e;
+  color: #fff;
+}
+
+a.btn-ghost {
+  border: 1px solid black;
+  color: green;
+}
+
+a.btn-ghost:hover {
+  background-color: #5ee077;
+  border: 1px solid #5ee077;
+  color: #fff;
+}

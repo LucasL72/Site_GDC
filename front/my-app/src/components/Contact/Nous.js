@@ -22,7 +22,7 @@ const Nous = () => {
           <Col md={6}>
             <h2 className="text-center ssligne">
               {" "}
-              "Graine de citoyen Montgesnois"{" "}
+              "Graine de Citoyen Montgesnois"{" "}
             </h2>
             <p className="text-justify">Lorem Lorem </p>
           </Col>

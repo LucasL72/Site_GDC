@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 
 const Banner2 = () => {
   return (
-    <div className="banner mt-3">
+    <div className="banner2 mt-3">
       <Container>
         <Col md={12}>
         </Col>
