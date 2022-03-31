@@ -12,11 +12,11 @@ const accueil = () => {
         <h2 className="text-center ssligne"> Accueil</h2>
         <Row>
           <Col md={4}>
-            <Qui />
-          </Col>
-          <Col md={4}>
             {" "}
             <Prog />
+          </Col>
+          <Col md={4}>
+            <Qui />
           </Col>
           <Col md={4}>
             <Adhe />

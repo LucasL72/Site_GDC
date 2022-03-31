@@ -22,7 +22,7 @@ const Home = () => {
       <MainLayout>
         <Accueil />
         <Banner />
-        <h2 className="text-center ssligne">Actualités</h2>
+        <h2 className="text-center ssligne">A la une</h2>
         <ListArticle list={listArticles} />
         <Banner2 />
         <ContForm />

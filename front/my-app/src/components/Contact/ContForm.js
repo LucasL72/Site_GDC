@@ -27,8 +27,8 @@ const ContForm = () => {
               </Col>
               <Col md={6}>
                 <p>
-                  <LocalPhoneIcon color="success" sx={{ fontSize: 20 }} />
-                 A check
+                  <LocalPhoneIcon color="success" sx={{ fontSize: 20 }} />A
+                  check
                 </p>
               </Col>
             </Row>
@@ -68,13 +68,20 @@ const ContForm = () => {
           <Col md={6}>
             <div className="map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4326.629045406348!2d0.41732808844362074!3d48.04845077057328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e2f67876ed1b51%3A0xbfd7682136aff8b8!2sMairie%20de%20Montfort-le-Gesnois!5e0!3m2!1sfr!2sfr!4v1648477006529!5m2!1sfr!2sfr"
                 width="600"
-                height="450"
-                allowFullScreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                height="500"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=0.39383625997288624%2C48.045830926303054%2C0.403878450524644%2C48.05057897698671&amp;layer=mapnik&amp;marker=48.04820500636105%2C0.3988573552487651"
               ></iframe>
+              <br />
+              <small>
+                <a href="https://www.openstreetmap.org/?mlat=48.04821&amp;mlon=0.39886#map=17/48.04821/0.39886">
+                  Afficher une carte plus grande
+                </a>
+              </small>
             </div>
           </Col>
         </Row>

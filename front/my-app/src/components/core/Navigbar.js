@@ -4,7 +4,11 @@ import Container from "react-bootstrap/Container";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import React from "react";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import ModalCon from "../../Modals/ModalCon";
+
 const Navigbar = () => {
+  const [modalConnShow, setModalConnShow] = React.useState(false);
   const CustomToggle = React.forwardRef(({ onClick }, ref) => (
     <a
       ref={ref}
@@ -53,6 +57,15 @@ const Navigbar = () => {
               <Nav.Item>
                 <Nav.Link href="/Admin">Admin</Nav.Link>
               </Nav.Item>
+              <a
+                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
+              </a>
+            </Nav>
+            <Nav className="justify-content-end">
               <Button
                 href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
                 variant="warning"
@@ -61,14 +74,22 @@ const Navigbar = () => {
               >
                 Adhérer
               </Button>
-            </Nav>
-            <Nav className="justify-content-end">
-              <a className="btn btn-full" href="/Register">S'inscrire</a>
+            
+              <a
+                className="btn btn-full"
+                onClick={() => setModalConnShow(true)}
+              >
+                S'Inscrire/Se Connecter
+              </a>
+              <ModalCon
+                show={modalConnShow}
+                onHide={() => setModalConnShow(false)}
+              />
               <Dropdown drop="start">
-                  <Dropdown.Toggle
-                    as={CustomToggle}
-                    id="dropdown-button-dark-example1"
-                  ></Dropdown.Toggle>
+                <Dropdown.Toggle
+                  as={CustomToggle}
+                  id="dropdown-button-dark-example1"
+                ></Dropdown.Toggle>
                 <Dropdown.Menu variant="dark">
                   <Dropdown.Item href="/Profil">Mon Profil</Dropdown.Item>
                   <Dropdown.Divider />
