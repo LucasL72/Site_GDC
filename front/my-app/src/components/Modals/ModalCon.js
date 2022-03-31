@@ -57,7 +57,7 @@ const ModalCon = (props) => {
 
                 <Col md={12}>
                   {" "}
-                  <Button variant="success" type="submit">
+                  <Button variant="success" type="submit" onClick={props.onHide}>
                     Se Connecter
                   </Button>{" "}
                   <Button variant="outline-success" href="/register">

@@ -70,10 +70,10 @@ const ContForm = () => {
               <iframe
                 width="600"
                 height="500"
-                frameborder="0"
+                frameBorder="0"
                 scrolling="no"
-                marginheight="0"
-                marginwidth="0"
+                marginHeight="0"
+                marginWidth="0"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=0.39383625997288624%2C48.045830926303054%2C0.403878450524644%2C48.05057897698671&amp;layer=mapnik&amp;marker=48.04820500636105%2C0.3988573552487651"
               ></iframe>
               <br />

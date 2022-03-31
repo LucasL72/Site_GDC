@@ -1,12 +1,9 @@
 .icon {
   border: 4mm ridge;
-  border-top-color:$white;
-  border-right-color: rgb(6, 253, 6);
-  border-left-color: rgb(6, 253, 6);
-  border-bottom-color: rgb(0, 81, 128);
+  border-color: rgb(216, 164, 100);
   border-width: 5px;
 }
-.circle{
+.circle {
   display: block;
   margin: 1em auto;
   background-size: cover;
@@ -20,7 +17,13 @@
 }
 
 .user-details {
-  background-image: linear-gradient(90deg, rgba(2, 0, 36, 0.6), rgba(173, 175, 164, 0.7), rgba(139, 134, 112, 0.671)), url(../../assets/mtfcolor1.webp);
+  background-image: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 0.6),
+      rgba(173, 175, 164, 0.7),
+      rgba(139, 134, 112, 0.671)
+    ),
+    url(../../assets/mtfcolor1.webp);
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 5px;

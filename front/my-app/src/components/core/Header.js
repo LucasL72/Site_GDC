@@ -9,7 +9,7 @@ const Header = () => {
           <Row>
             <Col md={12}>
               <div className="home-title">
-                <h1>Bienvenue</h1>
+                <h1 className="text-break">Graine de Citoyen Montgesnois</h1>
                 <div className="typewriter-container">
                   <div className="typewriter">
                     <p className="welcome">Rejoignez l'aventure!</p>

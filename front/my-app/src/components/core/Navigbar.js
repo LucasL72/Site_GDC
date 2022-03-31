@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import ModalCon from "../../Modals/ModalCon";
+import ModalCon from "../Modals/ModalCon";
 
 const Navigbar = () => {
   const [modalConnShow, setModalConnShow] = React.useState(false);
@@ -36,7 +36,7 @@ const Navigbar = () => {
               src="../logoGDC.png"
               width="50"
               height="50"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top "
             />{" "}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

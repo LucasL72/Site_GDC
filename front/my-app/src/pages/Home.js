@@ -7,7 +7,7 @@ import ListArticle from "../components/Blog/ListArticle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../store/actions/ArticlesActions";
-import Banner2 from "../components/core/Bannner2";
+import Carou from "../components/Home/Carou";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,10 +21,10 @@ const Home = () => {
     <div>
       <MainLayout>
         <Accueil />
-        <Banner />
+        <Carou />
         <h2 className="text-center ssligne">A la une</h2>
         <ListArticle list={listArticles} />
-        <Banner2 />
+        <Banner />
         <ContForm />
       </MainLayout>
     </div>

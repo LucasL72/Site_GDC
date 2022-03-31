@@ -6,7 +6,7 @@ const ListArticle = (props) => {
   const { list } = props;
 
   return (
-    <div className="listCard mt-3">
+    <div className="mt-3 mb-3">
       <Container>
         <Row md={4} className="g-4">
           {list.length > 0 &&

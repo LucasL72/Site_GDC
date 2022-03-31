@@ -17,7 +17,7 @@ const Blog = () => {
     <>
       <MainLayout>
         <div>
-          <h2 className="text-center ssligne">Nos Actualités</h2>
+          <h2 className="text-center ssligne">Nos Articles</h2>
           <ListArticle list={listArticles} />
         </div>
       </MainLayout>

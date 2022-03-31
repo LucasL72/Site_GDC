@@ -54,7 +54,7 @@ const ModalLostPass = (props) => {
                 </Col>
                 <Col md={12}>
                   {" "}
-                  <Button variant="success" type="submit">
+                  <Button variant="success" type="submit" onClick={props.onHide}>
                     Envoyer
                   </Button>
                 </Col>

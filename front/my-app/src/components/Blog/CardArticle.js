@@ -1,31 +1,27 @@
-import { useState } from "react";
-import EditArticle from "./EditArticle";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteArticle } from "../../store/actions/ArticlesActions";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
+import ModalEditArt from "../Modals/ModalEditArt";
+import React from "react";
+import ModalDelete from "../Modals/ModalDelete";
+import Row from "react-bootstrap/Row";
 
 const CardArticle = (props) => {
+  const [modalEditShow, setModalEditShow] = React.useState(false);
+  const [modalDelShow, setModalDelShow] = React.useState(false);
+
   const { item } = props;
-  const [editToggle, setEditToggle] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleDelete = async (id) => {
-    dispatch(deleteArticle(id));
-  };
-
   const toArticleID = async (id) => {
-    console.log("go to article id");
     navigate("/Blog/" + id, { state: { id, item } });
   };
 
-  const toggler = (bool) => setEditToggle(bool);
-
   return (
-    <Col md={4} className="g-4">
+    <Col md={4} className="g-3">
       <Card key={item.id} className="scale">
         <Card.Img variant="top" src="../Docs/creative1.jpg" alt={item.title} />
         <Card.Body>
@@ -45,24 +41,29 @@ const CardArticle = (props) => {
             cla
             variant="outline-danger"
             type="submit"
-            onClick={() => handleDelete(item.id)}
+            onClick={() => setModalDelShow(true)}
           >
             Delete
-          </Button>
+          </Button>{" "}
           <Button
             cla
             variant="outline-success"
             type="submit"
-            onClick={() => setEditToggle(!editToggle)}
+            onClick={() => setModalEditShow(true)}
           >
             Edit
           </Button>
+          <ModalEditArt
+            show={modalEditShow}
+            onHide={() => setModalEditShow(false)}
+            item={item}
+          />
+          <ModalDelete
+            show={modalDelShow}
+            onHide={() => setModalDelShow(false)}
+            item={item}
+          />
         </Card.Footer>
-        {editToggle ? (
-          <EditArticle item={item} toggler={toggler} />
-        ) : (
-          <p></p>
-        )}
       </Card>
     </Col>
   );
