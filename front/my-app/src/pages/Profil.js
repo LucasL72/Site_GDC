@@ -1,8 +1,6 @@
-
 import EditUser from "../components/Register/EditUser";
-import MainLayout from "../layouts/MainLayout";
 import User from "../components/User";
-
+import MainLayout from "../layouts/MainLayout";
 
 const Profile = () => {
   return (

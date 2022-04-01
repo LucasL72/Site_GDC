@@ -15,7 +15,7 @@ const User = () => {
                 <Col md={6}>
                   <h4 className="text-center ssligne"> Votre Photo de profil</h4>
                   <img
-                    className="img-fluid circle"
+                    className="img-fluid rounded-circle circle"
                     src="../Docs/creative1.jpg"
                     alt="Profile pic"
                     width="600"

@@ -4,6 +4,7 @@ import ListArticle from "../../Blog/ListArticle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../../../store/actions/ArticlesActions";
+import EditComs from "../EditComs";
 
 const GestionBlog = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const GestionBlog = () => {
     <div>
       <CreateArt />
       <ListArticle list={listArticles} />
+      <EditComs />
     </div>
   );
 };

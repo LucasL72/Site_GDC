@@ -1,12 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import AdminLayout from "../layouts/AdminLayout";
-import GestionBlog from "../components/Admin/AdminPages/GestionBlog";
+import AdminLayout from "../../layouts/AdminLayout";
 
 const Admin = () => {
   return (
     <div>
       <AdminLayout>
+        <h2 className="text-center ssligne">Accueil Admin</h2>
         <Container>
           <div className="text-center">
             <a
@@ -17,7 +17,6 @@ const Admin = () => {
               Lien collaboratif
             </a>
           </div>
-          <GestionBlog />
         </Container>
       </AdminLayout>
     </div>

@@ -28,7 +28,6 @@ const DetailBlog = () => {
             </div>
           </Col>
           <Col md={12}>
-            <h2 className="text-decoration-underline"> Description: </h2>
             <p className="text-justify">{state && state.item.description}</p>
           </Col>
         </Row>

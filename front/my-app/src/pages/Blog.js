@@ -1,9 +1,9 @@
 import React from "react";
 import ListArticle from "../components/Blog/ListArticle";
-import MainLayout from "../layouts/MainLayout";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../store/actions/ArticlesActions";
+import MainLayout from "../layouts/MainLayout";
 
 const Blog = () => {
   const dispatch = useDispatch();

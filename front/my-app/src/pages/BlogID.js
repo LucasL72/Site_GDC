@@ -1,11 +1,12 @@
 import React from "react";
-import MainLayout from "../layouts/MainLayout";
+
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import DetailBlog from "../components/Id.js/DetailBlog";
 import AddComs from "../components/Id.js/AddComs";
 import Coms from "../components/Id.js/Coms";
+import MainLayout from "../layouts/MainLayout";
 
 const BlogID = () => {
   const { state } = useLocation();
@@ -18,9 +19,9 @@ const BlogID = () => {
   return (
     <div>
       <MainLayout>
-          <DetailBlog />
-          <Coms />
-          <AddComs />
+        <DetailBlog />
+        <Coms />
+        <AddComs />
       </MainLayout>
     </div>
   );

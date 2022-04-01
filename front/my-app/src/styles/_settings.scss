@@ -5,7 +5,7 @@ $font-1: "Inconsolata", monospace;
 $color-1: #61dafb;
 $color-2: #409b40;
 $color-3: #282c34;
-$black: rgb(32, 35, 42);
+$black: rgb(0, 0, 0);
 $color-5: #fceb00;
 $white: rgb(243, 243, 243);
 
@@ -39,6 +39,33 @@ li {
 
 .Green {
   background-color: $color-2;
+}
+
+.tab-tabs {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  border: 4mm ridge;
+  border-radius: 10px;
+  border-color: rgb(216, 164, 100);
+  border-width: 10px;
+  transition: background-color 1s, color 1s, transform 1s;
+}
+.tab-tabs:hover {
+  background-color: $white;
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  transform: scale(0.90);
+}
+
+.tab-tabs a.nav-link:hover {
+  color: $white;
 }
 a.nav-link {
   color: $white;

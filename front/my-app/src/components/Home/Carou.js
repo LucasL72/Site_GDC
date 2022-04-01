@@ -4,7 +4,7 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
 const Carou = () => {
   return (
-    <div>
+    <div className="mt-3">
       <Carousel fade>
         <Carousel.Item interval={10000}>
           <div className="banner"></div>

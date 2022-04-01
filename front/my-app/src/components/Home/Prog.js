@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const Prog = () => {
   return (
     <div>
-      <Card border="success" className="scale">
+      <Card border="success">
         <Card.Img
           className="img-fluid"
           variant="top"

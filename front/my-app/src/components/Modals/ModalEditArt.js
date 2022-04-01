@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
@@ -42,33 +41,46 @@ const ModalEditArt = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => handleEdit(e)}>
-            <Row>
-              <Col md={12}>
-                {" "}
-                <FloatingLabel controlId="floatingInputTitle" label="Titre">
-                  <Form.Control
-                    type="text"
-                    placeholder="Titre de l'article"
-                    value={title}
-                    className="mb-3"
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                </FloatingLabel>
-              </Col>
-              <Col md={12}>
-                {" "}
-                <FloatingLabel controlId="floatingInputDesc" label="Description">
-                  <Form.Control
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    className="mb-3"
-                    onChange={(e) => setDesc(e.target.value)}
-                  />
-                </FloatingLabel>
-              </Col>
-            </Row>
-
+            <Col md={12}>
+              <Form.Label>Choisir votre image</Form.Label>
+              <Form.Control type="file" className="mb-3" />
+            </Col>{" "}
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputTitle" label="Titre">
+                <Form.Control
+                  type="text"
+                  placeholder="Titre"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="mb-3"
+                />
+              </FloatingLabel>
+            </Col>
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputDesc" label="Description">
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  value={description}
+                  onChange={(e) => setDesc(e.target.value)}
+                  className="mb-3"
+                />
+              </FloatingLabel>
+            </Col>
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputDesc" label="Contenu">
+                <Form.Control as="textarea" rows={4} className="mb-3" />
+              </FloatingLabel>
+            </Col>
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputTitle" label="Auteur">
+                <Form.Control
+                  type="text"
+                  placeholder="Auteur"
+                  className="mb-3"
+                />
+              </FloatingLabel>
+            </Col>
             <div className="text-center">
               <Button
                 cla

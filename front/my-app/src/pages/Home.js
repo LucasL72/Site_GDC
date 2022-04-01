@@ -2,12 +2,12 @@ import React from "react";
 import ContForm from "../components/Contact/ContForm";
 import Banner from "../components/core/Banner";
 import Accueil from "../components/Home/Accueil";
-import MainLayout from "../layouts/MainLayout";
 import ListArticle from "../components/Blog/ListArticle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../store/actions/ArticlesActions";
 import Carou from "../components/Home/Carou";
+import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   const dispatch = useDispatch();
