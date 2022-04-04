@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import ModalEditArt from "../Modals/ModalEditArt";
 import React from "react";
 import ModalDelete from "../Modals/ModalDelete";
-import Row from "react-bootstrap/Row";
+
 
 const CardArticle = (props) => {
   const [modalEditShow, setModalEditShow] = React.useState(false);

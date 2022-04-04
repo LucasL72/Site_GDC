@@ -11,6 +11,8 @@ const ModalEditArt = (props) => {
   const { item } = props;
   const [title, setTitle] = useState(item.title);
   const [description, setDesc] = useState(item.description);
+  const [contenu, setCont] = useState(item.contenu);
+  const [auteur, setAuteur] = useState(item.auteur);
   const dispatch = useDispatch();
 
   const handleEdit = (e) => {
@@ -20,6 +22,8 @@ const ModalEditArt = (props) => {
     const editData = {
       title: title,
       description: description,
+      contenu:contenu,
+      auteur:auteur,
       id: item.id,
     };
 
@@ -69,7 +73,13 @@ const ModalEditArt = (props) => {
             </Col>
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputDesc" label="Contenu">
-                <Form.Control as="textarea" rows={4} className="mb-3" />
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  className="mb-3"
+                  value={contenu}
+                  onChange={(e) => setCont(e.target.value)}
+                />
               </FloatingLabel>
             </Col>
             <Col sm={12}>
@@ -78,6 +88,8 @@ const ModalEditArt = (props) => {
                   type="text"
                   placeholder="Auteur"
                   className="mb-3"
+                  value={auteur}
+                  onChange={(e) => setAuteur(e.target.value)}
                 />
               </FloatingLabel>
             </Col>
@@ -87,6 +99,7 @@ const ModalEditArt = (props) => {
                 variant="outline-dark"
                 type="submit"
                 onClick={props.onHide}
+                value="send"
               >
                 Valider Modification ?
               </Button>

@@ -28,7 +28,8 @@ const DetailBlog = () => {
             </div>
           </Col>
           <Col md={12}>
-            <p className="text-justify">{state && state.item.description}</p>
+            <p className="text-justify">{state && state.item.contenu}</p>
+            <p className="text-justify">Auteur :{state && state.item.auteur}</p>
           </Col>
         </Row>
       </Container>
