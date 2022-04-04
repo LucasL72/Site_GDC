@@ -116,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`evenements` (
   `title` VARCHAR(255) NOT NULL,
   `content` VARCHAR(255) NOT NULL,
   `date` VARCHAR(255) NOT NULL,
-  `datemess` timestamp not null default current_timestamp on update current_timestamp,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

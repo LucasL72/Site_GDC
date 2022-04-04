@@ -1,4 +1,5 @@
 const bodyParser = require("body-parser");
+const express = require("express");
 const cors = require("cors");
 const router = require("./routes/router");
 
@@ -10,11 +11,18 @@ class Server {
 
   run() {
     // Cors
-    this.app.use(cors({
-      origin: ['http://localhost:3000', 'http://192.168.1.17:3000', 'https://domain.com/', 'http://domain.com/'],
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true
-    }))
+    this.app.use(
+      cors({
+        origin: [
+          "http://localhost:3000",
+          "http://192.168.1.17:3000",
+          "https://domain.com/",
+          "http://domain.com/",
+        ],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+      })
+    );
 
     // Body Parser
     this.app.use(bodyParser.json());
@@ -24,6 +32,8 @@ class Server {
       })
     );
 
+    // Express static permet de diriger un chemin sur un dossier en particulier
+    this.app.use("api/assets", express.static("Public"));
     // Routes
     this.app.use(router);
 

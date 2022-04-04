@@ -1,4 +1,6 @@
 const Article = require("../models/ArticleModel");
+const path = require("path");
+const { removeFile } = require("../utils/help");
 
 class ArticleControllers {
   async getAll(req, res) {
@@ -23,10 +25,14 @@ class ArticleControllers {
   }
 
   async create(req, res) {
-    const { title, description } = req.body;
+    const {title, description, contenu, auteur } = req.body;
+    const imgarticle= req.file;
     let newArticle = new Article({
+      imgarticle:String(imgarticle),
       title: String(title),
       description: String(description),
+      contenu: String(contenu),
+      auteur: String(auteur),
     });
     try {
       newArticle
@@ -46,11 +52,14 @@ class ArticleControllers {
   }
 
   async editOne(req, res) {
-    const { title, description } = req.body;
+    const { title, description, contenu, auteur } = req.body;
     let articleObj = new Article({
       id: Number(req.params.id),
+      imgarticle: String(imgarticle),
       title: String(title),
       description: String(description),
+      contenu: String(contenu),
+      auteur: String(auteur),
     });
     try {
       articleObj.editOne().then((data) => {

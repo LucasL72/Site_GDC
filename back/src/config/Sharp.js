@@ -6,7 +6,7 @@ const fs = require('fs');
 module.exports = (req, res, next) => {
 
     if (req.file) {
-        let pathSharp = "./public/data/articles/"
+        let pathSharp = "./Public/Images/Articles/"
         const file = req.file;
 
         sharp(file.path)
@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
             .toBuffer()
             .then(() => {
 
-                pathImg = path.resolve("public/data/articles/" + req.file.filename)
+                pathImg = path.resolve("Public/Images/Articles/" + req.file.filename)
 
                 fs.unlink(pathImg, (err) => {
                     if (err) console.log(err)
