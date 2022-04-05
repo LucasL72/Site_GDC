@@ -9,4 +9,16 @@ module.exports = {
       else console.log("delete file OK", file);
     });
   },
+
+  // Fonction pour remplacer un fichier par un autre fichier via leur path
+  renameFile: function (file1, file2) {
+    return new Promise((resolve, reject) => {
+      setTimeout(function () {
+        fs.rename(file1, file2, (err) => {
+          if (err) console.log("callback fs error ", err);
+          resolve(true);
+        });
+      }, 200); //delay is in milliseconds
+    });
+  },
 };

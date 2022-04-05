@@ -3,17 +3,9 @@ const multer = require("multer");
 
 // Ici nous définissons la config de stockage de multer
 const storage = multer.diskStorage({
-  // Ici la destination (ou seront stocker nos fichiers par default)
-  destination: (req, file, cb) => {
-    cb(null, "./Public/Images/Articles/");
-  },
-
+ 
   filename: (req, file, cb) => {
-    const ext = file.originalname,
-      date = Date.now(),
-      completed = date + "_" + ext;
-
-    file.completed = completed;
+    const ext = file.originalname
     cb(null, ext);
   },
 });

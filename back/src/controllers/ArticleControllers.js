@@ -1,6 +1,9 @@
 const Article = require("../models/ArticleModel");
 const path = require("path");
-const { removeFile } = require("../utils/help");
+const help = require("../utils/help");
+const fs = require("fs");
+
+
 
 class ArticleControllers {
   async getAll(req, res) {
@@ -25,53 +28,84 @@ class ArticleControllers {
   }
 
   async create(req, res) {
-    const {title, description, contenu, auteur } = req.body;
-    const imgarticle= req.file;
-    let newArticle = new Article({
-      imgarticle:String(imgarticle),
-      title: String(title),
-      description: String(description),
-      contenu: String(contenu),
-      auteur: String(auteur),
-    });
-    try {
-      newArticle
-        .create()
-        .then((data) => {
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Create Article Success !",
-            dbArticles: data,
-          });
-        })
-        .catch((err) => console.log("error", err));
-    } catch (error) {
-      throw error;
+    const { title, description, contenu, auteur } = req.body;
+    const index = req.file.mimetype.indexOf("image");
+    if (index !== -1) {
+      // Recupère le chemin complet avec extention .webp ou l'image a été enregister avec sharp (avec le nom orignal)
+      const pathImgwebp = path.resolve(
+        pathImgarticle +
+          req.file.filename.split(".").slice(0, -1).join(".") +
+          ".webp"
+      );
+      const pathImgarticlewebp = path.resolve(
+        pathImgarticle + "article_" + req.body.user_id + ".webp"
+      );
+      setTimeout(function () {
+        help.renameFile(pathImgwebp, pathImgarticlewebp);
+      }, 600);
+    }
+    if (req.body.id && req.file) {
+      let newArticle = new Article({
+        id: id,
+        imgarticle: pathImgarticleDb + "article_" + req.body.id + ".webp",
+        title: title,
+        description: description,
+        contenu: contenu,
+        auteur: auteur,
+      });
+      try {
+        Article.create(newArticle, (err, data) => {
+          if (err) {
+            console.log("err", err),
+              res.status(500).send({
+                message: err.message || "Une erreur est survenue",
+              });
+          } else {
+            return res.send({
+              method: req.method,
+              status: "success",
+              flash: "Create Article Success !",
+              dbArticles: data,
+            });
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
     }
   }
 
   async editOne(req, res) {
     const { title, description, contenu, auteur } = req.body;
-    let articleObj = new Article({
-      id: Number(req.params.id),
-      imgarticle: String(imgarticle),
-      title: String(title),
-      description: String(description),
-      contenu: String(contenu),
-      auteur: String(auteur),
-    });
-    try {
-      articleObj.editOne().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create Article Success !",
-          dbArticles: data,
-        });
+    const imgarticle = req.file;
+    if (id > 0) {
+      articleObj = new Article({
+        id: req.params.id,
+        imgarticle: imgarticle,
+        title: title,
+        description: description,
+        contenu: contenu,
+        auteur: auteur,
       });
-    } catch (error) {
-      throw error;
+      try {
+        Article.editOne(articleObj, req.file, async (err, data) => {
+          if (err) {
+            console.log("err", err),
+              res.status(500).send({
+                message: err.message || "Une erreur est survenue",
+              });
+          } else {
+            return res.send({
+              method: req.method,
+              status: "success",
+              flash: "Create Article Success !",
+              dbArticles: data,
+            });
+          }
+        });
+      } catch (error) {
+        throw error;
+      }
     }
   }
 
