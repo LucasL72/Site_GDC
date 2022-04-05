@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -13,7 +12,6 @@ const CardArticle = (props) => {
   const [modalDelShow, setModalDelShow] = React.useState(false);
 
   const { item } = props;
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toArticleID = async (id) => {
@@ -23,7 +21,7 @@ const CardArticle = (props) => {
   return (
     <Col md={4} className="g-3">
       <Card key={item.id} className="scale">
-        <Card.Img variant="top" src="../Docs/creative1.jpg" alt={item.title} />
+        <Card.Img variant="top" src={"http://localhost:3030/./api/assets/Images/Articles/creative1.webp"} alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>{item.description}</Card.Text>

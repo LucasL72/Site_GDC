@@ -8,8 +8,10 @@ const Qui = () => {
         <Card.Body>
           <Card.Title>Qui Sommes Nous ? </Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            L'association vise à encourager les initiatives locales de ses
+            membres en matière de transition écologique, développement durable,
+            échanges de savoirs et connaissances, nouvelles façons de consommer,
+            d’œuvrer...
           </Card.Text>
           <Button href="/Contact" variant="success">
             En savoir plus..

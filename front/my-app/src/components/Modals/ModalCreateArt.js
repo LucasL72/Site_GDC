@@ -38,7 +38,7 @@ const ModalCreateArt = (props) => {
     formData.append("imgarticle", imgarticle.file);
 
     axios
-      .post("http://localhost:3030/Admin/Blog/img", formData, {
+      .post("http://localhost:3030/Admin/Blog", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
@@ -80,6 +80,7 @@ const ModalCreateArt = (props) => {
                 type="file"
                 className="mb-3"
                 name="imgarticle"
+                accept="image/*"
                 onChange={handleInputChange}
               />
               {isSuccess !== null ? <h4> {isSuccess} </h4> : null}

@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
+import {
+  createEvent,
+  getEvent,
+} from "../../store/actions/EventActions";
 
 const ModalAddEvent = (props) => {
+  const [title, setTitle] = useState("");
+  const [content, setCont] = useState("");
+  const [date, setDate] = useState("");
+  const dispatch = useDispatch();
+// ici la fonction est asynchrone
+const handleForm = async (e) => {
+  e.preventDefault();
+
+  if (title && content && date ) {
+    dispatch(createEvent({ title, content, date }));
+    setTitle("");
+    setCont("");
+    setDate("");
+    dispatch(getEvent());
+  }
+};
+
   return (
     <div>
       <Modal {...props} size="md" aria-labelledby="ModalAddEvent" centered>
@@ -21,13 +43,15 @@ const ModalAddEvent = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={(e) => handleForm(e)}>
           <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Date">
                 <Form.Control
                   type="date"
                   placeholder="Titre"
                   className="mb-3"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
               </FloatingLabel>
             </Col>
@@ -37,12 +61,15 @@ const ModalAddEvent = (props) => {
                   type="text"
                   placeholder="Titre"
                   className="mb-3"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </FloatingLabel>
             </Col>
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputDesc" label="Description">
-                <Form.Control as="textarea" rows={2} className="mb-3" />
+                <Form.Control as="textarea" rows={2} className="mb-3"  value={content}
+                  onChange={(e) => setCont(e.target.value)} />
               </FloatingLabel>
             </Col>
 
@@ -53,6 +80,7 @@ const ModalAddEvent = (props) => {
                   variant="outline-dark"
                   type="submit"
                   onClick={props.onHide}
+                  value="send"
                 >
                   Submit
                 </Button>

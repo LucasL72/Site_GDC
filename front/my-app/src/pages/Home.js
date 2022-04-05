@@ -6,14 +6,17 @@ import ListArticle from "../components/Blog/ListArticle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../store/actions/ArticlesActions";
-import Carou from "../components/Home/Carou";
+import { getEvent } from "../store/actions/EventActions";
 import MainLayout from "../layouts/MainLayout";
+import ListEvents from "../components/Admin/ListEvents";
 
 const Home = () => {
   const dispatch = useDispatch();
   const listArticles = useSelector((state) => state.articles.listArticles);
+  const listEvents = useSelector((state) => state.events.listEvents);
 
   useEffect(() => {
+    dispatch(getEvent());
     dispatch(getArticles());
   }, []);
 
@@ -21,7 +24,7 @@ const Home = () => {
     <div>
       <MainLayout>
         <Accueil />
-        <Carou />
+        <ListEvents list={listEvents} />
         <h2 className="text-center ssligne">A la une</h2>
         <ListArticle list={listArticles} />
         <Banner />

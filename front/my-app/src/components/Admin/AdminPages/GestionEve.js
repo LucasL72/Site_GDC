@@ -1,10 +1,20 @@
 import React from "react";
-import Carou from "../../Home/Carou";
 import Button from "react-bootstrap/Button";
 import ModalAddEvent from "../../Modals/ModalAddEvent";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getEvent } from "../../../store/actions/EventActions";
+import ListEvents from "../ListEvents";
+import TablEvents from "../TablEvents";
 
 const GestionEve = () => {
   const [modalAddEventShow, setModalAddEventShow] = React.useState(false);
+  const dispatch = useDispatch();
+  const listEvents = useSelector((state) => state.events.listEvents);
+
+  useEffect(() => {
+    dispatch(getEvent());
+  }, []);
   return (
     <div>
       <h1 className="text-center ssligne"> Gestion des Evènements</h1>
@@ -13,8 +23,8 @@ const GestionEve = () => {
           Ajouter un évènement
         </Button>
       </div>
-      <Carou />
-
+      <ListEvents list={listEvents} />
+      <TablEvents list={listEvents}/>
       <ModalAddEvent
         show={modalAddEventShow}
         onHide={() => setModalAddEventShow(false)}

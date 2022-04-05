@@ -14,3 +14,10 @@ export const POST_PIC = "POST_PIC";
 export const GET_PIC = "GET_PIC";
 export const GETID_PIC = "GETID_PIC";
 export const DELETE_PIC = "DELETE_PIC";
+
+// Events
+export const POST_EVENT = "POST_EVENT";
+export const GET_EVENT = "GET_EVENT";
+export const GETID_EVENT = "GETID_EVENT";
+export const EDIT_EVENT = "EDIT_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";

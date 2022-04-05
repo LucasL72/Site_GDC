@@ -9,12 +9,15 @@ import thunk from "redux-thunk";
  * Reducers
  * ******** */
 import { ArticlesReducer } from "./reducers/ArticlesReducers";
+import { EventReducer } from "./reducers/EventReducers";
 
 /*
  * All (Root) Reducers
  * ******************* */
 const rootReducer = combineReducers({
-  articles: ArticlesReducer
+  articles: ArticlesReducer,
+  events: EventReducer
+
 });
 
 /*
