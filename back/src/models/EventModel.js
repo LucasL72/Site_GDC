@@ -9,7 +9,8 @@ class Event {
     (this.id = Number(evenements.id)),
       (this.title = String(evenements.title)),
       (this.content = String(evenements.content)),
-      (this.date = String(evenements.date));
+      (this.date = String(evenements.date)),
+      (this.heure = String(evenements.heure));
   }
 
   getAll() {
@@ -48,13 +49,13 @@ class Event {
 
   create() {
     console.log("model create", this);
-    const { title,content,date} = this;
+    const { title,content,date,heure} = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
           `
-          INSERT INTO evenements SET title= :title, content= :content , date= :date 
-      `,{title,content,date},
+          INSERT INTO evenements SET title= :title, content= :content , date= :date, heure= :heure
+      `,{title,content,date,heure},
           (error, data) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM evenements`, (error, data) => {
@@ -69,7 +70,7 @@ class Event {
   }
 
   editOne() {
-    const { title, content,date, id } = this;
+    const { title, content,date,heure, id } = this;
     console.log("edit", typeof id);
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
@@ -77,9 +78,10 @@ class Event {
           `UPDATE evenements
                       SET title = :title,
                           content = :content,
-                          date = :date 
+                          date = :date,
+                          heure= :heure
                       WHERE id = :id;
-          `,{title,content,date,id},
+          `,{title,content,date,heure,id},
           (error, d) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM evenements`, (error, data) => {

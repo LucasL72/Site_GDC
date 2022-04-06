@@ -53,13 +53,13 @@ class Article {
 
   create() {
     console.log("model create", this);
-    const { imgarticle, title, description, contenu, auteur } = this;
+    const { image,title, description, contenu, auteur } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
-          `INSERT INTO articles SET  imgarticle=:imgarticle,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = "1";
+          `INSERT INTO articles SET  imgarticle=:image,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = "1";
       `,
-          { imgarticle, title, description, contenu, auteur },
+          { image, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM articles`, (error, data) => {
@@ -157,6 +157,21 @@ class Article {
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(`DELETE FROM articles WHERE id = ${id}`, (d) => {
+          if (error) reject(error);
+          conn.query(`SELECT * FROM articles`, (error, data) => {
+            if (error) reject(error);
+            resolve(data);
+            conn.release();
+          });
+        });
+      });
+    });
+  }
+  deleteAll() {
+    const { id } = this;
+    return new Promise((resolve, reject) => {
+      connection.getConnection(function (error, conn) {
+        conn.query(`DELETE FROM articles`, (d) => {
           if (error) reject(error);
           conn.query(`SELECT * FROM articles`, (error, data) => {
             if (error) reject(error);

@@ -115,7 +115,8 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`evenements` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `content` VARCHAR(255) NOT NULL,
-  `date` VARCHAR(255) NOT NULL,
+  `date` VARCHAR(10) NOT NULL,
+  `heure` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

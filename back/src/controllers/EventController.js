@@ -23,11 +23,12 @@ class EventController {
   }
 
   async create(req, res) {
-    const { title, content,date } = req.body;
+    const { title, content,date,heure } = req.body;
     let newEvent = new Event({
       title:title,
       content:content,
-      date:date
+      date:date,
+      heure:heure
     });
     try {
       newEvent
@@ -47,19 +48,20 @@ class EventController {
   }
 
   async editOne(req, res) {
-    const { title, content,date } = req.body;
+    const { title, content,date,heure } = req.body;
     let eventObj = new Event({
       id:req.params.id,
       title: title,
       content:content,
-      date:date
+      date:date,
+      heure:heure
     });
     try {
       eventObj.editOne().then((data) => {
         return res.send({
           method: req.method,
           status: "success",
-          flash: "Create Article Success !",
+          flash: "Create event Success !",
           dbEvents: data,
         });
       });
@@ -77,7 +79,7 @@ class EventController {
         return res.send({
           method: req.method,
           status: "success",
-          flash: "Create Article Success !",
+          flash: "get event Success !",
           dbEvents: data,
         });
       });
@@ -95,7 +97,7 @@ class EventController {
         return res.send({
           method: req.method,
           status: "success",
-          flash: "Create Article Success !",
+          flash: "delete event Success !",
           dbEvents: data,
         });
       });

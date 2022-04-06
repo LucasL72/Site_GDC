@@ -3,8 +3,6 @@ const path = require("path");
 const help = require("../utils/help");
 const fs = require("fs");
 
-
-
 class ArticleControllers {
   async getAll(req, res) {
     try {
@@ -77,7 +75,7 @@ class ArticleControllers {
 
   async editOne(req, res) {
     const { title, description, contenu, auteur } = req.body;
-    const imgarticle = req.file;
+    const imgarticle = req.file.filename;
     if (id > 0) {
       articleObj = new Article({
         id: req.params.id,
