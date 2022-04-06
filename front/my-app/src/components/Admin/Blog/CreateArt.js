@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import React from "react";
-import ModalCreateArt from "../Modals/ModalCreateArt";
+import ModalCreateArt from "../../Modals/ModalCreateArt";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 

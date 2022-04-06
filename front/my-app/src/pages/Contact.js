@@ -1,5 +1,5 @@
 import React from "react";
-import ListEvents from "../components/Admin/ListEvents";
+import ListEvents from "../components/Admin/Event/ListEvents";
 import ContForm from "../components/Contact/ContForm";
 import Nous from "../components/Contact/Nous";
 import MainLayout from "../layouts/MainLayout";

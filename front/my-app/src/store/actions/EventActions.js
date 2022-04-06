@@ -31,7 +31,7 @@ export const getEventID = (id) => {
     console.log('reducers get events')
     return axios.get(`http://localhost:3030/ADmin/Events/${ id }`)
       .then((res) => {
-        console.log('getArticleID', res.data)
+        console.log('getEventID', res.data)
         dispatch({ type: GET_EVENT, payload: res.data})
       })
       .catch(err => console.log(err));

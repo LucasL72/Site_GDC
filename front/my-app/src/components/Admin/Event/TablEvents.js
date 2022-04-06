@@ -12,6 +12,7 @@ const TablEvents = (props) => {
           <thead>
             <tr>
               <th>Date</th>
+              <th>Heure</th>
               <th>Titre</th>
               <th>Description</th>
               <th>Gérer</th>

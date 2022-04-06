@@ -1,4 +1,4 @@
-import Carou from "../Home/Carou";
+import Carou from "../../Home/Carou";
 import Carousel from "react-bootstrap/Carousel";
 
 const ListEvents = (props) => {

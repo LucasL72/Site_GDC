@@ -10,13 +10,15 @@ import thunk from "redux-thunk";
  * ******** */
 import { ArticlesReducer } from "./reducers/ArticlesReducers";
 import { EventReducer } from "./reducers/EventReducers";
+import { UsersReducer } from "./reducers/UsersReducers";
 
 /*
  * All (Root) Reducers
  * ******************* */
 const rootReducer = combineReducers({
   articles: ArticlesReducer,
-  events: EventReducer
+  events: EventReducer,
+  users:UsersReducer
 
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Coms from '../Id.js/Coms';
+import Coms from '../../Id.js/Coms';
 
 const EditComs = () => {
     return (

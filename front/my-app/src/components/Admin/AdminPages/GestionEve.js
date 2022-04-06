@@ -4,8 +4,8 @@ import ModalAddEvent from "../../Modals/ModalAddEvent";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getEvent } from "../../../store/actions/EventActions";
-import ListEvents from "../ListEvents";
-import TablEvents from "../TablEvents";
+import ListEvents from "../Event/ListEvents";
+import TablEvents from "../Event/TablEvents";
 
 const GestionEve = () => {
   const [modalAddEventShow, setModalAddEventShow] = React.useState(false);

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../store/actions/ArticlesActions";
 import { getEvent } from "../store/actions/EventActions";
 import MainLayout from "../layouts/MainLayout";
-import ListEvents from "../components/Admin/ListEvents";
+import ListEvents from "../components/Admin/Event/ListEvents";
 
 const Home = () => {
   const dispatch = useDispatch();

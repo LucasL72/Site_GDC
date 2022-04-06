@@ -1,18 +1,41 @@
-import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editEvent } from "../../store/actions/EventActions";
 
-const ModalEditEvent = () => {
+const ModalEditEvent = (props) => {
+  const { item } = props;
+  const [title, setTitle] = useState(item.title);
+  const [content, setCont] = useState(item.content);
+  const [date, setDate] = useState(item.date);
+  const [heure, setHeure] = useState(item.heure);
+  const dispatch = useDispatch();
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+
+    //important il faut remettre tout les champs de la data autrement il serait ecraser par un champ vide
+    const editData = {
+      title: title,
+      date: date,
+      heure: heure,
+      content: content,
+      id: item.id,
+    };
+
+    dispatch(editEvent(editData));
+  };
+
   return (
     <div>
-      <Modal {...props} size="md" aria-labelledby="ModalEdit" centered>
+      <Modal {...props} size="md" aria-labelledby="ModalEditEvent" centered>
         <Modal.Header closeButton>
-          <Modal.Title id="ModalEdit">
-            Editer {""}
+          <Modal.Title id="ModalEditEvent">
+            Ajouter un évènement {""}
             <img
               alt="Logo association"
               src="../logoGDC.png"
@@ -23,18 +46,36 @@ const ModalEditEvent = () => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => handleEdit(e)}>
-            <Col md={12}>
-              <Form.Label>Choisir votre image</Form.Label>
-              <Form.Control type="file" className="mb-3" />
-            </Col>{" "}
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputTitle" label="Date">
+                <Form.Control
+                  type="date"
+                  placeholder="Titre"
+                  className="mb-3"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </FloatingLabel>
+            </Col>
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputTitle" label="Heure">
+                <Form.Control
+                  type="time"
+                  placeholder="Heure"
+                  className="mb-3"
+                  value={heure}
+                  onChange={(e) => setHeure(e.target.value)}
+                />
+              </FloatingLabel>
+            </Col>
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">
                 <Form.Control
                   type="text"
                   placeholder="Titre"
+                  className="mb-3"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="mb-3"
                 />
               </FloatingLabel>
             </Col>
@@ -42,46 +83,27 @@ const ModalEditEvent = () => {
               <FloatingLabel controlId="floatingInputDesc" label="Description">
                 <Form.Control
                   as="textarea"
-                  rows={4}
-                  value={description}
-                  onChange={(e) => setDesc(e.target.value)}
+                  rows={2}
                   className="mb-3"
-                />
-              </FloatingLabel>
-            </Col>
-            <Col sm={12}>
-              <FloatingLabel controlId="floatingInputDesc" label="Contenu">
-                <Form.Control
-                  as="textarea"
-                  rows={4}
-                  className="mb-3"
-                  value={contenu}
+                  value={content}
                   onChange={(e) => setCont(e.target.value)}
                 />
               </FloatingLabel>
             </Col>
+
             <Col sm={12}>
-              <FloatingLabel controlId="floatingInputTitle" label="Auteur">
-                <Form.Control
-                  type="text"
-                  placeholder="Auteur"
-                  className="mb-3"
-                  value={auteur}
-                  onChange={(e) => setAuteur(e.target.value)}
-                />
-              </FloatingLabel>
+              <div className="text-center">
+                <Button
+                  cla
+                  variant="outline-dark"
+                  type="submit"
+                  onClick={props.onHide}
+                  value="send"
+                >
+                  Submit
+                </Button>
+              </div>
             </Col>
-            <div className="text-center">
-              <Button
-                cla
-                variant="outline-dark"
-                type="submit"
-                onClick={props.onHide}
-                value="send"
-              >
-                Valider Modification ?
-              </Button>
-            </div>
           </Form>
         </Modal.Body>
       </Modal>

@@ -14,16 +14,18 @@ const ModalAddEvent = (props) => {
   const [title, setTitle] = useState("");
   const [content, setCont] = useState("");
   const [date, setDate] = useState("");
+  const [heure, setHeure] = useState("");
   const dispatch = useDispatch();
 // ici la fonction est asynchrone
 const handleForm = async (e) => {
   e.preventDefault();
 
   if (title && content && date ) {
-    dispatch(createEvent({ title, content, date }));
+    dispatch(createEvent({ title, content, date,heure }));
     setTitle("");
     setCont("");
     setDate("");
+    setHeure("");
     dispatch(getEvent());
   }
 };
@@ -48,10 +50,21 @@ const handleForm = async (e) => {
               <FloatingLabel controlId="floatingInputTitle" label="Date">
                 <Form.Control
                   type="date"
-                  placeholder="Titre"
+                  placeholder="Date"
                   className="mb-3"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
+                />
+              </FloatingLabel>
+            </Col>
+            <Col sm={12}>
+              <FloatingLabel controlId="floatingInputTitle" label="Heure">
+                <Form.Control
+                  type="time"
+                  placeholder="Heure"
+                  className="mb-3"
+                  value={heure}
+                  onChange={(e) => setHeure(e.target.value)}
                 />
               </FloatingLabel>
             </Col>

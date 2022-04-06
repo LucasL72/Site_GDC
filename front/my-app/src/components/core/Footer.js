@@ -4,9 +4,10 @@ import Row from "react-bootstrap/Row";
 import Nav from "react-bootstrap/Nav";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { red } from '@mui/material/colors';
 
 const Footer = () => {
   return (
@@ -53,19 +54,76 @@ const Footer = () => {
               de temps ou encore en nous soutenant financièrement :
             </p>
             <ul>
-              <li>
-                Réseau Pro de Saint Mars la Brière (lien :
-                https://www.reseaupro.fr/a-saintmarslabriere )
+              <li className="mt-2">
+                <a
+                  href="https://www.reseaupro.fr/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="../Docs/reso_pro.png"
+                    alt="reseau-pro"
+                    height="50"
+                    width="50"
+                  ></img>
+                </a>{" "}
+                Réseau Pro de Saint Mars la Brière
               </li>
-              <li>
-                les Hunaudières Matériaux à Ruaudin (lien :
-                https://hunaudieresmateriaux.fr)
+              <li className="mt-2">
+                <a
+                  href="https://hunaudieresmateriaux.fr"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="../Docs/hunmat.png"
+                    alt="huneaudiére_materieux"
+                    height="50"
+                    width="50"
+                  ></img>
+                </a>{" "}
+                Hunaudières Matériaux à Ruaudin
               </li>
-              <li>
-                le CFPPA la germinière : https://agrocampus-lagerminiere.fr
+              <li className="mt-2">
+                <a
+                  href="https://agrocampus-lagerminiere.fr"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="../Docs/germiniere.png"
+                    alt="agrocampus-lagerminière"
+                    height="50"
+                    width="50"
+                  ></img>
+                </a>{" "}
+                CFPPA la germinière
               </li>
-              <li>Crédit Agricole de Montfort le Gesnois</li>
-              <li>Municipalité de Montfort-Le-Gesnois</li>
+              <li className="mt-2">
+                <img
+                  src="../Docs/ca.webp"
+                  height="50"
+                  width="50"
+                  alt="Crédit agricole"
+                ></img>{" "}
+                Crédit Agricole de Montfort le Gesnois
+              </li>
+              <li className="mt-2">
+                <a
+                  href="https://www.montfort-le-gesnois.fr/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-part"
+                >
+                  <img
+                    src="../Docs/mtfcolor2.webp"
+                    alt="commune Montfort-le-gesnois"
+                    height="50"
+                    width="50"
+                  ></img>
+                </a>{" "}
+                Commune de Montfort-Le-Gesnois
+              </li>
             </ul>
           </Col>
           <Col md={4}>
@@ -74,9 +132,6 @@ const Footer = () => {
               <p>
                 <AddLocationAltIcon color="disabled" sx={{ fontSize: 30 }} /> 56
                 Grande Rue 72450 Montfort-le-Gesnois
-              </p>
-              <p>
-                <LocalPhoneIcon color="disabled" sx={{ fontSize: 30 }} />A check
               </p>
               <p>
                 {" "}
@@ -90,32 +145,41 @@ const Footer = () => {
                 grainecitoyenmlg@gmail.com
               </p>
             </div>
+            <Row className="mt-5">
+              <Col md={12} >
+                <div className="text-center">
+                  <p className="ftitle">Nos réseaux sociaux</p>
+                  <a
+                    href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FacebookIcon  fontSize="large" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <YouTubeIcon sx={{ color: red[500] }} fontSize="large" />
+                  </a>
+                </div>
+              </Col>
+            </Row>
           </Col>
         </Row>
-        <Row>
-          <Col md={12}>
-            <div className="text-center">
-              <a
-                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FacebookIcon color="disabled" fontSize="large" />
-              </a>
-              <a
-                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <YouTubeIcon color="disabled" fontSize="large" />
-              </a>
-            </div>
-          </Col>
-        </Row>
-        <Row>
+        <Row className="mt-3">
           <Col md={12}>
             <p className="text-center">
-              Created by Lucas Ledoux©2022 <a href="/Cgu">Mentions légales</a>
+              Created by Lucas Ledoux©2022{" "}
+              <a
+                href="https://github.com/LucasL72"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitHubIcon color="disabled" fontSize="large" />
+              </a>{" "}
+              <a href="/Cgu">Mentions légales</a>
             </p>
           </Col>
         </Row>

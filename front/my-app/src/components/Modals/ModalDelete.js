@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { deleteArticle } from "../../store/actions/ArticlesActions";
+import { deleteEvent } from "../../store/actions/EventActions";
+import { deleteUser } from "../../store/actions/UsersActions";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 
@@ -9,6 +11,8 @@ const ModalDelete = (props) => {
   const dispatch = useDispatch();
   const handleDelete = async (id) => {
     dispatch(deleteArticle(id));
+    dispatch(deleteEvent(id));
+    dispatch(deleteUser(id));
   };
   return (
     <div>

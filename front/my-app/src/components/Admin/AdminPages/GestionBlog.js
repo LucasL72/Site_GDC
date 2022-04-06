@@ -1,10 +1,10 @@
 import React from "react";
-import CreateArt from "../CreateArt";
+import CreateArt from "../Blog/CreateArt";
 import ListArticle from "../../Blog/ListArticle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getArticles } from "../../../store/actions/ArticlesActions";
-import EditComs from "../EditComs";
+import EditComs from "../Blog/EditComs";
 
 const GestionBlog = () => {
   const dispatch = useDispatch();

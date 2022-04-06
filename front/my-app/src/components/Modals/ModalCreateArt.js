@@ -9,7 +9,7 @@ import {
   createArticle,
   getArticles,
 } from "../../store/actions/ArticlesActions";
-import axios from "axios";
+
 
 const ModalCreateArt = (props) => {
   const [imgarticle, setImgarticle] = useState({ file: [], filepreview: null });
@@ -17,44 +17,40 @@ const ModalCreateArt = (props) => {
   const [description, setDesc] = useState("");
   const [contenu, setCont] = useState("");
   const [auteur, setAuteur] = useState("");
+  const [uploadStatus, setUploadStatus] = useState('');
   const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
-    setImgarticle({
-      ...imgarticle,
-      file: event.target.files[0],
-      filepreview: URL.createObjectURL(event.target.files[0]),
-    });
+    const file = event.target.files[0];
+    const formData = new FormData()
+    formData.append('image',file)
+    fetch('http:localhost:3030/api/Images/Articles',{
+      method: 'POST',
+      body: formData,
+      header:{
+        'Accept':'multipart/form-data',
+      },
+      credentials:'include'
+    })
+    .then(res => res.json())
+    .then(res => {setUploadStatus(res.msg);
+    })
+    .catch(error => {console.error(error)})
   };
 
-  const [isSuccess, setSuccess] = useState(null);
+  
 
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
     e.preventDefault();
 
-    console.log("submit form create article");
-    const formData = new FormData();
-    formData.append("imgarticle", imgarticle.file);
-
-    axios
-      .post("http://localhost:3030/Admin/Blog", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => {
-        // then print response status
-        console.warn(res);
-        if (res.data.success === 1) {
-          setSuccess("Image upload successfully");
-        }
-      });
-
     if (title && description && contenu && auteur) {
-      dispatch(createArticle({ title, description, contenu, auteur }));
+      dispatch(createArticle({ title, description, contenu, auteur,imgarticle }));
       setTitle("");
       setDesc("");
       setCont("");
       setAuteur("");
+      setImgarticle("");
       dispatch(getArticles());
     }
   };
@@ -83,7 +79,7 @@ const ModalCreateArt = (props) => {
                 accept="image/*"
                 onChange={handleInputChange}
               />
-              {isSuccess !== null ? <h4> {isSuccess} </h4> : null}
+              <h3> {uploadStatus} </h3>
               {imgarticle.filepreview !== null ? (
                 <img
                   src={imgarticle.filepreview}
