@@ -1,9 +1,10 @@
 let MySQL = require("mysql");
 const dbOptions = require("./db");
+const util = require("util");
 
-connectionPool = MySQL.createPool({ ...dbOptions });
+db = MySQL.createPool({ ...dbOptions });
 
-connectionPool.config.connectionConfig.queryFormat = function (query, values) {
+db.config.connectionConfig.queryFormat = function (query, values) {
   if (!values) return query;
   // repere les singles quote et double quote pour les saisr dans la db
   return query.replace(
@@ -18,7 +19,9 @@ connectionPool.config.connectionConfig.queryFormat = function (query, values) {
 };
 
 let getConnection = function (done) {
-  connectionPool.getConnection(done);
+  db.getConnection(done);
+  // Fonction async
+db.query = util.promisify(db.query).bind(db);
 };
 
 module.exports = { getConnection: getConnection };

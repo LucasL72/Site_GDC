@@ -3,9 +3,6 @@
  * Model de 'Article'
  ******************************/
 const connection = require("../config/ConnectionDB");
-const fs = require("fs");
-const path = require("path");
-const help = require("../utils/help");
 
 class Article {
   constructor(article) {
@@ -39,8 +36,9 @@ class Article {
         if (error) throw error;
         conn.query(
           `
-          SELECT * FROM articles WHERE id = ${id}
+          SELECT * FROM articles WHERE id = :id
       `,
+          { id },
           (error, data) => {
             if (error) reject(error);
             resolve(data);
@@ -53,13 +51,13 @@ class Article {
 
   create() {
     console.log("model create", this);
-    const { image,title, description, contenu, auteur } = this;
+    const { imgarticle, title, description, contenu, auteur } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
-          `INSERT INTO articles SET  imgarticle=:image,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = "1";
+          `INSERT INTO articles SET  imgarticle=:imgarticle,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = "1";
       `,
-          { image, title, description, contenu, auteur },
+          { imgarticle, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM articles`, (error, data) => {
@@ -94,7 +92,7 @@ class Article {
           connection.getConnection(function (error, conn) {
             conn.query(
               `SELECT imgarticle
-              FROM articles WHERE uid = :id`,
+              FROM articles WHERE id = :id`,
               { id },
               (error, data) => {
                 if (error) throw error;
@@ -168,7 +166,6 @@ class Article {
     });
   }
   deleteAll() {
-    const { id } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(`DELETE FROM articles`, (d) => {

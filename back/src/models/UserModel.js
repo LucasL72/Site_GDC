@@ -106,45 +106,53 @@ class User {
     });
   }
 
-  Ban() {
+  BanUser = function () {
+    let isBan;
+    // console.log("Method BANNED Model User", user);
+    //Declarations des constantes de user pour mysql
     const { id } = this;
-    return new Promise((resolve, reject) => {
-      connection.getConnection(function (error, conn) {
-        conn.query(
-          `UPDATE user SET isBan = 1 WHERE id =:id ;`,
-          { id },
-          (error, d) => {
-            if (error) reject(error);
-            conn.query(`SELECT * FROM user`, (error, data) => {
-              if (error) reject(error);
-              resolve(data);
-              conn.release();
-            });
-          }
-        );
-      });
+    connection.getConnection(function (error, conn) {
+      // console.log("MODEL: isBanned id", id);
+      // Selection de la valeur bool de la table pour l'update
+      conn.query(
+        "select isBan from user where id = :id",
+        { id },
+        (error, data) => {
+          if (error) throw error;
+          // Recupérer l'ancien état de la valeur afin de la modifier
+          isBan = data[0].isBan === 1 ? 0 : 1;
+          // console.log("isBanned data value");
+          //ici on fait la requete SQL avec les datas déclarées en const au début de la fonction
+          conn.query(
+            `UPDATE user 
+              set 
+              isBan = :isBan
+              WHERE id = :id;
+         `,
+            //ici on déclare les values qui vont être envoyées dans la fonction queryFormat pour la gestion des single quotes
+            // situé dans ConnectionDb.js dans dossier config
+            { isBan, id },
+            (error, data) => {
+              // console.log("MODEL BOOL:", isBanned, id);
+              if (error) throw error;
+              conn.query(
+                `SELECT * FROM user;
+      `,
+                (error, data) => {
+                  //   Si erreur l'afficher
+                  if (error) throw error;
+                  //   Sinon afficher les datas
+                  else (null, data);
+                }
+              );
+              // console.log("data", data);
+            }
+          );
+        }
+      );
+      conn.release();
     });
-  }
-  Unban() {
-    const { id } = this;
-    return new Promise((resolve, reject) => {
-      connection.getConnection(function (error, conn) {
-        conn.query(
-          `UPDATE user SET isBan= 0 WHERE id = :id;
-          `,
-          { id },
-          (error, d) => {
-            if (error) reject(error);
-            conn.query(`SELECT * FROM user`, (error, data) => {
-              if (error) reject(error);
-              resolve(data);
-              conn.release();
-            });
-          }
-        );
-      });
-    });
-  }
+  };
 
   deleteOne() {
     const { id } = this;

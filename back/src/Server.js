@@ -31,6 +31,7 @@ class Server {
         extended: false,
       })
     );
+  
 
     // Express static permet de diriger un chemin sur un dossier en particulier
     this.app.use("/api/assets", express.static("Public"));

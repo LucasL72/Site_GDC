@@ -64,7 +64,7 @@ class UserController {
       city: city,
       postal: postal,
       email: email,
-      password: password
+      password: password,
     });
     try {
       userObj.editOne().then((data) => {
@@ -123,38 +123,23 @@ class UserController {
       throw error;
     }
   }
-  async Ban(req, res) {
-    
+  async BanUser(req, res) {
+      const id = req.params;
     let userObj = new User({
-      id: req.params.id,
-      isBan:req.body,
-    });
-    try {
-      userObj.Ban().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create user Success !",
-          dbUsers: data,
-        });
+        id: req.params.id,
       });
-    } catch (error) {
-      throw error;
-    }
-  }
-  async Unban(req, res) {
-    let userObj = new User({
-      id: req.params.id,
-      isBan:req.body,
-    });
     try {
-      userObj.Unban().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create user Success !",
-          dbUsers: data,
-        });
+      userObj.BanUser({ id }, (err, data) => {
+        // console.log("response controller user update", data);
+        if (err) res.send({ message: "error in request db" });
+        // Sinon retourner cette réponse avec les data
+        else
+          return res.json({
+            method: req.method,
+            status: "success",
+            message: " The user has been successfully BANNED.!!!",
+            user: data,
+          });
       });
     } catch (error) {
       throw error;
