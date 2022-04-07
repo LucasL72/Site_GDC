@@ -9,7 +9,7 @@ import * as Actions from "../actions/ActionTypes";
 const initialState = {
   flash: "",
   listArticles: [],
-  article: {},
+  articles: {},
 };
 
 /*
@@ -29,7 +29,7 @@ export function ArticlesReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        article: action.payload.article,
+        articles: action.payload.articles,
       };
     case Actions.POST_ARTICLE:
       return {

@@ -9,48 +9,62 @@ import {
   createArticle,
   getArticles,
 } from "../../store/actions/ArticlesActions";
-
+import axios from "axios";
 
 const ModalCreateArt = (props) => {
-  const [imgarticle, setImgarticle] = useState({ file: [], filepreview: null });
+  const [userInfo, setuserInfo] = useState({ file: [], filepreview: null });
+  const [imgarticle,setImgarticle]=useState("");
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
   const [contenu, setCont] = useState("");
   const [auteur, setAuteur] = useState("");
-  const [uploadStatus, setUploadStatus] = useState('');
   const dispatch = useDispatch();
 
-  const handleInputChange = (event) => {
-    const file = event.target.files[0];
-    const formData = new FormData()
-    formData.append('image',file)
-    fetch('http:localhost:3030/api/Images/Articles',{
-      method: 'POST',
-      body: formData,
-      header:{
-        'Accept':'multipart/form-data',
-      },
-      credentials:'include'
-    })
-    .then(res => res.json())
-    .then(res => {setUploadStatus(res.msg);
-    })
-    .catch(error => {console.error(error)})
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    if (file) {
+      reader.onloadend = () => {
+        setImgarticle(file);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    setuserInfo({
+      ...userInfo,
+      file: e.target.files[0],
+      filepreview: URL.createObjectURL(e.target.files[0]),
+    });
   };
 
-  
+  const [isSucces, setSuccess] = useState(null);
 
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
+    const formdata = new FormData();
+    formdata.append("image", userInfo.file);
+
+    axios
+      .post("http://localhost:3030/Admin/Blog", formdata, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((res) => {
+        // then print response status
+        console.warn(res);
+        if (res.data.success === 1) {
+          setSuccess("Image upload successfully");
+        }
+      });
     e.preventDefault();
 
     if (title && description && contenu && auteur) {
-      dispatch(createArticle({ title, description, contenu, auteur,imgarticle }));
+      dispatch(createArticle({ imgarticle,title, description, contenu, auteur }));
       setTitle("");
       setDesc("");
       setCont("");
       setAuteur("");
-      setImgarticle("");
       dispatch(getArticles());
     }
   };
@@ -75,20 +89,19 @@ const ModalCreateArt = (props) => {
               <Form.Control
                 type="file"
                 className="mb-3"
-                name="imgarticle"
                 accept="image/*"
                 onChange={handleInputChange}
               />
-              <h3> {uploadStatus} </h3>
-              {imgarticle.filepreview !== null ? (
+              {userInfo.filepreview !== null ? (
                 <img
-                  src={imgarticle.filepreview}
+                  src={userInfo.filepreview}
                   width="2000"
                   height="2000"
                   className="img-fluid"
                   alt="imgarticle"
                 />
               ) : null}
+              {isSucces !== null ? <h4> {isSucces} </h4> : null}
             </Col>{" "}
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">

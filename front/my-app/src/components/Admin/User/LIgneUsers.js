@@ -8,13 +8,11 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { red } from "@mui/material/colors";
 import { orange } from "@mui/material/colors";
 import ModalBan from "../../Modals/ModalBan";
-import ModalUnban from "../../Modals/ModalUnban";
 
 const LIgneUsers = (props) => {
   const [modalEditUserShow, setModalEditUserShow] = React.useState(false);
   const [modalDelShow, setModalDelShow] = React.useState(false);
   const [modalBanShow, setModalBanShow] = React.useState(false);
-  const [modalUnbanShow, setModalUnbanShow] = React.useState(false);
   const { item } = props;
   return (
     <tr>
@@ -40,9 +38,6 @@ const LIgneUsers = (props) => {
         <a onClick={() => setModalBanShow(true)}>
           <RemoveCircleIcon sx={{ color: red[500] }} />
         </a>
-        <a onClick={() => setModalUnbanShow(true)}>
-          <RemoveCircleIcon color="success" />
-        </a>
         <ModalEditUser
           show={modalEditUserShow}
           onHide={() => setModalEditUserShow(false)}
@@ -56,11 +51,6 @@ const LIgneUsers = (props) => {
         <ModalBan
           show={modalBanShow}
           onHide={() => setModalBanShow(false)}
-          item={item}
-        />
-        <ModalUnban
-          show={modalUnbanShow}
-          onHide={() => setModalUnbanShow(false)}
           item={item}
         />
       </td>

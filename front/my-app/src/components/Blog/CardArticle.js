@@ -10,7 +10,6 @@ import ModalDelete from "../Modals/ModalDelete";
 const CardArticle = (props) => {
   const [modalEditShow, setModalEditShow] = React.useState(false);
   const [modalDelShow, setModalDelShow] = React.useState(false);
-
   const { item } = props;
   const navigate = useNavigate();
 

@@ -10,6 +10,7 @@ import { editArticle } from "../../store/actions/ArticlesActions";
 const ModalEditArt = (props) => {
   const { item } = props;
   const [title, setTitle] = useState(item.title);
+  const [imgarticle] = useState(item.imgarticle);
   const [description, setDesc] = useState(item.description);
   const [contenu, setCont] = useState(item.contenu);
   const [auteur, setAuteur] = useState(item.auteur);
@@ -21,6 +22,7 @@ const ModalEditArt = (props) => {
     //important il faut remettre tout les champs de la data autrement il serait ecraser par un champ vide
     const editData = {
       title: title,
+      imgarticle:imgarticle,
       description: description,
       contenu:contenu,
       auteur:auteur,
@@ -47,7 +49,7 @@ const ModalEditArt = (props) => {
           <Form onSubmit={(e) => handleEdit(e)}>
             <Col md={12}>
               <Form.Label>Choisir votre image</Form.Label>
-              <Form.Control type="file" className="mb-3" />
+              <Form.Control type="file" className="mb-3" name="imgarticle" />
             </Col>{" "}
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">

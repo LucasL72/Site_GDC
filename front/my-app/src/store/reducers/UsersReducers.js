@@ -29,7 +29,7 @@ export function UsersReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        Users: action.payload.Events,
+        Users: action.payload.Users,
       };
     case Actions.POST_USER:
       return {
@@ -53,13 +53,7 @@ export function UsersReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        listUsers: action.payload.dbUsers,
-      };
-    case Actions.UNBAN_USER:
-      return {
-        ...state,
-        flash: action.payload.flash,
-        listUsers: action.payload.dbUsers,
+        Users: action.payload.Users,
       };
   }
 }
