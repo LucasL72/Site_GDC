@@ -3,6 +3,8 @@
  * Model de 'Article'
  ******************************/
 const connection = require("../config/ConnectionDB");
+const fs = require("fs");
+const path = require('path');
 
 class Article {
   constructor(article) {
@@ -51,7 +53,7 @@ class Article {
 
   create() {
     console.log("model create", this);
-    const { imgarticle, title, description, contenu, auteur } = this;
+    const { title, description, contenu, auteur,id,imgarticle } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
@@ -60,7 +62,7 @@ class Article {
           { imgarticle, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
-            conn.query(`SELECT * FROM articles`, (error, data) => {
+            conn.query(`SELECT imgarticle, title,description,contenu,auteur FROM articles`,{id}, (error, data) => {
               if (error) reject(error);
               resolve(data);
               conn.release();

@@ -1,6 +1,6 @@
 /*
  *
- * Model de 'Article'
+ * Model de 'Event'
  ******************************/
 const connection = require("../config/ConnectionDB");
 

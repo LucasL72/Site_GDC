@@ -15,7 +15,6 @@ class Server {
       cors({
         origin: [
           "http://localhost:3000",
-          "http://192.168.1.17:3000",
           "https://domain.com/",
           "http://domain.com/",
         ],

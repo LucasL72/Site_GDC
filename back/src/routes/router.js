@@ -8,13 +8,20 @@ const upload = require("../config/multer"),
 
 const ArticleControllers = require("../controllers/ArticleControllers");
 const EventController = require("../controllers/EventController");
+const MessagesController = require("../controllers/MessagesController");
 const UserController = require("../controllers/UserController");
 
 // Routes
 // APP
-router.route("/").get(new EventController().getAll);
+router
+  .route("/")
+  .get(new EventController().getAll)
+  .post(new MessagesController().create);
 
-router.route("/Contact").get(new EventController().getAll);
+router
+  .route("/Contact")
+  .get(new EventController().getAll)
+  .post(new MessagesController().create);
 
 router.route("/Register").post(new UserController().create);
 
@@ -42,8 +49,6 @@ router
   .post(upload.single("image"), sharp, new ArticleControllers().create)
   .delete(new ArticleControllers().deleteAll);
 
-router.route("/Images/articles").post(upload.single("image"), sharp);
-
 router
   .route("/Admin/Blog/:id")
   .get(new ArticleControllers().getId)
@@ -60,5 +65,14 @@ router
   .get(new EventController().getId)
   .put(new EventController().editOne)
   .delete(new EventController().deleteOne);
+
+router
+  .route("/Admin/Messages")
+  .get(new MessagesController().getAll)
+
+router
+  .route("/Admin/Messages/:id")
+  .get(new MessagesController().getId)
+  .delete(new MessagesController().deleteOne);
 
 module.exports = router;

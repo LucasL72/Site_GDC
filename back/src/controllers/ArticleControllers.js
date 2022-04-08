@@ -1,5 +1,7 @@
 const Article = require("../models/ArticleModel");
 const help = require("../utils/help");
+const fs = require("fs");
+const path = require('path');
 
 class ArticleControllers {
   async getAll(req, res) {
@@ -25,16 +27,16 @@ class ArticleControllers {
 
   async create(req, res) {
     const {title, description, contenu, auteur } = req.body;
-    const imgarticle = "/api/assets/Images/Articles" + req.file;
+    const imgarticle = "/api/assets/Images/Articles/" + req.file;
     let newArticle = new Article({
-      id: req.params.id,
-      imgarticle: imgarticle,
+      id: Number(req.params.id),
+      imgarticle: String(imgarticle),
       title: title,
       description: description,
       contenu: contenu,
       auteur: auteur,
     });
-    try {
+    try { 
       newArticle
         .create()
         .then((data) => {
