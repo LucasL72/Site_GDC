@@ -30,4 +30,10 @@ export const GETID_EVENT = "GETID_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 
-
+//Messages
+// Events
+export const POST_MESSAGE = "POST_MESSAGE";
+export const GET_MESSAGE = "GET_MESSAGE";
+export const GETID_MESSAGE = "GETID_MESSAGE";
+export const EDIT_MESSAGE = "EDIT_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";

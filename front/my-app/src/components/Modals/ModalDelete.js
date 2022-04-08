@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { deleteArticle } from "../../store/actions/ArticlesActions";
 import { deleteEvent } from "../../store/actions/EventActions";
 import { deleteUser } from "../../store/actions/UsersActions";
+import { deleteMessage } from "../../store/actions/MessagesActions";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 
@@ -13,6 +14,7 @@ const ModalDelete = (props) => {
     dispatch(deleteArticle(id));
     dispatch(deleteEvent(id));
     dispatch(deleteUser(id));
+    dispatch(deleteMessage(id));
   };
   return (
     <div>

@@ -6,7 +6,33 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createMessage, getMessage } from "../../store/actions/MessagesActions";
 const ContForm = () => {
+  const [email, setEmail] = useState("");
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const dispatch = useDispatch();
+  // ici la fonction est asynchrone
+  const handleForm = async (e) => {
+    e.preventDefault();
+
+    if (email && content && author) {
+      dispatch(
+        createMessage({
+          email,
+          content,
+          author,
+        })
+      );
+      setEmail("");
+      setContent("");
+      setAuthor("");
+      dispatch(getMessage());
+    }
+  };
   return (
     <div className="contact mb-3">
       <h2 className="text-center ssligne">Nous Contacter</h2>
@@ -32,31 +58,42 @@ const ContForm = () => {
                 </p>
               </Col>
             </Row>
-            <Form>
+            <Form onSubmit={(e) => handleForm(e)}>
               <FloatingLabel
                 controlId="floatingInput"
                 label="Votre Nom"
                 className="mb-3"
               >
-                <Form.Control name="name" type="nom" placeholder="Votre nom" />
+                <Form.Control
+                  type="text"
+                  placeholder="Votre nom"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                />
               </FloatingLabel>
               <FloatingLabel
-                controlId="floatingInput"
+                controlId="floatingInput1"
                 label="Votre Email"
                 className="mb-3"
               >
                 <Form.Control
-                  name="email"
                   type="email"
                   placeholder="Votre Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FloatingLabel>
               <FloatingLabel
-                controlId="floatingInput"
+                controlId="floatingInput2"
                 label="Votre message"
                 className="mb-3"
               >
-                <Form.Control name="message" as="textarea" rows={3} />
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                />
               </FloatingLabel>
               <div className="text-center">
                 <Button variant="outline-success" type="submit">

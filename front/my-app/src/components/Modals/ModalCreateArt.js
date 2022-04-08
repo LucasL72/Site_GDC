@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   createArticle,
   getArticles,
@@ -12,56 +12,48 @@ import {
 import axios from "axios";
 
 const ModalCreateArt = (props) => {
-  const [userInfo, setuserInfo] = useState({ file: [], filepreview: null });
-  const [imgarticle,setImgarticle]=useState("");
+  const [imgarticle, setImgarticle] = useState({ file: [], filepreview: null });
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
   const [contenu, setCont] = useState("");
   const [auteur, setAuteur] = useState("");
   const dispatch = useDispatch();
+  const listArticles = useSelector((state) => state.articles.listArticles);
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    let reader = new FileReader();
-    let file = e.target.files[0];
 
-    if (file) {
-      reader.onloadend = () => {
-        setImgarticle(file);
-      };
-      reader.readAsDataURL(file);
-    }
-
-    setuserInfo({
-      ...userInfo,
+    setImgarticle({
+      ...imgarticle,
       file: e.target.files[0],
       filepreview: URL.createObjectURL(e.target.files[0]),
     });
   };
 
-  const [isSucces, setSuccess] = useState(null);
-
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
     const formdata = new FormData();
-    formdata.append("image", userInfo.file);
+    for (const [key, value] of Object.entries(listArticles)) {
+      formdata.append(key, value);
+    }
+    formdata.append("image", imgarticle.file);
 
     axios
       .post("http://localhost:3030/Admin/Blog", formdata, {
         headers: { "Content-Type": "multipart/form-data" },
       })
-      .then((res) => {
+      .then((res, req) => {
         // then print response status
         console.warn(res);
-        if (res.data.success === 1) {
-          setSuccess("Image upload successfully");
-        }
       });
     e.preventDefault();
 
     if (title && description && contenu && auteur) {
-      dispatch(createArticle({ imgarticle,title, description, contenu, auteur }));
+      dispatch(
+        createArticle({ imgarticle, title, description, contenu, auteur })
+      );
       setTitle("");
+      setImgarticle("");
       setDesc("");
       setCont("");
       setAuteur("");
@@ -85,23 +77,24 @@ const ModalCreateArt = (props) => {
         <Modal.Body>
           <Form onSubmit={(e) => handleForm(e)}>
             <Col md={12}>
-              <Form.Label>Choisir votre image</Form.Label>
-              <Form.Control
-                type="file"
-                className="mb-3"
-                accept="image/*"
-                onChange={handleInputChange}
-              />
-              {userInfo.filepreview !== null ? (
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Choisir votre image</Form.Label>
+                <Form.Control
+                  type="file"
+                  className="mb-3"
+                  accept="image/*"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              {imgarticle.filepreview !== null ? (
                 <img
-                  src={userInfo.filepreview}
+                  src={imgarticle.filepreview}
                   width="2000"
                   height="2000"
                   className="img-fluid"
                   alt="imgarticle"
                 />
               ) : null}
-              {isSucces !== null ? <h4> {isSucces} </h4> : null}
             </Col>{" "}
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">

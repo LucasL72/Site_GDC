@@ -29,7 +29,7 @@ export const getEvent = (data) => {
 export const getEventID = (id) => {
   return (dispatch) => {
     console.log('reducers get events')
-    return axios.get(`http://localhost:3030/ADmin/Events/${ id }`)
+    return axios.get(`http://localhost:3030/Admin/Events/${ id }`)
       .then((res) => {
         console.log('getEventID', res.data)
         dispatch({ type: GET_EVENT, payload: res.data})

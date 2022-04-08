@@ -11,6 +11,7 @@ import thunk from "redux-thunk";
 import { ArticlesReducer } from "./reducers/ArticlesReducers";
 import { EventReducer } from "./reducers/EventReducers";
 import { UsersReducer } from "./reducers/UsersReducers";
+import { MessagesReducer } from "./reducers/MessagesReducer";
 
 /*
  * All (Root) Reducers
@@ -18,7 +19,8 @@ import { UsersReducer } from "./reducers/UsersReducers";
 const rootReducer = combineReducers({
   articles: ArticlesReducer,
   events: EventReducer,
-  users:UsersReducer
+  users:UsersReducer,
+  messages:MessagesReducer
 
 });
 
