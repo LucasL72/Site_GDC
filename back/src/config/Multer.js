@@ -4,7 +4,7 @@ const multer = require('multer')
 // Ici nous définissons la config de stockage de multer
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}` )
+        cb(null, file.originalname )
     },
 })
 

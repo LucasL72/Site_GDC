@@ -53,7 +53,7 @@ class Article {
 
   create() {
     console.log("model create", this);
-    const { title, description, contenu, auteur,id,imgarticle } = this;
+    const { title, description, contenu, auteur,imgarticle } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
@@ -62,7 +62,7 @@ class Article {
           { imgarticle, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
-            conn.query(`SELECT imgarticle, title,description,contenu,auteur FROM articles`,{id}, (error, data) => {
+            conn.query(`SELECT imgarticle, title,description,contenu,auteur FROM articles`, (error, data) => {
               if (error) reject(error);
               resolve(data);
               conn.release();

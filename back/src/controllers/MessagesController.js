@@ -23,7 +23,9 @@ class MessagesController {
   }
 
   async create(req, res) {
-    const { email, content, author } = req.body;
+    const email = req.body.email;
+    const content = req.body.content;
+    const author = req.body.author;
     let newMessage = new Message({
       email: email,
       content: content,
@@ -49,9 +51,9 @@ class MessagesController {
   async getId(req, res) {
     let messObj = new Event({
       id: req.params.id,
-      email: String(email),
-      content: String(content),
-      author: String(author),
+      email: email,
+      content: content,
+      author:author,
     });
     try {
       messObj.getById().then((data) => {

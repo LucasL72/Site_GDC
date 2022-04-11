@@ -7,9 +7,9 @@ const connection = require("../config/ConnectionDB");
 class Message {
   constructor(messages) {
     (this.id = Number(messages.id)),
-      (this.email = String(messages.title)),
+      (this.email = String(messages.email)),
       (this.content = String(messages.content)),
-      (this.author = String(messages.date));
+      (this.author = String(messages.author));
   }
 
   getAll() {
@@ -59,7 +59,7 @@ class Message {
           { email, content, author },
           (error, data) => {
             if (error) reject(error);
-            conn.query(`SELECT  FROM messages`, (error, data) => {
+            conn.query(`SELECT * FROM messages`, (error, data) => {
               if (error) reject(error);
               resolve(data);
               conn.release();

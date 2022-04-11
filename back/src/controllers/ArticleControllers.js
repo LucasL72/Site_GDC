@@ -27,7 +27,7 @@ class ArticleControllers {
 
   async create(req, res) {
     const {title, description, contenu, auteur } = req.body;
-    const imgarticle = "/api/assets/Images/Articles/" + req.file;
+    const imgarticle = "/api/assets/Images/Articles/" + req.file.filename.split('.').slice(0, -1).join('.') + ".webp";
     let newArticle = new Article({
       id: Number(req.params.id),
       imgarticle: String(imgarticle),
