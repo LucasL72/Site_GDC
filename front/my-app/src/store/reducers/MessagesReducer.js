@@ -41,7 +41,7 @@ export function MessagesReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        listMesasges: action.payload.dbMessages,
+        listMessages: action.payload.dbMessages,
       };
   }
 }

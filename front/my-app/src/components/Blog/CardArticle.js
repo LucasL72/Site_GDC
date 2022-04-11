@@ -5,22 +5,20 @@ import Col from "react-bootstrap/Col";
 import ModalEditArt from "../Modals/ModalEditArt";
 import React from "react";
 import ModalDelete from "../Modals/ModalDelete";
-
+import { urlImg } from "../../utils/url";
 
 const CardArticle = (props) => {
   const [modalEditShow, setModalEditShow] = React.useState(false);
   const [modalDelShow, setModalDelShow] = React.useState(false);
   const { item } = props;
   const navigate = useNavigate();
-
   const toArticleID = async (id) => {
     navigate("/Blog/" + id, { state: { id, item } });
   };
-
   return (
     <Col md={4} className="g-3">
       <Card key={item.id} className="scale">
-        <Card.Img variant="top" src={"http://localhost:3030/./api/assets/Images/Articles/creative1.webp"} alt={item.title} />
+        <Card.Img variant="top" src={`${urlImg + item.imgarticle}`} alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>{item.description}</Card.Text>

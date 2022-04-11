@@ -60,7 +60,7 @@ const ContForm = () => {
             </Row>
             <Form onSubmit={(e) => handleForm(e)}>
               <FloatingLabel
-                controlId="floatingInput"
+                controlId="name"
                 label="Votre Nom"
                 className="mb-3"
               >
@@ -72,7 +72,7 @@ const ContForm = () => {
                 />
               </FloatingLabel>
               <FloatingLabel
-                controlId="floatingInput1"
+                controlId="email"
                 label="Votre Email"
                 className="mb-3"
               >

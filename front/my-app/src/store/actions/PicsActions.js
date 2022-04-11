@@ -18,7 +18,7 @@ export const getPic = (data) => {
     console.log('reducers get pics')
     return axios.get("http://localhost:3030/Photos")
       .then((res) => {
-        console.log('getArticles', res.data)
+        console.log('getPic', res.data)
         dispatch({ type: GET_PIC, payload: res.data})
       })
       .catch(err => console.log(err));
@@ -29,7 +29,7 @@ export const getPic = (data) => {
 export const getPicID = (id) => {
     return (dispatch) => {
       console.log('reducers get pic')
-      return axios.get(`http://localhost:3030/Photos/${ id }`)
+      return axios.get(`http://localhost:3030/Admin/Photos/${ id }`)
         .then((res) => {
           console.log('getArticleID', res.data)
           dispatch({ type: GET_PIC, payload: res.data})
@@ -41,7 +41,11 @@ export const getPicID = (id) => {
 // Create Article
 export const createPic = (data) => {
   return (dispatch) => {
-    return axios.post("http://localhost:3030/Admin/Photos", data)
+    return axios.post("http://localhost:3030/Admin/Photos", data,{
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
       .then((res) => {
         dispatch({ type: POST_PIC, payload: res.data})
       })
@@ -50,7 +54,7 @@ export const createPic = (data) => {
 };
 
 // Delete Article
-export const deleteArticle = (id) => {
+export const deletePic = (id) => {
   return (dispatch) => {
     return axios.delete(`http://localhost:3030/Admin/Photos/${ id }`)
       .then((res) => {

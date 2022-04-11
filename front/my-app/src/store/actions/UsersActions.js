@@ -51,7 +51,11 @@ export const createUser = (data) => {
   return (dispatch) => {
     console.log("reducers get events");
     return axios
-      .post("http://localhost:3030/Register", data)
+      .post("http://localhost:3030/Register", data,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         dispatch({ type: POST_USER, payload: res.data });
       })
@@ -77,7 +81,11 @@ export const editUser = (data) => {
   return (dispatch) => {
     console.log("reducers get events");
     return axios
-      .put(`http://localhost:3030/Admin/User/${data.id}`, data)
+      .put(`http://localhost:3030/Admin/User/${data.id}`, data,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         dispatch({ type: EDIT_USER, payload: res.data });
       })

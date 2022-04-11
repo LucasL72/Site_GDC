@@ -4,61 +4,59 @@ import Col from "react-bootstrap/Col";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  createArticle,
-  getArticles,
-} from "../../store/actions/ArticlesActions";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { createArticle } from "../../store/actions/ArticlesActions";
 
 const ModalCreateArt = (props) => {
-  const [imgarticle, setImgarticle] = useState({ file: [], filepreview: null });
+  const [stateImgUpload, setStateImgUpload] = useState("");
+  const [imgPreview, setPreview] = useState("");
+  const [imgSelect, setSelect] = useState("");
+  const [imgarticle, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
   const [contenu, setCont] = useState("");
   const [auteur, setAuteur] = useState("");
   const dispatch = useDispatch();
-  const listArticles = useSelector((state) => state.articles.listArticles);
 
   const handleInputChange = (e) => {
+    setStateImgUpload("Image non enregistrée");
     e.preventDefault();
-
-    setImgarticle({
-      ...imgarticle,
-      file: e.target.files[0],
-      filepreview: URL.createObjectURL(e.target.files[0]),
-    });
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    if (file) {
+      reader.onloadend = () => {
+        setSelect(true);
+        setPreview(reader.result);
+        setImg(file);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
-    const formdata = new FormData();
-    for (const [key, value] of Object.entries(listArticles)) {
-      formdata.append(key, value);
-    }
-    formdata.append("image", imgarticle.file);
-
-    axios
-      .post("http://localhost:3030/Admin/Blog", formdata, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res, req) => {
-        // then print response status
-        console.warn(res);
-      });
     e.preventDefault();
-
-    if (title && description && contenu && auteur) {
-      dispatch(
-        createArticle({ imgarticle, title, description, contenu, auteur })
-      );
-      setTitle("");
-      setImgarticle("");
-      setDesc("");
-      setCont("");
-      setAuteur("");
-      dispatch(getArticles());
+    if (!imgarticle) {
+      setStateImgUpload("image obligatoire");
+    } else {
+      setStateImgUpload("");
     }
+    const dataArticle = {
+      title,
+      description,
+      contenu,
+      auteur,
+    };
+    const formdata = new FormData();
+    Object.entries(dataArticle).forEach(([cle, valeur]) => {
+      formdata.append(cle, valeur);
+    });
+    if (imgSelect) {
+      formdata.append("image", imgarticle);
+    }
+    setSelect(false);
+
+    dispatch(createArticle(formdata));
   };
   return (
     <div>
@@ -86,15 +84,26 @@ const ModalCreateArt = (props) => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
-              {imgarticle.filepreview !== null ? (
+              {imgSelect ? (
                 <img
-                  src={imgarticle.filepreview}
-                  width="2000"
-                  height="2000"
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
                   className="img-fluid"
-                  alt="imgarticle"
+                  alt=""
                 />
-              ) : null}
+              ) : (
+                <img
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
+                  className="img-fluid"
+                  alt=""
+                />
+              )}
+              {{ stateImgUpload } && (
+                <p className="text-danger">{stateImgUpload}</p>
+              )}
             </Col>{" "}
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">

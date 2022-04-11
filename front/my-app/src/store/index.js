@@ -12,6 +12,7 @@ import { ArticlesReducer } from "./reducers/ArticlesReducers";
 import { EventReducer } from "./reducers/EventReducers";
 import { UsersReducer } from "./reducers/UsersReducers";
 import { MessagesReducer } from "./reducers/MessagesReducer";
+import { PicsReducer } from "./reducers/PicsReducers";
 
 /*
  * All (Root) Reducers
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   articles: ArticlesReducer,
   events: EventReducer,
   users:UsersReducer,
-  messages:MessagesReducer
+  messages:MessagesReducer,
+  pics:PicsReducer
 
 });
 

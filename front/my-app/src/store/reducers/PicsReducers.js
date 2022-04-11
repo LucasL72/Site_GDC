@@ -9,7 +9,7 @@ import * as Actions from "../actions/ActionTypes";
 const initialState = {
   flash: "",
   listPics: [],
-  Pic: {},
+  Pics: {},
 };
 
 /*
@@ -29,15 +29,15 @@ export function PicsReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        Pic: action.payload.PIC,
+        Pics: action.payload.Pics,
       };
-    case Actions.POST_ARTICLE:
+    case Actions.POST_PIC:
       return {
         ...state,
         flash: action.payload.flash,
         listPics: action.payload.dbPics,
       };
-    case Actions.DELETE_ARTICLE:
+    case Actions.DELETE_PIC:
       return {
         ...state,
         flash: action.payload.flash,
