@@ -4,7 +4,8 @@
  ******************************/
 const connection = require("../config/ConnectionDB");
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
+const help = require("../utils/help");
 
 class Photo {
   constructor(photos) {
@@ -72,6 +73,8 @@ class Photo {
 
   deleteOne() {
     const { id } = this;
+    const dir = path.join("./Public/Images/Album");
+    help.removeFile(dir, this.photo);
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(`DELETE FROM pics WHERE idphotos = ${id}`, (d) => {

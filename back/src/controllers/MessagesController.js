@@ -23,9 +23,7 @@ class MessagesController {
   }
 
   async create(req, res) {
-    const email = req.body.email;
-    const content = req.body.content;
-    const author = req.body.author;
+  const {email,author,content} = req.body;
     let newMessage = new Message({
       email: email,
       content: content,

@@ -4,7 +4,8 @@
  ******************************/
 const connection = require("../config/ConnectionDB");
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
+const help = require("../utils/help");
 
 class Article {
   constructor(article) {
@@ -53,7 +54,7 @@ class Article {
 
   create() {
     console.log("model create", this);
-    const { title, description, contenu, auteur,imgarticle } = this;
+    const { title, description, contenu, auteur, imgarticle } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
@@ -62,11 +63,14 @@ class Article {
           { imgarticle, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
-            conn.query(`SELECT imgarticle, title,description,contenu,auteur FROM articles`, (error, data) => {
-              if (error) reject(error);
-              resolve(data);
-              conn.release();
-            });
+            conn.query(
+              `SELECT imgarticle, title,description,contenu,auteur FROM articles`,
+              (error, data) => {
+                if (error) reject(error);
+                resolve(data);
+                conn.release();
+              }
+            );
           }
         );
       });
@@ -75,22 +79,13 @@ class Article {
 
   editOne(reqfile, result) {
     const { title, description, id, contenu, auteur } = this;
-    let pathImgarticle = "./Public/Images/Articles/",
-      pathImgarticleDb = "/api/assets/Images/Articles/",
-      pathImgarticlewebp = "",
-      pathImgwebp = "";
     const dateImg = new Date().getTime();
-
     if (reqfile) {
       pathImgwebp =
-        pathImgarticle +
-        (reqfile.filename.split(".").slice(0, -1).join(".") + ".webp");
-
-      pathImgarticlewebp = pathImgarticle + id + dateImg + ".webp";
-      help.renameFile(pathImgwebp, pathImgarticlewebp).then((data) => {
+        reqfile.filename.split(".").slice(0, -1).join(".") + ".webp";
+      pathImgarticlewebp = id + dateImg + ".webp";
+      help.renameFile(pathImgwebp, pathImgarticlewebp)((data) => {
         if (data) {
-          const articleImg =
-            pathImgarticleDb + "article_" + id + "_" + dateImg + ".webp";
           connection.getConnection(function (error, conn) {
             conn.query(
               `SELECT imgarticle
@@ -98,10 +93,11 @@ class Article {
               { id },
               (error, data) => {
                 if (error) throw error;
-                const nameImgarticle = data[0].imgarticle.split("/")[5];
-                const pathImgDbDel = pathImgarticle + nameImgarticle;
-                if (data[0].imgarticle) help.removeFile(pathImgDbDel);
-
+                const name = data[0].imgarticle;
+                console.log(data[0].imgarticle);
+                const dir = "./Public/Images/Articles/";
+                const image = dir + name;
+                if (data[0].imgarticle) help.removeFile(image);
                 conn.query(
                   `UPDATE articles 
                       SET imgarticle= :articleImg
@@ -156,14 +152,26 @@ class Article {
     const { id } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
-        conn.query(`DELETE FROM articles WHERE id = ${id}`, (d) => {
-          if (error) reject(error);
-          conn.query(`SELECT * FROM articles`, (error, data) => {
-            if (error) reject(error);
-            resolve(data);
-            conn.release();
-          });
-        });
+        conn.query(
+          `SELECT imgarticle
+          FROM articles WHERE id = :id`,
+          { id },
+          (error, data) => {
+            const name = data[0].imgarticle;
+            console.log(data[0].imgarticle);
+            const dir = "./Public/Images/Articles/";
+            const image = dir + name;
+            if (data[0].imgarticle) help.removeFile(image);
+            conn.query(`DELETE FROM articles WHERE id = ${id}`, (d) => {
+              if (error) reject(error);
+              conn.query(`SELECT * FROM articles`, (error, data) => {
+                if (error) reject(error);
+                resolve(data);
+                conn.release();
+              });
+            });
+          }
+        );
       });
     });
   }

@@ -44,7 +44,7 @@ class PicsControllers {
   }
   async create(req, res) {
     const {authorname } = req.body;
-    const photo = "/api/assets/Images/Album/" + req.file.filename.split('.').slice(0, -1).join('.') + ".webp";
+    const photo = req.file.filename.split('.').slice(0, -1).join('.') + ".webp";
     let newPhoto = new Photo({
       idphotos: Number(req.params.idphotos),
       photo: String(photo),

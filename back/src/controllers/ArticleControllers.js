@@ -1,7 +1,7 @@
 const Article = require("../models/ArticleModel");
 const help = require("../utils/help");
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
 
 class ArticleControllers {
   async getAll(req, res) {
@@ -26,17 +26,19 @@ class ArticleControllers {
   }
 
   async create(req, res) {
-    const {title, description, contenu, auteur } = req.body;
-    const imgarticle = "/api/assets/Images/Articles/" + req.file.filename.split('.').slice(0, -1).join('.') + ".webp";
+    const { title, description, contenu, auteur } = req.body;
+    const id = req.params.id;
+    const imgarticle = req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newArticle = new Article({
-      id: Number(req.params.id),
-      imgarticle: String(imgarticle),
+      id: id,
+      imgarticle: imgarticle,
       title: title,
       description: description,
       contenu: contenu,
       auteur: auteur,
     });
-    try { 
+    console.log(imgarticle, id);
+    try {
       newArticle
         .create()
         .then((data) => {
@@ -55,27 +57,25 @@ class ArticleControllers {
 
   async editOne(req, res) {
     const { title, description, contenu, auteur } = req.body;
+    const id = req.params.id;
     const imgarticle = req.file;
     let articleObj = new Article({
-      id: req.params.id,
+      id: id,
       imgarticle: imgarticle,
       title: title,
       description: description,
       contenu: contenu,
-      auteur: auteur,
+      auteur: auteur
     });
     try {
-      articleObj
-        .editOne()
-        .then((data) => {
+      articleObj.getById().then((data) => {
           return res.send({
             method: req.method,
             status: "success",
             flash: "Create Article Success !",
             dbArticles: data,
           });
-        })
-        .catch((err) => console.log("error", err));
+        });
     } catch (error) {
       throw error;
     }

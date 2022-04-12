@@ -23,6 +23,7 @@ router
 router
   .route("/Contact")
   .get(new EventController().getAll)
+  .post(new MessagesController().create);
 
 router.route("/Register").post(new UserController().create);
 

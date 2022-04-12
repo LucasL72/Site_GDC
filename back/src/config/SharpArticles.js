@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
                 }
             })
             .webp({
-                quality: 90
+                quality: 100
             })
             .toFile(pathSharp + file.filename.split('.').slice(0, -1).join('.') + ".webp", (err, info) => { })
         next()
