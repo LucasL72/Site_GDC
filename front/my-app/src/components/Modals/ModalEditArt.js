@@ -9,27 +9,56 @@ import { editArticle } from "../../store/actions/ArticlesActions";
 
 const ModalEditArt = (props) => {
   const { item } = props;
+  const [stateImgUpload, setStateImgUpload] = useState("");
+  const [imgPreview, setPreview] = useState("");
+  const [imgSelect, setSelect] = useState("");
+  const [imgarticle, setImg] = useState("");
   const [title, setTitle] = useState(item.title);
-  const [imgarticle] = useState(item.imgarticle);
   const [description, setDesc] = useState(item.description);
   const [contenu, setCont] = useState(item.contenu);
   const [auteur, setAuteur] = useState(item.auteur);
   const dispatch = useDispatch();
 
+  const handleInputChange = (e) => {
+    setStateImgUpload("Image non enregistrée");
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    if (file) {
+      reader.onloadend = () => {
+        setSelect(true);
+        setPreview(reader.result);
+        setImg(file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleEdit = (e) => {
     e.preventDefault();
 
-    //important il faut remettre tout les champs de la data autrement il serait ecraser par un champ vide
-    const editData = {
-      title: title,
-      imgarticle:imgarticle,
-      description: description,
-      contenu:contenu,
-      auteur:auteur,
-      id: item.id,
+    if (!imgarticle) {
+      setStateImgUpload("image obligatoire");
+    } else {
+      setStateImgUpload("");
+    }
+    const dataArticle = {
+      title,
+      description,
+      contenu,
+      auteur,
     };
+    const formdata = new FormData();
+    Object.entries(dataArticle).forEach(([cle, valeur]) => {
+      formdata.append(cle, valeur);
+    });
+    if (imgSelect) {
+      formdata.append("image", imgarticle);
+    }
+    setSelect(false);
 
-    dispatch(editArticle(editData));
+    dispatch(editArticle(formdata));
+
   };
   return (
     <div>
@@ -49,7 +78,33 @@ const ModalEditArt = (props) => {
           <Form onSubmit={(e) => handleEdit(e)}>
             <Col md={12}>
               <Form.Label>Choisir votre image</Form.Label>
-              <Form.Control type="file" className="mb-3" name="imgarticle" />
+              <Form.Control
+                type="file"
+                className="mb-3"
+                name="imgarticle"
+                accept="image/*"
+                onChange={handleInputChange}
+              />
+              {imgSelect ? (
+                <img
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
+                  className="img-fluid"
+                  alt="Image"
+                />
+              ) : (
+                <img
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
+                  className="img-fluid"
+                  alt=""
+                />
+              )}
+              {{ stateImgUpload } && (
+                <p className="text-danger">{stateImgUpload}</p>
+              )}
             </Col>{" "}
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">

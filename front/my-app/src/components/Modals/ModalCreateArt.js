@@ -90,7 +90,7 @@ const ModalCreateArt = (props) => {
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt=""
+                  alt="Image"
                 />
               ) : (
                 <img

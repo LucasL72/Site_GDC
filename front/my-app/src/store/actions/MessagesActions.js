@@ -45,9 +45,7 @@ export const createMessage = (data) => {
   return (dispatch) => {
     console.log("reducers get messages");
     return axios
-      .post("http://localhost:3030/Admin/Messages", data, {
-        headers: { "Content-type": "multipart/form-data" },
-      })
+      .post("http://localhost:3030/Contact", data)
       .then((res) => {
         dispatch({ type: POST_MESSAGE, payload: res.data });
       })

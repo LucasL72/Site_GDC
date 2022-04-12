@@ -5,6 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import ModalCon from "../Modals/ModalCon";
 
 const Navigbar = () => {
@@ -64,6 +65,13 @@ const Navigbar = () => {
               >
                 <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
               </a>
+              <a
+                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
+              </a>
             </Nav>
             <Nav className="justify-content-end">
               <Button
@@ -74,7 +82,7 @@ const Navigbar = () => {
               >
                 Adhérer
               </Button>
-            
+
               <a
                 className="btn btn-full"
                 onClick={() => setModalConnShow(true)}

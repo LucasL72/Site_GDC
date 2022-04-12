@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import ModalEditArt from "../Modals/ModalEditArt";
 import React from "react";
 import ModalDelete from "../Modals/ModalDelete";
-import { urlImg } from "../../utils/url";
+import { urlImgArt } from "../../utils/url";
 
 const CardArticle = (props) => {
   const [modalEditShow, setModalEditShow] = React.useState(false);
@@ -18,7 +18,7 @@ const CardArticle = (props) => {
   return (
     <Col md={4} className="g-3">
       <Card key={item.id} className="scale">
-        <Card.Img variant="top" src={`${urlImg + item.imgarticle}`} alt={item.title} />
+        <Card.Img variant="top" src={`${urlImgArt + item.imgarticle}`} alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>{item.description}</Card.Text>

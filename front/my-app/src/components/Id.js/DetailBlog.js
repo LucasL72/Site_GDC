@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { urlImg } from "../../utils/url";
+import { urlImgArt } from "../../utils/url";
 const DetailBlog = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const DetailBlog = () => {
             <div className="text-center">
               <img
                 className="img-fluid"
-                src={`${urlImg + state.item.imgarticle}`}
+                src={`${urlImgArt + state.item.imgarticle}`}
                 alt={state && state.item.title}
                 width="700"
                 height="550"
