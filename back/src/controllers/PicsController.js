@@ -1,12 +1,10 @@
-const Photo = require("../models/picsModel");
+const Albums = require("../models/PicsModel");
 const help = require("../utils/help");
-const fs = require("fs");
-const path = require('path');
 
-class PicsControllers {
+class PicsController {
   async getAll(req, res) {
     try {
-      const newPhoto = new Photo({});
+      const newPhoto = new Albums({});
       newPhoto
         .getAll()
         .then((data) => {
@@ -26,8 +24,8 @@ class PicsControllers {
   }
 
   async getId(req, res) {
-    let PhotoObj = new Photo({
-      id: Number(req.params.id),
+    let PhotoObj = new Albums({
+      idphotos: Number(req.params.idphotos),
     });
     try {
       PhotoObj.getById().then((data) => {
@@ -36,7 +34,7 @@ class PicsControllers {
           status: "success",
           flash: "Create Article Success !",
           dbPics: data,
-        });
+        }); 
       });
     } catch (error) {
       throw error;
@@ -44,10 +42,11 @@ class PicsControllers {
   }
   async create(req, res) {
     const {authorname } = req.body;
+    const id = req.params.id;
     const photo = req.file.filename.split('.').slice(0, -1).join('.') + ".webp";
-    let newPhoto = new Photo({
-      idphotos: Number(req.params.idphotos),
-      photo: String(photo),
+    let newPhoto = new Albums({
+      id: Number(id),
+      photo: photo,
      authorname:authorname,
     });
     try { 
@@ -71,14 +70,14 @@ class PicsControllers {
 
   async deleteOne(req, res) {
     try {
-      let PhotoObj = new Photo({
+      let photoObj = new Albums({
         id: Number(req.params.id),
       });
-      PhotoObj.deleteOne().then((data) => {
+      photoObj.deleteOne().then((data) => {
         return res.send({
           method: req.method,
           status: "success",
-          flash: "Create Article Success !",
+          flash: "delete pics Success !",
           dbPics: data,
         });
       });
@@ -87,13 +86,6 @@ class PicsControllers {
     }
   }
 
-  async deleteAll(req, res) {
-    try {
-      return res.send("OK");
-    } catch (error) {
-      throw error;
-    }
-  }
 }
 
-module.exports = PicsControllers;
+module.exports = PicsController;

@@ -4,6 +4,7 @@
  ******************************/
 const connection = require("../config/ConnectionDB");
 const bcrypt = require("bcrypt");
+const help = require("../utils/help");
 
 class User {
   constructor(users) {
@@ -14,7 +15,7 @@ class User {
       (this.nom = String(users.nom)),
       (this.adresse = String(users.adresse)),
       (this.city = String(users.city)),
-      (this.postal = Number(users.postal)),
+      (this.postal = String(users.postal)),
       (this.email = String(users.email)),
       (this.isBan = Boolean(users.isBan)),
       (this.password = String(users.password));
@@ -57,16 +58,25 @@ class User {
 
   create() {
     console.log("model create", this);
-    const { pseudo, prenom, nom, adresse, city, postal, email, password } =
-      this;
+    const {
+      imguser,
+      pseudo,
+      prenom,
+      nom,
+      adresse,
+      city,
+      postal,
+      email,
+      password,
+    } = this;
     const hash = bcrypt.hashSync(password, 10);
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
           `
-          INSERT INTO user SET imguser= "image", pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
+          INSERT INTO user SET imguser= :imguser, pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
       `,
-          { pseudo, prenom, nom, adresse, city, postal, email, hash },
+          { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash },
           (error, data) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM user`, (error, data) => {
@@ -81,7 +91,7 @@ class User {
   }
 
   editOne() {
-    const { pseudo, prenom, nom, adresse, city, postal, email, password, id } =
+    const {imguser, pseudo, prenom, nom, adresse, city, postal, email, password, id } =
       this;
     const hash = bcrypt.hashSync(password, 10);
     console.log("edit", typeof id);
@@ -89,10 +99,10 @@ class User {
       connection.getConnection(function (error, conn) {
         conn.query(
           `UPDATE user
-                      SET imguser="image",pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
+                      SET imguser=:imguser,pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
                       WHERE id = :id;
           `,
-          { pseudo, prenom, nom, adresse, city, postal, email, hash, id },
+          { imguser,pseudo, prenom, nom, adresse, city, postal, email, hash, id },
           (error, d) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM user`, (error, data) => {
@@ -142,7 +152,7 @@ class User {
                   //   Si erreur l'afficher
                   if (error) throw error;
                   //   Sinon afficher les datas
-                  else (null, data);
+                  else null, data;
                 }
               );
               // console.log("data", data);
@@ -158,14 +168,26 @@ class User {
     const { id } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
-        conn.query(`DELETE FROM user WHERE id =:id`, { id }, (d) => {
-          if (error) reject(error);
-          conn.query(`SELECT * FROM user`, (error, data) => {
-            if (error) reject(error);
-            resolve(data);
-            conn.release();
-          });
-        });
+        conn.query(
+          `SELECT imguser
+          FROM user WHERE id = :id`,
+          { id },
+          (error, data) => {
+            const name = data[0].imguser;
+            console.log(data[0].imguser);
+            const dir = "./Public/Images/Users/";
+            const image = dir + name;
+            if (data[0].imguser) help.removeFile(image);
+            conn.query(`DELETE FROM user WHERE id =:id`, { id }, (d) => {
+              if (error) reject(error);
+              conn.query(`SELECT * FROM user`, (error, data) => {
+                if (error) reject(error);
+                resolve(data);
+                conn.release();
+              });
+            });
+          }
+        );
       });
     });
   }

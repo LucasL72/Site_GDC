@@ -5,13 +5,15 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../config/multer"),
   sharpArticles = require("../config/SharpArticles"),
-  sharpAlbum = require("../config/SharpAlbum");
+  sharpAlbum = require("../config/SharpAlbum"),
+  SharpUser = require("../config/SharpUser");
 
 const ArticleControllers = require("../controllers/ArticleControllers");
 const EventController = require("../controllers/EventController");
 const MessagesController = require("../controllers/MessagesController");
 const UserController = require("../controllers/UserController");
 const PicsController = require("../controllers/PicsController");
+const ComsController = require("../controllers/ComsController");
 
 // Routes
 // APP
@@ -25,16 +27,21 @@ router
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
-router.route("/Register").post(new UserController().create);
+router.route("/Register")
+.post(upload.single("image"), SharpUser,new UserController().create)
+.get(new UserController().getAll);
 
 router.route("/Blog").get(new ArticleControllers().getAll);
 
 router.route("/Photos").get(new PicsController().getAll);
 
-router.route("/Blog/:id").get(new ArticleControllers().getId);
+router.route("/Blog/:id")
+.get(new ArticleControllers().getId)
+.post(new ComsController().create);
 
 // ADMIN
-router.route("/Admin/User").get(new UserController().getAll);
+router.route("/Admin/User")
+.get(new UserController().getAll);
 
 router
   .route("/Admin/User/:id")
@@ -51,7 +58,6 @@ router
   .route("/Admin/Blog")
   .get(new ArticleControllers().getAll)
   .post(upload.single("image"), sharpArticles, new ArticleControllers().create)
-  .delete(new ArticleControllers().deleteAll);
 
 router
   .route("/Admin/Blog/:id")
@@ -63,7 +69,6 @@ router
   .route("/Admin/Photos")
   .get(new PicsController().getAll)
   .post(upload.single("image"), sharpAlbum, new PicsController().create)
-  .delete(new PicsController().deleteAll);
 
 router
   .route("/Admin/Photos/:id")

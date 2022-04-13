@@ -25,7 +25,9 @@ class UserController {
   async create(req, res) {
     const { pseudo, prenom, nom, adresse, city, postal, email, password } =
       req.body;
+      const imguser = req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newUser = new User({
+      imguser:imguser,
       pseudo: pseudo,
       prenom: prenom,
       nom: nom,

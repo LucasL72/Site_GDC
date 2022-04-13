@@ -8,14 +8,14 @@ const path = require("path");
 const help = require("../utils/help");
 
 class Article {
-  constructor(article) {
-    (this.id = Number(article.id)),
-      (this.imgarticle = String(article.imgarticle)),
-      (this.title = String(article.title)),
-      (this.description = String(article.description)),
-      (this.contenu = String(article.contenu)),
-      (this.auteur = String(article.auteur)),
-      (this.user_id = Number(article.user_id));
+  constructor(articles) {
+    (this.id = Number(articles.id)),
+      (this.imgarticle = String(articles.imgarticle)),
+      (this.title = String(articles.title)),
+      (this.description = String(articles.description)),
+      (this.contenu = String(articles.contenu)),
+      (this.auteur = String(articles.auteur)),
+      (this.user_id = Number(articles.user_id));
   }
 
   getAll() {
@@ -39,9 +39,8 @@ class Article {
         if (error) throw error;
         conn.query(
           `
-          SELECT * FROM articles WHERE id = :id
+          SELECT imgarticle,title,description,contenu,auteur FROM articles WHERE id = ${id};
       `,
-          { id },
           (error, data) => {
             if (error) reject(error);
             resolve(data);
@@ -84,12 +83,15 @@ class Article {
       pathImgwebp =
         reqfile.filename.split(".").slice(0, -1).join(".") + ".webp";
       pathImgarticlewebp = id + dateImg + ".webp";
-      help.renameFile(pathImgwebp, pathImgarticlewebp)((data) => {
+      help.renameFile(
+        pathImgwebp,
+        pathImgarticlewebp
+      )((data) => {
         if (data) {
           connection.getConnection(function (error, conn) {
             conn.query(
               `SELECT imgarticle
-              FROM articles WHERE id = :id`,
+              FROM articles WHERE id = ${id}`,
               { id },
               (error, data) => {
                 if (error) throw error;
@@ -106,9 +108,9 @@ class Article {
                           contenu= :contenu,
                           auteur= :auteur,
                           user_id="1"
-                      WHERE id = :id;
+                      WHERE id = ${id};
           `,
-                  { id, articleImg, title, description, contenu, auteur },
+                  { articleImg, title, description, contenu, auteur },
                   (error, data) => {
                     if (error) reject(error);
                     conn.query(`SELECT * FROM articles`, (error, data) => {
@@ -132,9 +134,9 @@ class Article {
                           contenu= :contenu,
                           auteur= :auteur,
                           user_id="1"
-                      WHERE id = :id;
+                      WHERE id = ${id};
           `,
-          { id, title, description, contenu, auteur },
+          { title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
             conn.query(`SELECT * FROM articles`, (error, data) => {
@@ -172,20 +174,6 @@ class Article {
             });
           }
         );
-      });
-    });
-  }
-  deleteAll() {
-    return new Promise((resolve, reject) => {
-      connection.getConnection(function (error, conn) {
-        conn.query(`DELETE FROM articles`, (d) => {
-          if (error) reject(error);
-          conn.query(`SELECT * FROM articles`, (error, data) => {
-            if (error) reject(error);
-            resolve(data);
-            conn.release();
-          });
-        });
       });
     });
   }

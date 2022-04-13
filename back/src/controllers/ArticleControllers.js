@@ -65,7 +65,7 @@ class ArticleControllers {
       title: title,
       description: description,
       contenu: contenu,
-      auteur: auteur
+      auteur: auteur,
     });
     try {
       articleObj.getById().then((data) => {
@@ -117,13 +117,6 @@ class ArticleControllers {
     }
   }
 
-  async deleteAll(req, res) {
-    try {
-      return res.send("OK");
-    } catch (error) {
-      throw error;
-    }
-  }
 }
 
 module.exports = ArticleControllers;
