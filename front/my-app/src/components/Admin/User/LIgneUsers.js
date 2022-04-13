@@ -3,11 +3,12 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DangerousIcon from "@mui/icons-material/Dangerous";
 import EditIcon from "@mui/icons-material/Edit";
 import ModalEditUser from "../../Modals/ModalEditUser";
-import ModalDelete from "../../Modals/ModalDelete";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { red } from "@mui/material/colors";
 import { orange } from "@mui/material/colors";
 import ModalBan from "../../Modals/ModalBan";
+import ModalDeleteUser from "../../Modals/ModalDelete/ModalDeleteUser";
+import { urlImgUsers } from "../../../utils/url";
 
 const LIgneUsers = (props) => {
   const [modalEditUserShow, setModalEditUserShow] = React.useState(false);
@@ -20,7 +21,7 @@ const LIgneUsers = (props) => {
         <CheckCircleOutlineIcon color="success" />{" "}
         <RemoveCircleIcon sx={{ color: red[500] }} />
       </td>
-      <td>{item.imguser}</td>
+      <td><img src={`${urlImgUsers + item.imguser}`} alt={item.pseudo} width="50" height="50"></img></td>
       <td>{item.pseudo}</td>
       <td>{item.email}</td>
       <td>{item.prenom}</td>
@@ -43,7 +44,7 @@ const LIgneUsers = (props) => {
           onHide={() => setModalEditUserShow(false)}
           item={item}
         />
-        <ModalDelete
+        <ModalDeleteUser
           show={modalDelShow}
           onHide={() => setModalDelShow(false)}
           item={item}

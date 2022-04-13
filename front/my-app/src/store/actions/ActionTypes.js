@@ -31,9 +31,14 @@ export const EDIT_EVENT = "EDIT_EVENT";
 export const DELETE_EVENT = "DELETE_EVENT";
 
 //Messages
-// Events
 export const POST_MESSAGE = "POST_MESSAGE";
 export const GET_MESSAGE = "GET_MESSAGE";
 export const GETID_MESSAGE = "GETID_MESSAGE";
 export const EDIT_MESSAGE = "EDIT_MESSAGE";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
+
+//Coms
+export const POST_COM = "POST_COM";
+export const GET_COM = "GET_COM";
+export const GETID_COM = "GETID_COM";
+export const DELETE_COM = "DELETE_COM";

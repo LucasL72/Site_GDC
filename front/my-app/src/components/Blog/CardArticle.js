@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import ModalEditArt from "../Modals/ModalEditArt";
 import React from "react";
-import ModalDelete from "../Modals/ModalDelete";
+import ModalDeleteArt from "../Modals/ModalDelete/ModalDeleteArt";
 import { urlImgArt } from "../../utils/url";
 
 const CardArticle = (props) => {
@@ -28,7 +28,7 @@ const CardArticle = (props) => {
             type="submit"
             onClick={() => toArticleID(item.id)}
           >
-            Page ID
+            Voir plus...
           </Button>
         </Card.Body>
         <Card.Footer>
@@ -38,7 +38,7 @@ const CardArticle = (props) => {
             type="submit"
             onClick={() => setModalDelShow(true)}
           >
-            Delete
+            Supprimer
           </Button>{" "}
           <Button
             cla
@@ -46,14 +46,14 @@ const CardArticle = (props) => {
             type="submit"
             onClick={() => setModalEditShow(true)}
           >
-            Edit
+          Editer
           </Button>
           <ModalEditArt
             show={modalEditShow}
             onHide={() => setModalEditShow(false)}
             item={item}
           />
-          <ModalDelete
+          <ModalDeleteArt
             show={modalDelShow}
             onHide={() => setModalDelShow(false)}
             item={item}

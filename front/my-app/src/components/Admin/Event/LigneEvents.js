@@ -2,7 +2,7 @@ import React from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DangerousIcon from "@mui/icons-material/Dangerous";
 import ModalEditEvent from "../../Modals/ModalEditEvent";
-import ModalDelete from "../../Modals/ModalDelete";
+import ModalDeleteEvent from "../../Modals/ModalDelete/ModalDeleteEvent";
 
 const LigneEvents = (props) => {
   const [modalEditEventShow, setModalEditEventShow] = React.useState(false);
@@ -27,7 +27,7 @@ const LigneEvents = (props) => {
             onHide={() => setModalEditEventShow(false)}
             item={item}
           />
-          <ModalDelete
+          <ModalDeleteEvent
             show={modalDelShow}
             onHide={() => setModalDelShow(false)}
             item={item}

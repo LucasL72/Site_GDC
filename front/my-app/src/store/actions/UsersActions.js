@@ -37,7 +37,7 @@ export const getUserID = (id) => {
   return (dispatch) => {
     console.log("reducers get users");
     return axios
-      .get(`http://localhost:3030/ADmin/User/${id}`)
+      .get(`http://localhost:3030/Admin/User/${id}`)
       .then((res) => {
         console.log("getUserID", res.data);
         dispatch({ type: GET_USER, payload: res.data });

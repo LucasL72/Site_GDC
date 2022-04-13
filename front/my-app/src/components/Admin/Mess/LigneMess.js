@@ -2,7 +2,7 @@ import React from "react";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ModalAnswer from "../../Modals/ModalAnswer";
-import ModalDelete from "../../Modals/ModalDelete";
+import ModalDeleteMess from "../../Modals/ModalDelete/ModalDeleteMess";
 
 const LigneMess = (props) => {
   const [modalAnswerShow, setModalAnswerShow] = React.useState(false);
@@ -28,7 +28,7 @@ const LigneMess = (props) => {
         show={modalAnswerShow}
         onHide={() => setModalAnswerShow(false)}
       />
-      <ModalDelete
+      <ModalDeleteMess
         show={modalDelShow}
         onHide={() => setModalDelShow(false)}
         item={item}

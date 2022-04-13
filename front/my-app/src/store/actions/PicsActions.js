@@ -31,7 +31,7 @@ export const getPicID = (id) => {
       console.log('reducers get pic')
       return axios.get(`http://localhost:3030/Admin/Photos/${ id }`)
         .then((res) => {
-          console.log('getArticleID', res.data)
+          console.log('getPicID', res.data)
           dispatch({ type: GET_PIC, payload: res.data})
         })
         .catch(err => console.log(err));
@@ -56,7 +56,7 @@ export const createPic = (data) => {
 // Delete Article
 export const deletePic = (id) => {
   return (dispatch) => {
-    return axios.delete(`http://localhost:3030/Admin/Photos/${ id }`)
+    return axios.delete(`http://localhost:3030/Admin/Photos/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_PIC, payload: res.data})
       })

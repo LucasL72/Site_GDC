@@ -43,10 +43,11 @@ const ModalEditArt = (props) => {
       setStateImgUpload("");
     }
     const dataArticle = {
-      title,
-      description,
-      contenu,
-      auteur,
+      title:title,
+      description:description,
+      contenu:contenu,
+      auteur: auteur,
+      id:item.id,
     };
     const formdata = new FormData();
     Object.entries(dataArticle).forEach(([cle, valeur]) => {
@@ -91,7 +92,7 @@ const ModalEditArt = (props) => {
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt="Image"
+                  alt=""
                 />
               ) : (
                 <img

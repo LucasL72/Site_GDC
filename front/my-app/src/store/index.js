@@ -13,6 +13,7 @@ import { EventReducer } from "./reducers/EventReducers";
 import { UsersReducer } from "./reducers/UsersReducers";
 import { MessagesReducer } from "./reducers/MessagesReducer";
 import { PicsReducer } from "./reducers/PicsReducers";
+import { ComsReducer } from "./reducers/ComsReducers";
 
 /*
  * All (Root) Reducers
@@ -22,8 +23,8 @@ const rootReducer = combineReducers({
   events: EventReducer,
   users:UsersReducer,
   messages:MessagesReducer,
-  pics:PicsReducer
-
+  pics:PicsReducer,
+  coms:ComsReducer,
 });
 
 /*

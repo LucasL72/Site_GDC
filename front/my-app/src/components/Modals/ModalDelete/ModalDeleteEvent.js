@@ -1,27 +1,21 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import { deleteArticle } from "../../store/actions/ArticlesActions";
-import { deleteEvent } from "../../store/actions/EventActions";
-import { deleteUser } from "../../store/actions/UsersActions";
-import { deleteMessage } from "../../store/actions/MessagesActions";
+import { deleteEvent } from "../../../store/actions/EventActions";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 
-const ModalDelete = (props) => {
+const ModalDeleteEvent = (props) => {
   const { item } = props;
   const dispatch = useDispatch();
   const handleDelete = async (id) => {
-    dispatch(deleteArticle(id));
     dispatch(deleteEvent(id));
-    dispatch(deleteUser(id));
-    dispatch(deleteMessage(id));
   };
   return (
     <div>
       <Modal {...props} size="lg" aria-labelledby="ModalDel" centered>
         <Modal.Header closeButton>
           <Modal.Title id="ModalDel">
-            Supprimer le contenu ? {""}
+            Supprimer l'évènement ? {""}
             <img
               alt="Logo association"
               src="../logoGDC.png"
@@ -40,7 +34,7 @@ const ModalDelete = (props) => {
             type="submit"
             onClick={() => handleDelete(item.id)}
           >
-            Delete
+           Supprimer
           </Button>{" "}
         </Modal.Footer>
       </Modal>
@@ -48,4 +42,4 @@ const ModalDelete = (props) => {
   );
 };
 
-export default ModalDelete;
+export default ModalDeleteEvent;

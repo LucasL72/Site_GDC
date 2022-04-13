@@ -9,6 +9,10 @@ import { useDispatch } from "react-redux";
 import { createUser, getUser } from "../../store/actions/UsersActions";
 
 const Newuser = () => {
+  const [stateImgUpload, setStateImgUpload] = useState("");
+  const [imgPreview, setPreview] = useState("");
+  const [imgSelect, setSelect] = useState("");
+  const [imguser, setImg] = useState("");
   const [pseudo, setPseudo] = useState("");
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
@@ -17,44 +21,51 @@ const Newuser = () => {
   const [postal, setPostal] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    setStateImgUpload("Image non enregistrée");
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    if (file) {
+      reader.onloadend = () => {
+        setSelect(true);
+        setPreview(reader.result);
+        setImg(file);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
     e.preventDefault();
-
-    if (
-      pseudo &&
-      prenom &&
-      nom &&
-      adresse &&
-      city &&
-      postal &&
-      email &&
-      password
-    ) {
-      dispatch(
-        createUser({
-          pseudo,
-          prenom,
-          nom,
-          adresse,
-          city,
-          postal,
-          email,
-          password,
-        })
-      );
-      setPseudo("");
-      setPrenom("");
-      setNom("");
-      setAdresse("");
-      setCity("");
-      setPostal("");
-      setEmail("");
-      setPassword("");
-      dispatch(getUser());
+    if (!imguser) {
+      setStateImgUpload("image obligatoire");
+    } else {
+      setStateImgUpload("");
     }
+    const dataUser = {
+      pseudo,
+      prenom,
+      nom,
+      adresse,
+      city,
+      postal,
+      email,
+      password,
+    };
+    const formdata = new FormData();
+    Object.entries(dataUser).forEach(([cle, valeur]) => {
+      formdata.append(cle, valeur);
+    });
+    if (imgSelect) {
+      formdata.append("image", imguser);
+    }
+    setSelect(false);
+
+    dispatch(createUser(formdata));
+    dispatch(getUser());
   };
 
   return (
@@ -64,7 +75,32 @@ const Newuser = () => {
           <Form onSubmit={(e) => handleForm(e)}>
             <Col md={12}>
               <Form.Label>Choisir une image de profil</Form.Label>
-              <Form.Control className="mb-3" type="file" />
+              <Form.Control
+                className="mb-3"
+                type="file"
+                accept="image/*"
+                onChange={handleInputChange}
+              />
+              {imgSelect ? (
+                <img
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
+                  className="img-fluid"
+                  alt="user-profile"
+                />
+              ) : (
+                <img
+                  src={`${imgPreview}`}
+                  width="200"
+                  height="200"
+                  className="img-fluid"
+                  alt="user-profile-lock"
+                />
+              )}
+              {{ stateImgUpload } && (
+                <p className="text-danger">{stateImgUpload}</p>
+              )}
             </Col>
             <Col md={12}>
               <FloatingLabel
