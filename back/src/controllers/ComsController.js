@@ -1,7 +1,7 @@
 const Commentaire = require("../models/ComsModel");
 
 
-class ComsControllers {
+class ComsController {
   async getAll(req, res) {
     try {
       const newCommentaire= new Commentaire({});
@@ -24,12 +24,17 @@ class ComsControllers {
   }
 
   async create(req, res) {
-    const {content,pseudouser} = req.body;
+    const {content} = req.body;
     const id = req.params.id;
+    const articles_id ="1";
+    const pseudouser = "lucas";
+    const user_id = "1";
     let newCommentaire = new Commentaire({
       id: id,
       content: content,
+      articles_id: articles_id,
       pseudouser:pseudouser,
+      user_id:user_id,
     });
     try {
       newCommentaire
@@ -51,8 +56,9 @@ class ComsControllers {
   
 
   async getId(req, res) {
+    const id = req.params.id
     let comObj = new Commentaire({
-      id: Number(req.params.id),
+      id: Number(id),
     });
     try {
       comObj.getById().then((data) => {
@@ -88,4 +94,4 @@ class ComsControllers {
 
 }
 
-module.exports = ComsControllers;
+module.exports = ComsController;

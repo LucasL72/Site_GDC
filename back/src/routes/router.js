@@ -27,21 +27,22 @@ router
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
-router.route("/Register")
-.post(upload.single("image"), SharpUser,new UserController().create)
-.get(new UserController().getAll);
+router
+  .route("/Register")
+  .post(upload.single("image"), SharpUser, new UserController().create)
+  .get(new UserController().getAll);
 
 router.route("/Blog").get(new ArticleControllers().getAll);
 
 router.route("/Photos").get(new PicsController().getAll);
 
-router.route("/Blog/:id")
-.get(new ArticleControllers().getId)
-.post(new ComsController().create);
+router
+  .route("/Blog/:id")
+  .get(new ArticleControllers().getId)
+  .post(new ComsController().create);
 
 // ADMIN
-router.route("/Admin/User")
-.get(new UserController().getAll);
+router.route("/Admin/User").get(new UserController().getAll);
 
 router
   .route("/Admin/User/:id")
@@ -57,7 +58,7 @@ router
 router
   .route("/Admin/Blog")
   .get(new ArticleControllers().getAll)
-  .post(upload.single("image"), sharpArticles, new ArticleControllers().create)
+  .post(upload.single("image"), sharpArticles, new ArticleControllers().create);
 
 router
   .route("/Admin/Blog/:id")
@@ -65,10 +66,16 @@ router
   .put(upload.single("image"), sharpArticles, new ArticleControllers().editOne)
   .delete(new ArticleControllers().deleteOne);
 
-  router
+router.route("/Admin/Coms").get(new ComsController().getAll);
+
+router.route("/Admin/Coms/:id")
+.get(new ComsController().getId)
+.delete(new ComsController().deleteOne);
+
+router
   .route("/Admin/Photos")
   .get(new PicsController().getAll)
-  .post(upload.single("image"), sharpAlbum, new PicsController().create)
+  .post(upload.single("image"), sharpAlbum, new PicsController().create);
 
 router
   .route("/Admin/Photos/:id")

@@ -26,19 +26,18 @@ class ArticleControllers {
   }
 
   async create(req, res) {
-    const { title, description, contenu, auteur } = req.body;
-    const id = req.params.id;
-    const imgarticle = req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
-    let newArticle = new Article({
-      id: id,
-      imgarticle: imgarticle,
-      title: title,
-      description: description,
-      contenu: contenu,
-      auteur: auteur,
-    });
-    console.log(imgarticle, id);
     try {
+      const { title, description, contenu, auteur } = req.body;
+      const imgarticle =
+        req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
+      let newArticle = new Article({
+        imgarticle: imgarticle,
+        title: title,
+        description: description,
+        contenu: contenu,
+        auteur: auteur,
+      });
+
       newArticle
         .create()
         .then((data) => {
@@ -56,34 +55,35 @@ class ArticleControllers {
   }
 
   async editOne(req, res) {
-    const { title, description, contenu, auteur } = req.body;
-    const id = req.params.id;
-    const imgarticle = req.file;
-    let articleObj = new Article({
-      id: id,
-      imgarticle: imgarticle,
-      title: title,
-      description: description,
-      contenu: contenu,
-      auteur: auteur,
-    });
     try {
-      articleObj.getById().then((data) => {
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Create Article Success !",
-            dbArticles: data,
-          });
+      const { title, description, contenu, auteur } = req.body;
+      const id = req.params.id;
+      const imgarticle =req.file
+      let articleObj = new Article({
+        id: id,
+        imgarticle: imgarticle,
+        title: title,
+        description: description,
+        contenu: contenu,
+        auteur: auteur,
+      });
+      articleObj.editOne().then((data) => {
+        return res.send({
+          method: req.method,
+          status: "success",
+          flash: "Create Article Success !",
+          dbArticles: data,
         });
+      });
     } catch (error) {
       throw error;
     }
   }
 
   async getId(req, res) {
+    const id = req.params.id;
     let articleObj = new Article({
-      id: Number(req.params.id),
+      id: Number(id),
     });
     try {
       articleObj.getById().then((data) => {
@@ -101,8 +101,9 @@ class ArticleControllers {
 
   async deleteOne(req, res) {
     try {
+      const id = req.params.id;
       let articleObj = new Article({
-        id: Number(req.params.id),
+        id: Number(id),
       });
       articleObj.deleteOne().then((data) => {
         return res.send({
@@ -116,7 +117,6 @@ class ArticleControllers {
       throw error;
     }
   }
-
 }
 
 module.exports = ArticleControllers;

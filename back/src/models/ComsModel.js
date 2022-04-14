@@ -10,7 +10,7 @@ class Commentaire {
       (this.content = String(coms.content)),
       (this.pseudouser = String(coms.pseudouser)),
       (this.user_id = Number(coms.user_id)),
-      (this.articles_id = Number(coms.articles_id));
+      (this.articles_id = String(coms.articles_id));
   }
   getAll() {
     return new Promise((resolve, reject) => {
@@ -50,18 +50,16 @@ class Commentaire {
 
   create() {
     console.log("model create", this);
-    const { content } = this;
+    const { content,articles_id,pseudouser,user_id } = this;
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(
-          `INSERT INTO commentaires  (content, pseudouser, user_id,articles_id) VALUES ( :content,"lucas")
-          SELECT commentaires.user_id FROM users INNER JOIN commentaires ON commentaires.user_id = user.id
-          SELECT commentaires.articles_id FROM articles INNER JOIN commenatires ON commenataires.articles_id = articles.id ;
+          `INSERT INTO commentaires SET content = :content, pseudouser= :pseudouser, user_id= :user_id, articles_id= :articles_id;
       `,
-          { content},
+          { content,articles_id,pseudouser,articles_id,user_id},
           (error, data) => {
             if (error) reject(error);
-            conn.query(`SELECT * FROM commentaires`, (error, data) => {
+            conn.query(`SELECT * FROM  commentaires INNER JOIN articles ON commentaires.articles_id=articles.id`, (error, data) => {
               if (error) reject(error);
               resolve(data);
               conn.release();
