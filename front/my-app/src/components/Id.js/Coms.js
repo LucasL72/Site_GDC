@@ -1,31 +1,40 @@
-import React from 'react';
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-const Coms = () => {
-    return (
-        <div>
-            <Container>
-                <h3 className='text-center ssligne'>Commentaires</h3>
-                <Row>
-                    <Col md={12}>
-                        <div className='coms'>
-                            <cite>
-                                <img src="../logoGDC.png" width="60" height="60" alt="img profile"></img>{' '}
-                                truc
-                            </cite>
-                            <blockquote className='text-break'>
-                                Message
-                            </blockquote>
-                            <p class="text-muted">Posté le </p>
-                        </div>
+import React from "react";
+import Button from "react-bootstrap/Button";
+import ModalDeleteCom from "../Modals/ModalDelete/ModalDeleteCom";
+const Coms = (props) => {
+  const [modalDelShow, setModalDelShow] = React.useState(false);
+  const { item } = props;
 
-                    </Col>
-                </Row>
-            </Container>
-            
-        </div>
-    );
+  return (
+    <div key={item.id} className="coms mt-3">
+      <cite>
+        <img
+          src="../logoGDC.png"
+          width="60"
+          height="60"
+          alt="img profile"
+        ></img>{" "}
+        {item.pseudouser} / article n° {item.articles_id}
+      </cite>
+      <blockquote className="text-break">{item.content}</blockquote>
+      <p class="text-muted">Posté le {item.datecom}</p>
+      <div className="text-center">
+        <Button
+          cla
+          variant="outline-danger"
+          type="submit"
+          onClick={() => setModalDelShow(true)}
+        >
+          Supprimer
+        </Button>{" "}
+        <ModalDeleteCom
+          show={modalDelShow}
+          onHide={() => setModalDelShow(false)}
+          item={item}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Coms;

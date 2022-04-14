@@ -1,14 +1,20 @@
-import React from 'react';
-import Coms from '../../Id.js/Coms';
-
+import React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCom } from "../../../store/actions/ComsActions";
+import ListComs from "../../../components/Id.js/ListComs";
 const EditComs = () => {
-    return (
-        <div>
-            <h2 className='text-center ssligne'>Gestion des commentaires</h2>
-            <Coms />
-            
-        </div>
-    );
+  const listComs = useSelector((state) => state.coms.listComs);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCom());
+  }, []);
+  return (
+    <div>
+      <h2 className="text-center ssligne">Gestion des commentaires</h2>
+      <ListComs list={listComs} />
+    </div>
+  );
 };
 
 export default EditComs;

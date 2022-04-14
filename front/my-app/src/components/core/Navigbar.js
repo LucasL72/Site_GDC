@@ -19,9 +19,9 @@ const Navigbar = () => {
       }}
     >
       <img
-        src="../Docs/creative1.jpg"
-        width="50"
-        height="50"
+        src="../logoGDC.png"
+        width="60"
+        height="60"
         alt="profil pic"
         className="rounded-circle icon"
       ></img>
@@ -84,7 +84,7 @@ const Navigbar = () => {
               </Button>
 
               <a
-                className="btn btn-full"
+                className="btn btn-full text-center"
                 onClick={() => setModalConnShow(true)}
               >
                 S'Inscrire/Se Connecter

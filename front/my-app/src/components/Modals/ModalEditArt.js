@@ -6,13 +6,14 @@ import Modal from "react-bootstrap/Modal";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useDispatch } from "react-redux";
 import { editArticle } from "../../store/actions/ArticlesActions";
+import { urlImgArt } from "../../utils/url";
 
 const ModalEditArt = (props) => {
   const { item } = props;
   const [stateImgUpload, setStateImgUpload] = useState("");
   const [imgPreview, setPreview] = useState("");
   const [imgSelect, setSelect] = useState("");
-  const [imgarticle, setImg] = useState("");
+  const [imgarticle, setImg] = useState(item.imgarticle);
   const [title, setTitle] = useState(item.title);
   const [description, setDesc] = useState(item.description);
   const [contenu, setCont] = useState(item.contenu);
@@ -43,10 +44,10 @@ const ModalEditArt = (props) => {
       setStateImgUpload("");
     }
     const dataArticle = {
-      title:title,
-      description:description,
-      contenu:contenu,
-      auteur: auteur,
+      title,
+      description,
+      contenu,
+      auteur,
       id:item.id,
     };
     const formdata = new FormData();
@@ -96,7 +97,7 @@ const ModalEditArt = (props) => {
                 />
               ) : (
                 <img
-                  src={`${imgPreview}`}
+                  src={`${urlImgArt + item.imgarticle}`}
                   width="200"
                   height="200"
                   className="img-fluid"

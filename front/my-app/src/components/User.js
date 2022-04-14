@@ -16,7 +16,7 @@ const User = () => {
                   <h4 className="text-center ssligne"> Votre Photo de profil</h4>
                   <img
                     className="img-fluid rounded-circle circle"
-                    src="../Docs/creative1.jpg"
+                    src="../logoGDC.png"
                     alt="Profile pic"
                     width="600"
                     height="500"

@@ -57,7 +57,7 @@ export const createCom = (data,id) => {
 };
 
 // Delete Article
-export const deleteArticle = (id) => {
+export const deleteCom = (id) => {
   return (dispatch) => {
     return axios
       .delete(`http://localhost:3030/Admin/Coms/${id}`)

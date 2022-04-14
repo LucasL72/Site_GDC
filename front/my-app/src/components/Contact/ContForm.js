@@ -105,20 +105,13 @@ const ContForm = () => {
           <Col md={6}>
             <div className="map">
               <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2226.6978810008372!2d0.3982507650633663!3d48.04860190640244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdde201c5d83d37!2zNDjCsDAyJzU0LjEiTiAwwrAyMyc1NS40IkU!5e0!3m2!1sfr!2sfr!4v1649930828755!5m2!1sfr!2sfr"
                 width="600"
-                height="500"
-                frameBorder="0"
-                scrolling="no"
-                marginHeight="0"
-                marginWidth="0"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=0.39383625997288624%2C48.045830926303054%2C0.403878450524644%2C48.05057897698671&amp;layer=mapnik&amp;marker=48.04820500636105%2C0.3988573552487651"
+                height="450"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-              <br />
-              <small>
-                <a href="https://www.openstreetmap.org/?mlat=48.04821&amp;mlon=0.39886#map=17/48.04821/0.39886">
-                  Afficher une carte plus grande
-                </a>
-              </small>
             </div>
           </Col>
         </Row>
