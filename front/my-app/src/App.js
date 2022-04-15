@@ -9,8 +9,6 @@ import Register from "./pages/Register";
 import Cgu from "./pages/Cgu";
 import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import AdminLayout from "./layouts/AdminLayout";
 //Admin
 import Admin from "./pages/admin/Admin";
 import AdminBlog from "./pages/admin/AdminBlog";

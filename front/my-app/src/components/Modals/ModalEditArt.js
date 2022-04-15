@@ -63,7 +63,7 @@ const ModalEditArt = (props) => {
   };
   return (
     <div>
-      <Modal {...props} size="md" aria-labelledby="ModalEdit" centered>
+      <Modal {...props} size="md" aria-labelledby="ModalEdit" key={item.id} centered>
         <Modal.Header closeButton>
           <Modal.Title id="ModalEdit">
             Editer {""}

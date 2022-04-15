@@ -17,7 +17,7 @@ const CardArticle = (props) => {
   };
   return (
     <Col md={4} className="g-3">
-      <Card className="scale">
+      <Card className="scale" key={item.id}>
         <Card.Img variant="top" src={`${urlImgArt + item.imgarticle}`} alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
