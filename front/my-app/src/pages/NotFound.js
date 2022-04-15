@@ -12,7 +12,7 @@ const NotFound = () => {
               <h1>Error 404</h1>
               <img
                 className=" img-fluid"
-                src="../logoGDC.png"
+                src="../../logoGDC.png"
                 alt="logo assoc"
                 width="500"
                 height="600"

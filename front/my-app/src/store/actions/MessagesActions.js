@@ -17,7 +17,7 @@ export const getMessage = (data) => {
   return (dispatch) => {
     console.log("reducers get message");
     return axios
-      .get("http://localhost:3030/Admin/Messages")
+      .get("http://localhost:3030/api/Admin/Messages")
       .then((res) => {
         console.log("getMessage", res.data);
         dispatch({ type: GET_MESSAGE, payload: res.data });
@@ -31,7 +31,7 @@ export const getMessageID = (id) => {
   return (dispatch) => {
     console.log("reducers get messages");
     return axios
-      .get(`http://localhost:3030/Admin/Messages/${id}`)
+      .get(`http://localhost:3030/api/Admin/Messages/${id}`)
       .then((res) => {
         console.log("getMessageID", res.data);
         dispatch({ type: GET_MESSAGE, payload: res.data });
@@ -45,7 +45,7 @@ export const createMessage = (data) => {
   return (dispatch) => {
     console.log("reducers get messages");
     return axios
-      .post("http://localhost:3030/Contact", data)
+      .post("http://localhost:3030/api/Contact", data)
       .then((res) => {
         dispatch({ type: POST_MESSAGE, payload: res.data });
       })
@@ -58,7 +58,7 @@ export const deleteMessage = (id) => {
   return (dispatch) => {
     console.log("reducers get messages");
     return axios
-      .delete(`http://localhost:3030/Admin/Messages/${id}`)
+      .delete(`http://localhost:3030/api/Admin/Messages/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_MESSAGE, payload: res.data });
       })

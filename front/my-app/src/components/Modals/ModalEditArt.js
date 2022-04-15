@@ -48,7 +48,6 @@ const ModalEditArt = (props) => {
       description,
       contenu,
       auteur,
-      id:item.id,
     };
     const formdata = new FormData();
     Object.entries(dataArticle).forEach(([cle, valeur]) => {

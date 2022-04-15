@@ -13,11 +13,11 @@ const CardArticle = (props) => {
   const { item } = props;
   const navigate = useNavigate();
   const toArticleID = async (id) => {
-    navigate("/Blog/" + id, { state: { id, item } });
+    navigate("/Blog/" + item.id, { state: { id, item } });
   };
   return (
     <Col md={4} className="g-3">
-      <Card key={item.id} className="scale">
+      <Card className="scale">
         <Card.Img variant="top" src={`${urlImgArt + item.imgarticle}`} alt={item.title} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>

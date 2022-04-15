@@ -22,7 +22,7 @@ export const getArticles = (data) => {
   return (dispatch) => {
     console.log("reducers get article");
     return axios
-      .get("http://localhost:3030/Blog")
+      .get("http://localhost:3030/api/Blog")
       .then((res) => {
         console.log("getArticles", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
@@ -36,7 +36,7 @@ export const getArticleID = (id) => {
   return (dispatch) => {
     console.log("reducers get article");
     return axios
-      .get(`http://localhost:3030/Blog/${id}`)
+      .get(`http://localhost:3030/api/Blog/${id}`)
       .then((res) => {
         console.log("getArticleID", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
@@ -49,7 +49,7 @@ export const getArticleID = (id) => {
 export const createArticle = (data) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:3030/Admin/Blog", data, {
+      .post("http://localhost:3030/api/Admin/Blog", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -65,7 +65,7 @@ export const createArticle = (data) => {
 export const deleteArticle = (id) => {
   return (dispatch) => {
     return axios
-      .delete(`http://localhost:3030/Admin/Blog/${id}`)
+      .delete(`http://localhost:3030/api/Admin/Blog/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_ARTICLE, payload: res.data });
       })
@@ -77,7 +77,7 @@ export const deleteArticle = (id) => {
 export const editArticle = (data) => {
   return (dispatch) => {
     return axios
-      .put(`http://localhost:3030/Admin/Blog/${data.id}`, data, {
+      .put(`http://localhost:3030/api/Admin/Blog/${data.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

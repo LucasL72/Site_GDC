@@ -6,7 +6,7 @@ const Coms = (props) => {
   const { item } = props;
 
   return (
-    <div key={item.id} className="coms mt-3">
+    <div className="coms mt-3">
       <cite>
         <img
           src="../logoGDC.png"
