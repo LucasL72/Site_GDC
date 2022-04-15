@@ -3,65 +3,67 @@ const Article = require("../models/ArticleModel");
 class ArticleControllers {
   async getAll(req, res) {
     try {
-      const newArticle = new Article({});
-      newArticle
-        .getAll()
-        .then((data) => {
+      Article.getAll((err, data) => {
+        console.log("data res", data);
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
           return res.send({
             method: req.method,
             status: "success",
             flash: "Create Article Success !",
             dbArticles: data,
           });
-        })
-        .catch((err) => {
-          throw err;
-        });
+        }
+      });
     } catch (error) {
       throw error;
     }
   }
 
   async create(req, res) {
+    const { title, description, contenu, auteur } = req.body;
+    const user_id = "1";
+    const imgarticle =
+      req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
+    let newArticle = new Article({
+      imgarticle: String(imgarticle),
+      title: String(title),
+      description: String(description),
+      contenu: String(contenu),
+      auteur: String(auteur),
+      user_id: Number(user_id),
+    });
     try {
-      const { title, description, contenu, auteur } = req.body;
-      const imgarticle =
-        req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
-      let newArticle = new Article({
-        imgarticle: imgarticle,
-        title: title,
-        description: description,
-        contenu: contenu,
-        auteur: auteur,
+      Article.create(newArticle, (err, data) => {
+        if (err) res.send(err);
+        return res.send({
+          method: req.method,
+          status: "success",
+          flash: "Create Article Success !",
+          dbArticles: data,
+        });
       });
-
-      newArticle
-        .create()
-        .then((data) => {
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Create Article Success !",
-            dbArticles: data,
-          });
-        })
-        .catch((err) => console.log("error", err));
     } catch (error) {
       throw error;
     }
   }
 
   async editOne(req, res) {
+    const { title, description, contenu, auteur } = req.body;
+    let articleObj = new Article({
+      id: Number(req.params.id),
+      title: String(title),
+      description: String(description),
+      contenu: String(contenu),
+      auteur: String(auteur),
+    });
     try {
-      const { title, description, contenu, auteur } = req.body;
-      let articleObj = new Article({
-        id:req.params.id,
-        title: title,
-        description: description,
-        contenu: contenu,
-        auteur: auteur,
-      });
-      articleObj.editOne().then((data) => {
+      Article.editOne(articleObj, (err, data) => {
+        if (err) res.send(err);
         return res.send({
           method: req.method,
           status: "success",
@@ -76,35 +78,39 @@ class ArticleControllers {
 
   async getId(req, res) {
     try {
-    let articleObj = new Article({
-      id:req.params.id,
-    });
-      articleObj.getById().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create Article Success !",
-          dbArticles: data,
-        });
+      Article.getById(Number(req.params.id), (err, data) => {
+        console.log("dataid res", data);
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "Create Article Success !",
+            dbArticles: data,
+          });
+        }
       });
     } catch (error) {
       throw error;
     }
-    console.log(req.params['id'])
   }
 
   async deleteOne(req, res) {
     try {
-      let articleObj = new Article({
-        id:req.params.id,
-      });
-      articleObj.deleteOne().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create Article Success !",
-          dbArticles: data,
-        });
+      Article.deleteOne(req.params.id, (err, data) => {
+        if (err) res.send(err);
+        else {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "Create Article Success !",
+            dbArticles: data,
+          });
+        }
       });
     } catch (error) {
       throw error;

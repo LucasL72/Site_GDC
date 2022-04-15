@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer'),
         service: 'gmail',
         port: '587',
         auth: {
-            user: "testgrainesdecitoyen@gmail.com",
+            user: process.env.MAIL,
             pass: process.env.MDP_MAIL
         }
     });
@@ -20,7 +20,7 @@ const nodemailer = require('nodemailer'),
 module.exports = {
     lostpassword: async (req, res) => {
         console.log("Je suis le controller MDP oublié", req.body)
-        const user = await db.query(`SELECT * FROM user WHERE email="${req.body.email}";`)
+        const user = await conn.query(`SELECT * FROM user WHERE email="${req.body.email}";`)
         if (user) {
             // génération d'un chiffre random
             rand = Math.floor((Math.random() * 100) + 54)
@@ -54,13 +54,13 @@ module.exports = {
             console.log('Données ', rand, link, mailOptions, host)
             // Response
             res.render('home', {
-                dbarticles: await db.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3`),
+                dbArticles: await conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3`),
                 success: "Un email à bien été envoyer à " + req.body.email
             })
 
         } else
             res.render('home', {
-                dbarticles: await db.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3`)
+                dbarticles: await conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3`)
             })
     },
 
@@ -103,7 +103,7 @@ module.exports = {
 
         const hash = bcrypt.hashSync(password, 10);
 
-        await db.query(`UPDATE user SET password = "${hash}" WHERE email= "${req.body.email}"`);
+        await db.conn(`UPDATE user SET password = "${hash}" WHERE email= "${req.body.email}"`);
 
         res.redirect("/")
     },
@@ -112,10 +112,10 @@ module.exports = {
     SendMessage: async (req, res) => {
         console.log("Je suis le controller Send Message dans messages", req.body);
         
-        message = await db.query(`SELECT * FROM messages WHERE id = ${req.params.id}`)
+        message = await conn.query(`SELECT * FROM messages WHERE id = ${req.params.id}`)
 
         const mailOptions = {
-            from: `testgrainesdecitoyen@gmail.com`,
+            from: process.env.MAIL,
             to: message[0].email,
             subject: 'Bonjour ' + message[0].author + ' !',
             html: `

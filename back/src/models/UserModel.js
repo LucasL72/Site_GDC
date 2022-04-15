@@ -7,18 +7,18 @@ const bcrypt = require("bcrypt");
 const help = require("../utils/help");
 
 class User {
-  constructor(users) {
-    (this.id = Number(users.id)),
-      (this.imguser = String(users.imguser)),
-      (this.pseudo = String(users.pseudo)),
-      (this.prenom = String(users.prenom)),
-      (this.nom = String(users.nom)),
-      (this.adresse = String(users.adresse)),
-      (this.city = String(users.city)),
-      (this.postal = String(users.postal)),
-      (this.email = String(users.email)),
-      (this.isBan = Boolean(users.isBan)),
-      (this.password = String(users.password));
+  constructor(user) {
+    (this.id = Number(user.id)),
+      (this.imguser = String(user.imguser)),
+      (this.pseudo = String(user.pseudo)),
+      (this.prenom = String(user.prenom)),
+      (this.nom = String(user.nom)),
+      (this.adresse = String(user.adresse)),
+      (this.city = String(user.city)),
+      (this.postal = String(user.postal)),
+      (this.email = String(user.email)),
+      (this.isBan = Boolean(user.isBan)),
+      (this.password = String(user.password));
   }
 
   getAll() {
@@ -191,6 +191,8 @@ class User {
       });
     });
   }
+
+  
 }
 
 module.exports = User;

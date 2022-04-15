@@ -30,9 +30,9 @@ class ComsController {
     const user_id = "1";
     let newCommentaire = new Commentaire({
       content: content,
-      articles_id: article_id,
+      articles_id: Number(article_id),
       pseudouser:pseudouser,
-      user_id:user_id,
+      user_id:Number(user_id),
     });
     try {
       newCommentaire
@@ -56,7 +56,7 @@ class ComsController {
   async getId(req, res) {
     const id = req.params.id
     let comObj = new Commentaire({
-      id: id,
+      id: Number(id),
     });
     try {
       comObj.getById().then((data) => {
@@ -75,7 +75,7 @@ class ComsController {
   async deleteOne(req, res) {
     try {
       let comObj = new Commentaire({
-        id: req.params.id,
+        id: Number(req.params.id),
       });
       comObj.deleteOne().then((data) => {
         return res.send({

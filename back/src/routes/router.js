@@ -42,7 +42,7 @@ router
   .post(new ComsController().create);
 
 // ADMIN
-router.route("/Admin/User").get(new UserController().getAll);
+router.route("/api/Admin/User").get(new UserController().getAll);
 
 router
   .route("/api/Admin/User/:id")
