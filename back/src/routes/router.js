@@ -18,26 +18,26 @@ const ComsController = require("../controllers/ComsController");
 // Routes
 // APP
 router
-  .route("/")
+  .route("/api/")
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
 router
-  .route("/Contact")
+  .route("/api/Contact")
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
 router
-  .route("/Register")
+  .route("/api/Register")
   .post(upload.single("image"), SharpUser, new UserController().create)
   .get(new UserController().getAll);
 
-router.route("/Blog").get(new ArticleControllers().getAll);
+router.route("/api/Blog").get(new ArticleControllers().getAll);
 
-router.route("/Photos").get(new PicsController().getAll);
+router.route("/api/Photos").get(new PicsController().getAll);
 
 router
-  .route("/Blog/:id")
+  .route("/api/Blog/:id")
   .get(new ArticleControllers().getId)
   .post(new ComsController().create);
 
@@ -45,61 +45,61 @@ router
 router.route("/Admin/User").get(new UserController().getAll);
 
 router
-  .route("/Admin/User/:id")
+  .route("/api/Admin/User/:id")
   .get(new UserController().getId)
   .put(new UserController().editOne)
   .delete(new UserController().deleteOne);
 
 router
-  .route("/Admin/User/Ban/:id")
+  .route("/api/Admin/User/Ban/:id")
   .get(new UserController().getId)
   .put(new UserController().BanUser);
 
 router
-  .route("/Admin/Blog")
+  .route("/api/Admin/Blog")
   .get(new ArticleControllers().getAll)
   .post(upload.single("image"), sharpArticles, new ArticleControllers().create);
 
 router
-  .route("/Admin/Blog/:id")
+  .route("/api/Admin/Blog/:id")
   .get(new ArticleControllers().getId)
   .put(upload.single("image"), sharpArticles, new ArticleControllers().editOne)
   .delete(new ArticleControllers().deleteOne);
 
-router.route("/Admin/Coms").get(new ComsController().getAll);
+router.route("/api/Admin/Coms").get(new ComsController().getAll);
 
-router.route("/Admin/Coms/:id")
+router.route("/api/Admin/Coms/:id")
 .get(new ComsController().getId)
 .delete(new ComsController().deleteOne);
 
 router
-  .route("/Admin/Photos")
+  .route("/api/Admin/Photos")
   .get(new PicsController().getAll)
   .post(upload.single("image"), sharpAlbum, new PicsController().create);
 
 router
-  .route("/Admin/Photos/:id")
+  .route("/api/Admin/Photos/:id")
   .get(new PicsController().getId)
   .delete(new PicsController().deleteOne);
 
 router
-  .route("/Admin/Events")
+  .route("/api/Admin/Events")
   .get(new EventController().getAll)
   .post(new EventController().create);
 
 router
-  .route("/Admin/Events/:id")
+  .route("/api/Admin/Events/:id")
   .get(new EventController().getId)
   .put(new EventController().editOne)
   .delete(new EventController().deleteOne);
 
 router
-  .route("/Admin/Messages")
+  .route("/api/Admin/Messages")
   .get(new MessagesController().getAll)
   .post(new MessagesController().create);
 
 router
-  .route("/Admin/Messages/:id")
+  .route("/api/Admin/Messages/:id")
   .get(new MessagesController().getId)
   .delete(new MessagesController().deleteOne);
 

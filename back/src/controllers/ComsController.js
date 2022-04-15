@@ -25,14 +25,12 @@ class ComsController {
 
   async create(req, res) {
     const {content} = req.body;
-    const id = req.params.id;
-    const articles_id ="1";
+    const article_id = req.params.id;
     const pseudouser = "lucas";
     const user_id = "1";
     let newCommentaire = new Commentaire({
-      id: id,
       content: content,
-      articles_id: articles_id,
+      articles_id: article_id,
       pseudouser:pseudouser,
       user_id:user_id,
     });
@@ -58,7 +56,7 @@ class ComsController {
   async getId(req, res) {
     const id = req.params.id
     let comObj = new Commentaire({
-      id: Number(id),
+      id: id,
     });
     try {
       comObj.getById().then((data) => {
@@ -77,7 +75,7 @@ class ComsController {
   async deleteOne(req, res) {
     try {
       let comObj = new Commentaire({
-        id: Number(req.params.id),
+        id: req.params.id,
       });
       comObj.deleteOne().then((data) => {
         return res.send({

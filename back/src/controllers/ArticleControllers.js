@@ -1,7 +1,4 @@
 const Article = require("../models/ArticleModel");
-const help = require("../utils/help");
-const fs = require("fs");
-const path = require("path");
 
 class ArticleControllers {
   async getAll(req, res) {
@@ -57,11 +54,8 @@ class ArticleControllers {
   async editOne(req, res) {
     try {
       const { title, description, contenu, auteur } = req.body;
-      const id = req.params.id;
-      const imgarticle =req.file
       let articleObj = new Article({
-        id: id,
-        imgarticle: imgarticle,
+        id:req.params.id,
         title: title,
         description: description,
         contenu: contenu,
@@ -81,11 +75,10 @@ class ArticleControllers {
   }
 
   async getId(req, res) {
-    const id = req.params.id;
-    let articleObj = new Article({
-      id: Number(id),
-    });
     try {
+    let articleObj = new Article({
+      id:req.params.id,
+    });
       articleObj.getById().then((data) => {
         return res.send({
           method: req.method,
@@ -97,13 +90,13 @@ class ArticleControllers {
     } catch (error) {
       throw error;
     }
+    console.log(req.params['id'])
   }
 
   async deleteOne(req, res) {
     try {
-      const id = req.params.id;
       let articleObj = new Article({
-        id: Number(id),
+        id:req.params.id,
       });
       articleObj.deleteOne().then((data) => {
         return res.send({

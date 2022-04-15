@@ -3,8 +3,6 @@
  * Model de 'Article'
  ******************************/
 const connection = require("../config/ConnectionDB");
-const fs = require("fs");
-const path = require("path");
 const help = require("../utils/help");
 
 class Article {
@@ -24,6 +22,7 @@ class Article {
         if (error) throw error;
         conn.query(`SELECT * FROM articles;`, (error, data) => {
           if (error) reject(error);
+          console.log("model data", data);
           resolve(data);
           // Mettre fin à la connexion avec la db
           conn.release();
@@ -63,102 +62,41 @@ class Article {
           { imgarticle, title, description, contenu, auteur },
           (error, data) => {
             if (error) reject(error);
-            conn.query(
-              `SELECT imgarticle, title,description,contenu,auteur FROM articles`,
-              (error, data) => {
-                if (error) reject(error);
-                resolve(data);
-                conn.release();
-              }
-            );
+            conn.query(`SELECT * FROM articles`, (error, data) => {
+              if (error) reject(error);
+              resolve(data);
+              conn.release();
+            });
           }
         );
       });
     });
   }
 
-  editOne(reqfile) {
-    const { title, description, id, contenu, auteur } = this;
+  editOne() {
+    const { title, description, content, auteur, id } = this;
+    console.log("edit", typeof id);
     return new Promise((resolve, reject) => {
-      if (reqfile) {
-        pathImgWebp =
-          reqfile.filename.split(".").slice(0, -1).join(".") + ".webp";
-
-        pathAvatarWebp = "article_" + id + "_" + dateImg + ".webp";
-
-        help.renameFile(pathImgWebp, pathAvatarWebp).then((data) => {
-          if (data) {
-            const avatarImg = "article_" + id + "_" + dateImg + ".webp";
-
-            connection.getConnection(function (error, conn) {
-              conn.query(
-                `SELECT imgarticle
-              FROM articles WHERE id = :id`,
-                { id },
-                (error, data) => {
-                  if (error) throw error;
-                  const name = data[0].imgarticle;
-                  console.log(data[0].imgarticle);
-                  const dir = "./Public/Images/Articles/";
-                  const image = dir + name;
-                  if (data[0].imgarticle) help.removeFile(image);
-                  conn.query(
-                    `UPDATE articles 
-                      SET imgarticle= :avatarimg
-                      title = :title,
-                          description = :description,
-                          contenu= :contenu,
-                          auteur= :auteur,
-                          user_id="1"
-                      WHERE id = :id;
+      connection.getConnection(function (error, conn) {
+        conn.query(
+          `UPDATE articles
+                      SET title = :title,
+                      description = :description,
+                          content = :content,
+                          auteur= :auteur
+                      WHERE id =:id
           `,
-                    { avatarImg, title, description, contenu, auteur, id },
-                    (error, data) => {
-                      if (error) reject(error);
-                      conn.query(
-                        `SELECT * FROM articles WHERE id= :id`,
-                        { id },
-                        (error, data) => {
-                          if (error) throw error;
-                          result(null, data[0]);
-                        }
-                      );
-                    }
-                  );
-                }
-              );
-
+          { title, content, description, auteur, id },
+          (error, data) => {
+            if (error) reject(error);
+            conn.query(`SELECT * FROM articles`, (error, data) => {
+              if (error) reject(error);
+              resolve(data);
               conn.release();
             });
           }
-        });
-      } else {
-        connection.getConnection(function (error, conn) {
-          conn.query(
-            `UPDATE articles 
-            SET title = :title,
-              description = :description,
-              contenu= :contenu,
-              auteur= :auteur,
-              user_id="1"
-          WHERE id = :id;
-          `,
-            { title, description, contenu, auteur, id },
-            (error, data) => {
-              if (error) throw error;
-              conn.query(
-                `SELECT * FROM articles WHERE id= :id`,
-                { id },
-                (error, data) => {
-                  if (error) throw error;
-                  result(null, data[0]);
-                }
-              );
-              conn.release();
-            }
-          );
-        });
-      }
+        );
+      });
     });
   }
 
@@ -176,7 +114,7 @@ class Article {
             const dir = "./Public/Images/Articles/";
             const image = dir + name;
             if (data[0].imgarticle) help.removeFile(image);
-            conn.query(`DELETE FROM articles WHERE id = ${id}`, (d) => {
+            conn.query(`DELETE FROM articles WHERE id = ${id}`, (data) => {
               if (error) reject(error);
               conn.query(`SELECT * FROM articles`, (error, data) => {
                 if (error) reject(error);
