@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -7,8 +7,31 @@ import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import ModalLostPass from "./ModalLostPass";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { login, check } from "../../store/actions/UsersActions";
 
 const ModalCon = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // ici la fonction est asynchrone
+  const handleForm = async (e) => {
+    e.preventDefault();
+
+    console.log("submit form login");
+
+    if (email && password) {
+      await dispatch(login({ email, password }));
+      setEmail("");
+      setPassword("");
+      dispatch(check());
+      navigate("/Profil");
+    }
+  };
+
   const [modalLostShow, setModalLostShow] = React.useState(false);
   return (
     <div>
@@ -27,13 +50,15 @@ const ModalCon = (props) => {
         <Modal.Body>
           <Container>
             <Row>
-              <Form>
+              <Form onSubmit={(e) => handleForm(e)}>
                 <Col md={12}>
                   {" "}
                   <FloatingLabel controlId="floatingInput" label="Votre Email">
                     <Form.Control
                       type="email"
                       placeholder="Votre Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </FloatingLabel>
@@ -50,6 +75,8 @@ const ModalCon = (props) => {
                     <Form.Control
                       type="password"
                       placeholder="Votre Mot de Passe"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </FloatingLabel>
@@ -57,15 +84,22 @@ const ModalCon = (props) => {
 
                 <Col md={12}>
                   {" "}
-                  <Button variant="success" type="submit" onClick={props.onHide}>
+                  <Button
+                    variant="success"
+                    type="submit"
+                    onClick={props.onHide}
+                  >
                     Se Connecter
                   </Button>{" "}
-                  <Button variant="outline-success" href="/register">
+                  <Button variant="outline-success" href="/Register">
                     S'Inscrire
                   </Button>
                 </Col>
                 <Col md={12}>
-                  <Button className="mt-3" onClick={() => setModalLostShow(true)}>
+                  <Button
+                    className="mt-3"
+                    onClick={() => setModalLostShow(true)}
+                  >
                     Mot de passe oublié
                   </Button>
                   <ModalLostPass

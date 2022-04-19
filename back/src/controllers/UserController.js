@@ -6,20 +6,21 @@ require("dotenv").config();
 class UserController {
   async getAll(req, res) {
     try {
-      const newUser = new User({});
-      newUser
-        .getAll()
-        .then((data) => {
+      User.getAll((err, data) => {
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
           return res.send({
             method: req.method,
             status: "success",
-            flash: "Create Event Success !",
+            flash: "Create User Success !",
             dbUsers: data,
           });
-        })
-        .catch((err) => {
-          throw err;
-        });
+        }
+      });
     } catch (error) {
       throw error;
     }
@@ -31,28 +32,27 @@ class UserController {
     const imguser =
       req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newUser = new User({
-      imguser: imguser,
-      pseudo: pseudo,
-      prenom: prenom,
-      nom: nom,
-      adresse: adresse,
-      city: city,
-      postal: postal,
-      email: email,
-      password: password,
+      imguser: String(imguser),
+      pseudo: String(pseudo),
+      prenom: String(prenom),
+      nom: String(nom),
+      adresse: String(adresse),
+      city: String(city),
+      postal: String(postal),
+      email: String(email),
+      password: String(password),
     });
     try {
-      newUser
-        .create()
-        .then((data) => {
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Create Event Success !",
-            dbUsers: data,
-          });
-        })
-        .catch((err) => console.log("error", err));
+      User.create(newUser, (err, data) => {
+        if (err) res.send(err);
+        return res.send({
+          method: req.method,
+          status: "success",
+          flash: "Create Event Success !",
+          dbUsers: data,
+          token: data,
+        });
+      });
     } catch (error) {
       throw error;
     }
@@ -62,18 +62,18 @@ class UserController {
     const { pseudo, prenom, nom, adresse, city, postal, email, password } =
       req.body;
     let userObj = new User({
-      id: req.params.id,
-      pseudo: pseudo,
-      prenom: prenom,
-      nom: nom,
-      adresse: adresse,
-      city: city,
-      postal: postal,
-      email: email,
-      password: password,
+      id: Number(req.params.id),
+      pseudo: String(pseudo),
+      prenom: String(prenom),
+      nom: String(nom),
+      adresse: String(adresse),
+      city: String(city),
+      postal: String(postal),
+      email: String(email),
+      password: String(password),
     });
     try {
-      userObj.editOne().then((data) => {
+      User.editOne(userObj, (err, data) => {
         return res.send({
           method: req.method,
           status: "success",
@@ -87,25 +87,21 @@ class UserController {
   }
 
   async getId(req, res) {
-    let userObj = new User({
-      id: req.params.id,
-      pseudo: pseudo,
-      prenom: prenom,
-      nom: nom,
-      adresse: adresse,
-      city: city,
-      postal: postal,
-      email: email,
-      password: password,
-    });
     try {
-      userObj.getById().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create user Success !",
-          dbUsers: data,
-        });
+      User.getById(String(req.params.id), (err, data) => {
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "Create user Success !",
+            dbUsers: data,
+          });
+        }
       });
     } catch (error) {
       throw error;
@@ -114,16 +110,16 @@ class UserController {
 
   async deleteOne(req, res) {
     try {
-      let userObj = new User({
-        id: req.params.id,
-      });
-      userObj.deleteOne().then((data) => {
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "delete user Success !",
-          dbUsers: data,
-        });
+      User.deleteOne(req.params.id, (err, data) => {
+        if (err) res.send(err);
+        else {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "delete user Success !",
+            dbUsers: data,
+          });
+        }
       });
     } catch (error) {
       throw error;
@@ -152,12 +148,10 @@ class UserController {
     }
   }
 
-
   async login(req, res) {
-    console.log("controller login", req.body);
     try {
-      User.login({ ...req.body }, (err, data) => { // 1234
-        console.log("data res", data);
+      User.login({ ...req.body }, (err, data) => {
+        // 1234
         if (err) {
           console.log("err", err),
             res.status(500).send({
@@ -165,26 +159,30 @@ class UserController {
             });
         } else {
           let token = "visitor";
-          if (data.name && data.email) {
+          if (data.isVerified === 1) {
             token = jwt.sign(
               {
                 id: data.id,
-                name: data.name,
                 email: data.email,
-                authenticate: data.isVerified ? true : false,
-                isAdmin: data.isAdmin === 1 ? true : false,
+                isVerified: data.isVerified,
+                isBan: data.isBan,
+                isAdmin: data.isAdmin,
               },
               process.env.SIGN_JWT,
               { expiresIn: "1h" }
             );
-          }
 
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Login Success !",
-            token: token,
-          });
+            return res.status(200).send({
+              success: "success",
+              flash: "Login Success!",
+              token,
+            });
+          } else
+            return res.status(202).send({
+              success: "no",
+              flash: data,
+              token: "no",
+            });
         }
       });
     } catch (error) {
@@ -192,7 +190,6 @@ class UserController {
     }
   }
   async checkToken(req, res) {
-    console.log("check token", req.params.token);
     const user = jwt.verify(
       req.params.token,
       process.env.SIGN_JWT,
@@ -208,10 +205,12 @@ class UserController {
         status: "success",
         flash: "Login Auth Success !",
         user: {
+          id: user.id,
           name: user.name,
           email: user.email,
-          authenticate: user.authenticate,
+          isVerified: user.isVerified,
           isAdmin: user.isAdmin,
+          isBan: user.isBan,
         },
       });
     } catch (error) {

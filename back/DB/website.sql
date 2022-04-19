@@ -27,8 +27,10 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`user` (
   `email` VARCHAR(50)  NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `isAdmin` TINYINT(1) NOT NULL DEFAULT 0,
+  `isVerified` TINYINT NULL DEFAULT 0,
   `isBan` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `pseudo_UNIQUE` (`pseudo` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -44,12 +46,13 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`pics` (
   `datephoto` timestamp NOT NULL default current_timestamp on update current_timestamp,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_pics_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_pics_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `gdc_db`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -67,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`articles` (
   `dateedit` timestamp not null default current_timestamp on update current_timestamp,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_articles_user1_idx` (`user_id` ASC) VISIBLE)
 ENGINE = InnoDB;
 
@@ -81,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`commentaires` (
   `user_id` INT NOT NULL,
   `articles_id` INT NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_commentaires_user1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_commentaires_articles1_idx` (`articles_id` ASC) VISIBLE,
   CONSTRAINT `fk_commentaires_user1`
@@ -104,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`messages` (
   `content` LONGTEXT NOT NULL,
   `author` VARCHAR(255) NOT NULL,
   `datemess` timestamp not null default current_timestamp on update current_timestamp,
+   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -116,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `gdc_db`.`evenements` (
   `content` VARCHAR(255) NOT NULL,
   `date` VARCHAR(10) NOT NULL,
   `heure` VARCHAR(10) NOT NULL,
+   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

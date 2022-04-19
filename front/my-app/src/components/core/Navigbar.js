@@ -7,9 +7,16 @@ import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import ModalCon from "../Modals/ModalCon";
+import { useNavigate } from "react-router-dom";
 
 const Navigbar = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("user_token");
+    navigate("/");
+  };
   const [modalConnShow, setModalConnShow] = React.useState(false);
+
   const CustomToggle = React.forwardRef(({ onClick }, ref) => (
     <a
       ref={ref}
@@ -58,22 +65,6 @@ const Navigbar = () => {
               <Nav.Item>
                 <Nav.Link href="/Admin">Admin</Nav.Link>
               </Nav.Item>
-              <a
-                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
-              </a>
-              <a
-                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
-              </a>
-            </Nav>
-            <Nav className="justify-content-end">
               <Button
                 href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
                 variant="warning"
@@ -82,7 +73,22 @@ const Navigbar = () => {
               >
                 Adhérer
               </Button>
-
+              <a
+              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
+            </a>
+            </Nav>
+            <Nav>
               <a
                 className="btn btn-full text-center"
                 onClick={() => setModalConnShow(true)}
@@ -101,7 +107,7 @@ const Navigbar = () => {
                 <Dropdown.Menu variant="dark">
                   <Dropdown.Item href="/Profil">Mon Profil</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#">Se déconnecter</Dropdown.Item>
+                  <Dropdown.Item onClick={logout}>Se déconnecter</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>

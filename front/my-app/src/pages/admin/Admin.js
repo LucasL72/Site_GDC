@@ -12,6 +12,7 @@ const Admin = () => {
             <a
               href="https://grainedecitoyenmlg.nohost.me/nextcloud/login"
               target="_blank"
+              rel="noreferrer"
             >
               {" "}
               Lien collaboratif

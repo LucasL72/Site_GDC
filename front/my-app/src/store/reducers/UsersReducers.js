@@ -9,7 +9,9 @@ import * as Actions from "../actions/ActionTypes";
 const initialState = {
   flash: "",
   listUsers: [],
-  Users: {},
+  token:{},
+  user: {},
+  authenticate: null,
 };
 
 /*
@@ -29,7 +31,7 @@ export function UsersReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        Users: action.payload.Users,
+        user: action.payload.user,
       };
     case Actions.POST_USER:
       return {
@@ -53,7 +55,20 @@ export function UsersReducer(state = initialState, action) {
       return {
         ...state,
         flash: action.payload.flash,
-        Users: action.payload.Users,
+        user: action.payload.user,
+      };
+    case Actions.LOGIN_USER:
+      return {
+        ...state,
+        flash: action.payload.flash,
+        user: action.payload.token,
+        authenticate: action.payload.authenticate,
+      };
+    case Actions.CHECK_AUTH:
+      return {
+        ...state,
+        flash: action.payload.flash,
+        token: action.payload.user,
       };
   }
 }

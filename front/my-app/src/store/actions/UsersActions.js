@@ -2,6 +2,7 @@
  * Import - Module
  * *************** */
 import axios from "axios";
+import jwt_decode from 'jwt-decode'
 
 /*
  * Import types { ... }
@@ -12,6 +13,8 @@ import {
   DELETE_USER,
   EDIT_USER,
   BAN_USER,
+  LOGIN_USER,
+  CHECK_AUTH,
 } from "./ActionTypes";
 
 /*
@@ -21,7 +24,6 @@ import {
 // getAll user
 export const getUser = (data) => {
   return (dispatch) => {
-    console.log("reducers get events");
     return axios
       .get("http://localhost:3030/api/Admin/User")
       .then((res) => {
@@ -35,7 +37,6 @@ export const getUser = (data) => {
 // getID user
 export const getUserID = (id) => {
   return (dispatch) => {
-    console.log("reducers get users");
     return axios
       .get(`http://localhost:3030/api/Admin/User/${id}`)
       .then((res) => {
@@ -49,9 +50,8 @@ export const getUserID = (id) => {
 // Create user
 export const createUser = (data) => {
   return (dispatch) => {
-    console.log("reducers get events");
     return axios
-      .post("http://localhost:3030/api/Register", data,{
+      .post("http://localhost:3030/api/Register", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -66,7 +66,6 @@ export const createUser = (data) => {
 // Delete user
 export const deleteUser = (id) => {
   return (dispatch) => {
-    console.log("reducers get events");
     return axios
       .delete(`http://localhost:3030/api/Admin/User/${id}`)
       .then((res) => {
@@ -79,9 +78,8 @@ export const deleteUser = (id) => {
 // Edit user
 export const editUser = (data) => {
   return (dispatch) => {
-    console.log("reducers get events");
     return axios
-      .put(`http://localhost:3030/api/Admin/User/${data.id}`, data,{
+      .put(`http://localhost:3030/api/Admin/User/${data.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -96,7 +94,6 @@ export const editUser = (data) => {
 // Edit user
 export const BanUser = (data) => {
   return (dispatch) => {
-    console.log("reducers get ban user");
     return axios
       .put(`http://localhost:3030/api/Admin/User/Ban/${data.id}`, data)
       .then((res) => {
@@ -105,3 +102,35 @@ export const BanUser = (data) => {
       .catch((err) => console.log(err));
   };
 };
+
+// Login User
+export const login = (data) => {
+  return (dispatch) => {
+    return axios
+      .post("http://localhost:3030/api/login", data)
+      .then((res) => {
+        if (res.data.success === "success") {
+          if (res.data.token) localStorage["user_token"] = res.data.token;
+          res.data.token = jwt_decode(res.data.token);
+          res.data.authenticate = true;
+          dispatch({ type: LOGIN_USER, payload: res.data });
+        } else {
+          res.data.authenticate = false;
+          dispatch({ type: LOGIN_USER, payload: res.data });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+// Check user authenticate
+export const check = () => {
+  return (dispatch) => {
+    return axios
+      .get(
+        `http://localhost:3030/api/auth/${localStorage["user_token"]}`
+      )
+      .then((res) => { if (res.data.user) { dispatch({ type: CHECK_AUTH, payload: res.data }); } })
+            .catch((err) => console.log(err));
+    };
+}

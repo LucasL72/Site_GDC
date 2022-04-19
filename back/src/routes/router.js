@@ -8,6 +8,8 @@ const upload = require("../config/multer"),
   sharpAlbum = require("../config/SharpAlbum"),
   SharpUser = require("../config/SharpUser");
 
+const TokenJWT = require("../middlewares/Token_jwt");
+
 const ArticleControllers = require("../controllers/ArticleControllers");
 const EventController = require("../controllers/EventController");
 const MessagesController = require("../controllers/MessagesController");
@@ -22,6 +24,12 @@ router
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
+  router.route("/api/login").post(new UserController().login);
+// Session
+router
+  .route("/api/auth/:token")
+  .get(new TokenJWT().checkIsValid, new UserController().checkToken);
+
 router
   .route("/api/Contact")
   .get(new EventController().getAll)
@@ -29,8 +37,8 @@ router
 
 router
   .route("/api/Register")
-  .post(upload.single("image"), SharpUser, new UserController().create)
-  .get(new UserController().getAll);
+  .get(new UserController().getAll)
+  .post(upload.single("image"), SharpUser, new UserController().create);
 
 router.route("/api/Blog").get(new ArticleControllers().getAll);
 
@@ -42,7 +50,9 @@ router
   .post(new ComsController().create);
 
 // ADMIN
-router.route("/api/Admin/User").get(new UserController().getAll);
+router
+.route("/api/Admin/User")
+.get(new UserController().getAll);
 
 router
   .route("/api/Admin/User/:id")
@@ -68,9 +78,10 @@ router
 
 router.route("/api/Admin/Coms").get(new ComsController().getAll);
 
-router.route("/api/Admin/Coms/:id")
-.get(new ComsController().getId)
-.delete(new ComsController().deleteOne);
+router
+  .route("/api/Admin/Coms/:id")
+  .get(new ComsController().getId)
+  .delete(new ComsController().deleteOne);
 
 router
   .route("/api/Admin/Photos")

@@ -6,9 +6,10 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUser, getUser } from "../../store/actions/UsersActions";
+import { createUser } from "../../store/actions/UsersActions";
 
 const Newuser = () => {
+  const dispatch = useDispatch();
   const [stateImgUpload, setStateImgUpload] = useState("");
   const [imgPreview, setPreview] = useState("");
   const [imgSelect, setSelect] = useState("");
@@ -21,7 +22,7 @@ const Newuser = () => {
   const [postal, setPostal] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+
 
   const handleInputChange = (e) => {
     setStateImgUpload("Image non enregistrée");
@@ -65,7 +66,6 @@ const Newuser = () => {
     setSelect(false);
 
     dispatch(createUser(formdata));
-    dispatch(getUser());
   };
 
   return (
@@ -87,7 +87,7 @@ const Newuser = () => {
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt="user-profile"
+                  alt="Image"
                 />
               ) : (
                 <img
@@ -95,7 +95,7 @@ const Newuser = () => {
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt="user-profile-lock"
+                  alt="Profile-pic"
                 />
               )}
               {{ stateImgUpload } && (
@@ -230,7 +230,7 @@ const Newuser = () => {
               />
             </Form.Group>
             <div className="text-center mb-3">
-              <Button variant="outline-success" type="submit">
+              <Button variant="outline-success" type="submit" value="send">
                 Submit
               </Button>
             </div>

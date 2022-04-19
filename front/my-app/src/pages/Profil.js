@@ -1,6 +1,7 @@
 import EditUser from "../components/Register/EditUser";
 import User from "../components/User";
 import MainLayout from "../layouts/MainLayout";
+import withAuth from "../components/Login/withAuth";
 
 const Profile = () => {
   return (
@@ -13,4 +14,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuth(Profile);
