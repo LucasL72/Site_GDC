@@ -27,6 +27,7 @@ class ArticleControllers {
   async create(req, res) {
     const { title, description, contenu, auteur } = req.body;
     const user_id = "1";
+    console.log(req.params.id)
     const imgarticle =
       req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newArticle = new Article({
@@ -35,7 +36,7 @@ class ArticleControllers {
       description: String(description),
       contenu: String(contenu),
       auteur: String(auteur),
-      user_id: Number(user_id),
+      user_id:Number(user_id),
     });
     try {
       Article.create(newArticle, (err, data) => {
@@ -78,7 +79,7 @@ class ArticleControllers {
 
   async getId(req, res) {
     try {
-      Article.getById(Number(req.params.id), (err, data) => {
+      Article.getById(String(req.params.id), (err, data) => {
         console.log("dataid res", data);
         if (err) {
           console.log("err", err),

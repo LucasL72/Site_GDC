@@ -25,14 +25,15 @@ class ComsController {
 
   async create(req, res) {
     const {content} = req.body;
-    const article_id = req.params.id;
+    const article_id = "1";
     const pseudouser = "lucas";
+    console.log("token",req.params.token)
     const user_id = "1";
     let newCommentaire = new Commentaire({
       content: content,
       articles_id: Number(article_id),
       pseudouser:pseudouser,
-      user_id:Number(user_id),
+      user_id:String(user_id),
     });
     try {
       newCommentaire

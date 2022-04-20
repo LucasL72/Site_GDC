@@ -164,6 +164,8 @@ class UserController {
               {
                 id: data.id,
                 email: data.email,
+                pseudo:data.pseudo,
+                imguser:data.imguser,
                 isVerified: data.isVerified,
                 isBan: data.isBan,
                 isAdmin: data.isAdmin,
@@ -206,8 +208,9 @@ class UserController {
         flash: "Login Auth Success !",
         user: {
           id: user.id,
-          name: user.name,
+          pseudo: user.pseudo,
           email: user.email,
+          imguser:user.imguser,
           isVerified: user.isVerified,
           isAdmin: user.isAdmin,
           isBan: user.isBan,

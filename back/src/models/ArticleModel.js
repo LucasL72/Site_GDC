@@ -50,7 +50,7 @@ Article.create = function (newArticle, result) {
     newArticle;
   connection.getConnection(function (error, conn) {
     conn.query(
-      `INSERT INTO articles SET  imgarticle=:imgarticle,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = :user_id;
+      `INSERT INTO articles SET  imgarticle=:imgarticle,title= :title, description=:description,contenu= :contenu,auteur= :auteur, user_id = :user_id ;
       `,
       { imgarticle, title, description, contenu, auteur, user_id },
       (error, data) => {
