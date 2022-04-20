@@ -3,12 +3,12 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createMessage, getMessage } from "../../store/actions/MessagesActions";
+import EmailIcon from "@mui/icons-material/Email";
 const ContForm = () => {
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
@@ -47,14 +47,21 @@ const ContForm = () => {
             <Row>
               <Col md={6}>
                 <p>
-                  <AddLocationAltIcon color="success" sx={{ fontSize: 20 }} />{" "}
+                  <AddLocationAltIcon color="success" sx={{ fontSize: 30 }} />{" "}
                   56 Grande Rue 72450 Montfort-le-Gesnois
                 </p>
               </Col>
               <Col md={6}>
                 <p>
-                  <LocalPhoneIcon color="success" sx={{ fontSize: 20 }} />A
-                  check
+                  {" "}
+                  <a
+                    href="mailto: grainecitoyenmlg@gmail.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <EmailIcon color="success" sx={{ fontSize: 30 }} />
+                  </a>
+                   grainecitoyenmlg@gmail.com
                 </p>
               </Col>
             </Row>

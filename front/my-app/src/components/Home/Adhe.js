@@ -12,7 +12,7 @@ const Adhe = () => {
         />
         <Card.Body>
           <Card.Title>Adhésion 2022</Card.Title>
-          <Card.Text>Avez-vous penser à votre adhésion 2022 ?</Card.Text>
+          <Card.Text>Avez-vous pensé à votre adhésion 2022 ?</Card.Text>
           <Button
             href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
             target="_blank"

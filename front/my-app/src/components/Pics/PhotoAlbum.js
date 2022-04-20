@@ -3,35 +3,65 @@ import Col from "react-bootstrap/Col";
 import { urlImgAlbum } from "../../utils/url";
 import Button from "react-bootstrap/Button";
 import ModalDeletePic from "../Modals/ModalDelete/ModalDeletePic";
+import jwt_decode from "jwt-decode";
 
 const PhotoAlbum = (props) => {
   const [modalDelShow, setModalDelShow] = React.useState(false);
   const { item } = props;
+  const CheckLog = () => {
+    const userToken = localStorage.getItem("user_token");
+    if (
+      userToken === "visitor" ||
+      (jwt_decode(userToken).isVerified === 1 &&
+        jwt_decode(userToken).isBan === 0 &&
+        jwt_decode(userToken).isAdmin === 0)
+    )
+      return (
+          <div key={item.id} className="mb-4 img-border">
+            <img
+              src={`${urlImgAlbum + item.photo}`}
+              alt={item.authorname}
+              className="img-border"
+              width="100%"
+            />
+          </div>
+      );
+    else if (
+      jwt_decode(userToken).isVerified === 1 &&
+      jwt_decode(userToken).isBan === 0 &&
+      jwt_decode(userToken).isAdmin === 1
+    )
+      return (
+        <>
+          <div key={item.id} className="mb-4 img-border">
+            <img
+              src={`${urlImgAlbum + item.photo}`}
+              alt={item.authorname}
+              className="img-border"
+              width="100%"
+            />
+            <div className="text-center">
+              <Button
+                variant="outline-danger"
+                type="submit"
+                onClick={() => setModalDelShow(true)}
+              >
+                Supprimer
+              </Button>{" "}
+            </div>
+            <ModalDeletePic
+              show={modalDelShow}
+              onHide={() => setModalDelShow(false)}
+              item={item}
+            />
+          </div>
+        </>
+      );
+  };
+
   return (
-    <Col md={4}>
-      <div key={item.id} className="mb-2 img-border">
-        <img
-          src={`${urlImgAlbum + item.photo}`}
-          alt={item.authorname}
-          width="100%"
-          className="img-border"
-        />
-        <div className="text-center">
-          <Button
-            cla
-            variant="outline-danger"
-            type="submit"
-            onClick={() => setModalDelShow(true)}
-          >
-            Supprimer
-          </Button>{" "}
-        </div>
-        <ModalDeletePic
-          show={modalDelShow}
-          onHide={() => setModalDelShow(false)}
-          item={item}
-        />
-      </div>
+    <Col md={3}>
+      <CheckLog />
     </Col>
   );
 };

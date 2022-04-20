@@ -55,7 +55,6 @@ const ModalCreateArt = (props) => {
       formdata.append("image", imgarticle);
     }
     setSelect(false);
-
     dispatch(createArticle(formdata));
   };
   return (
