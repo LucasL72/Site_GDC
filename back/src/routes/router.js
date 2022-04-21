@@ -30,6 +30,8 @@ router
   .route("/api/auth/:token")
   .get(new TokenJWT().checkIsValid, new UserController().checkToken);
 
+  router.route("/api/auth/verify/:id").get(new UserController().verifMail);
+
 router
   .route("/api/Contact")
   .get(new EventController().getAll)

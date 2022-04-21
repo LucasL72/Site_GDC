@@ -1,6 +1,6 @@
 const User = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
-
+const nodemailer = require("../config/Nodemailer");
 require("dotenv").config();
 
 class UserController {
@@ -45,12 +45,13 @@ class UserController {
     try {
       User.create(newUser, (err, data) => {
         if (err) res.send(err);
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create Event Success !",
-          dbUsers: data,
-          token: data,
+        nodemailer.VerifUser(req, res, (res) => {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "Create user Success !",
+            dbUsers: data,
+          });
         });
       });
     } catch (error) {
@@ -164,8 +165,8 @@ class UserController {
               {
                 id: data.id,
                 email: data.email,
-                pseudo:data.pseudo,
-                imguser:data.imguser,
+                pseudo: data.pseudo,
+                imguser: data.imguser,
                 isVerified: data.isVerified,
                 isBan: data.isBan,
                 isAdmin: data.isAdmin,
@@ -210,7 +211,7 @@ class UserController {
           id: user.id,
           pseudo: user.pseudo,
           email: user.email,
-          imguser:user.imguser,
+          imguser: user.imguser,
           isVerified: user.isVerified,
           isAdmin: user.isAdmin,
           isBan: user.isBan,
@@ -219,6 +220,30 @@ class UserController {
     } catch (error) {
       throw error;
     }
+  }
+  async editPassword(req, res) {
+    const { email, password } = req.body;
+    let userObj = new User({
+      id: Number(req.params.id),
+      email: String(email),
+      password: String(password),
+    });
+    try {
+      User.editPassword(userObj, (error, data) => {
+        return res.send({
+          method: req.method,
+          status: "success",
+          flash: "Create user Success !",
+          dbUsers: data,
+        });
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async verifMail(req, res) {
+    nodemailer.verifMail(req, res);
   }
 }
 
