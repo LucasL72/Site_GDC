@@ -1,7 +1,7 @@
 /*
  * Import - Module
  * *************** */
-import axios from "axios";
+import {api} from "../../config/axios";
 import jwt_decode from 'jwt-decode'
 
 /*
@@ -24,8 +24,8 @@ import {
 // getAll user
 export const getUser = (data) => {
   return (dispatch) => {
-    return axios
-      .get("http://localhost:3030/api/Admin/User")
+    return api
+      .get("/Admin/User")
       .then((res) => {
         console.log("getUser", res.data);
         dispatch({ type: GET_USER, payload: res.data });
@@ -37,8 +37,8 @@ export const getUser = (data) => {
 // getID user
 export const getUserID = (id) => {
   return (dispatch) => {
-    return axios
-      .get(`http://localhost:3030/api/Admin/User/${id}`)
+    return api
+      .get(`/Admin/User/${id}`)
       .then((res) => {
         console.log("getUserID", res.data);
         dispatch({ type: GET_USER, payload: res.data });
@@ -50,8 +50,8 @@ export const getUserID = (id) => {
 // Create user
 export const createUser = (data) => {
   return (dispatch) => {
-    return axios
-      .post("http://localhost:3030/api/Register", data, {
+    return api
+      .post("/Register", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -66,8 +66,8 @@ export const createUser = (data) => {
 // Delete user
 export const deleteUser = (id) => {
   return (dispatch) => {
-    return axios
-      .delete(`http://localhost:3030/api/Admin/User/${id}`)
+    return api
+      .delete(`/Admin/User/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_USER, payload: res.data });
       })
@@ -78,8 +78,8 @@ export const deleteUser = (id) => {
 // Edit user
 export const editUser = (data) => {
   return (dispatch) => {
-    return axios
-      .put(`http://localhost:3030/api/Admin/User/${data.id}`, data, {
+    return api
+      .put(`/Admin/User/${data.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -94,8 +94,8 @@ export const editUser = (data) => {
 // Edit user
 export const BanUser = (data) => {
   return (dispatch) => {
-    return axios
-      .put(`http://localhost:3030/api/Admin/User/Ban/${data.id}`, data)
+    return api
+      .put(`/Admin/User/Ban/${data.id}`, data)
       .then((res) => {
         dispatch({ type: BAN_USER, payload: res.data });
       })
@@ -106,8 +106,8 @@ export const BanUser = (data) => {
 // Login User
 export const login = (data) => {
   return (dispatch) => {
-    return axios
-      .post("http://localhost:3030/api/login", data)
+    return api
+      .post("/login", data)
       .then((res) => {
         if (res.data.success === "success") {
           if (res.data.token) localStorage["user_token"] = res.data.token;
@@ -126,9 +126,9 @@ export const login = (data) => {
 // Check user authenticate
 export const check = () => {
   return (dispatch) => {
-    return axios
+    return api
       .get(
-        `http://localhost:3030/api/auth/${localStorage["user_token"]}`
+        `/auth/${localStorage["user_token"]}`
       )
       .then((res) => { if (res.data.user) { dispatch({ type: CHECK_AUTH, payload: res.data }); } })
             .catch((err) => console.log(err));

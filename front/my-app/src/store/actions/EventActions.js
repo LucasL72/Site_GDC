@@ -1,7 +1,8 @@
 /*
  * Import - Module
  * *************** */
-import axios from "axios";
+import {api} from "../../config/axios";
+
 
 /*
  * Import types { ... }
@@ -16,7 +17,7 @@ import { POST_EVENT, GET_EVENT, DELETE_EVENT, EDIT_EVENT } from "./ActionTypes";
 export const getEvent = (data) => {
   return (dispatch) => {
     console.log('reducers get events')
-    return axios.get("http://localhost:3030/api/Admin/Events")
+    return api.get("/Admin/Events")
       .then((res) => {
         console.log('getArticles', res.data)
         dispatch({ type: GET_EVENT, payload: res.data})
@@ -28,8 +29,7 @@ export const getEvent = (data) => {
 // getID Article
 export const getEventID = (id) => {
   return (dispatch) => {
-    console.log('reducers get events')
-    return axios.get(`http://localhost:3030/api/Admin/Events/${ id }`)
+    return api.get(`/Admin/Events/${ id }`)
       .then((res) => {
         console.log('getEventID', res.data)
         dispatch({ type: GET_EVENT, payload: res.data})
@@ -41,8 +41,7 @@ export const getEventID = (id) => {
 // Create Article
 export const createEvent = (data) => {
   return (dispatch) => {
-    console.log('reducers get events')
-    return axios.post("http://localhost:3030/api/Admin/Events", data)
+    return api.post("/Admin/Events", data)
       .then((res) => {
         dispatch({ type: POST_EVENT, payload: res.data})
       })
@@ -53,8 +52,7 @@ export const createEvent = (data) => {
 // Delete Article
 export const deleteEvent = (id) => {
   return (dispatch) => {
-    console.log('reducers get events')
-    return axios.delete(`http://localhost:3030/api/Admin/Events/${ id }`)
+    return api.delete(`/Admin/Events/${ id }`)
       .then((res) => {
         dispatch({ type: DELETE_EVENT, payload: res.data})
       })
@@ -65,8 +63,7 @@ export const deleteEvent = (id) => {
 // Edit Article
 export const editEvent = (data) => {
   return (dispatch) => {
-    console.log('reducers get events')
-    return axios.put(`http://localhost:3030/api/Admin/Events/${ data.id }`, data)
+    return api.put(`/Admin/Events/${ data.id }`, data)
       .then((res) => {
         dispatch({ type: EDIT_EVENT, payload: res.data})
       })

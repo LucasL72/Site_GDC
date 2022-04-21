@@ -1,7 +1,8 @@
 /*
  * Import - Module
  * *************** */
-import axios from "axios";
+import {api} from "../../config/axios";
+
 
 /*
  * Import types { ... }
@@ -19,9 +20,8 @@ import {
 // getAll Article
 export const getCom = (data) => {
   return (dispatch) => {
-    console.log("reducers get article");
-    return axios
-      .get("http://localhost:3030/api/Admin/Coms")
+    return api
+      .get("/Admin/Coms")
       .then((res) => {
         console.log("getcoms", res.data);
         dispatch({ type: GET_COM, payload: res.data });
@@ -33,9 +33,8 @@ export const getCom = (data) => {
 // getID Article
 export const getComID = (id) => {
   return (dispatch) => {
-    console.log("reducers get article");
-    return axios
-      .get(`http://localhost:3030/api/Admin/Coms/${id}`)
+    return api
+      .get(`/Admin/Coms/${id}`)
       .then((res) => {
         console.log("getComID", res.data);
         dispatch({ type: GET_COM, payload: res.data });
@@ -47,8 +46,8 @@ export const getComID = (id) => {
 // Create Article
 export const createCom = (data,id) => {
   return (dispatch) => {
-    return axios
-      .post(`http://localhost:3030/api/Blog/${id}`,data)
+    return api
+      .post(`/Blog/${id}`,data)
       .then((res) => {
         dispatch({ type: POST_COM, payload: res.data });
       })
@@ -59,8 +58,8 @@ export const createCom = (data,id) => {
 // Delete Article
 export const deleteCom = (id) => {
   return (dispatch) => {
-    return axios
-      .delete(`http://localhost:3030/api/Admin/Coms/${id}`)
+    return api
+      .delete(`/Admin/Coms/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_COM, payload: res.data });
       })

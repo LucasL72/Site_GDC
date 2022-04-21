@@ -1,7 +1,7 @@
 /*
  * Import - Module
  * *************** */
-import axios from "axios";
+import {api} from "../../config/axios";
 
 /*
  * Import types { ... }
@@ -20,9 +20,8 @@ import {
 // getAll Article
 export const getArticles = (data) => {
   return (dispatch) => {
-    console.log("reducers get article");
-    return axios
-      .get("http://localhost:3030/api/Blog")
+    return api
+      .get("/Blog")
       .then((res) => {
         console.log("getArticles", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
@@ -35,8 +34,8 @@ export const getArticles = (data) => {
 export const getArticleID = (id) => {
   return (dispatch) => {
     console.log("reducers get article");
-    return axios
-      .get(`http://localhost:3030/api/Blog/${id}`)
+    return api
+      .get(`/Blog/${id}`)
       .then((res) => {
         console.log("getArticleID", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
@@ -48,8 +47,8 @@ export const getArticleID = (id) => {
 // Create Article
 export const createArticle = (data) => {
   return (dispatch) => {
-    return axios
-      .post("http://localhost:3030/api/Admin/Blog", data, {
+    return api
+      .post("/Admin/Blog", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -64,8 +63,8 @@ export const createArticle = (data) => {
 // Delete Article
 export const deleteArticle = (id) => {
   return (dispatch) => {
-    return axios
-      .delete(`http://localhost:3030/api/Admin/Blog/${id}`)
+    return api
+      .delete(`/Admin/Blog/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_ARTICLE, payload: res.data });
       })
@@ -76,8 +75,8 @@ export const deleteArticle = (id) => {
 // Edit Article
 export const editArticle = (data) => {
   return (dispatch) => {
-    return axios
-      .put(`http://localhost:3030/api/Admin/Blog/${data.id}`, data, {
+    return api
+      .put(`/Admin/Blog/${data.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -8,6 +8,8 @@ import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import Cgu from "./pages/Cgu";
 import NotFound from "./pages/NotFound";
+import Lostpass from "./pages/Lostpass";
+import VerifAuth from "./pages/VerifAuth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Admin
 import Admin from "./pages/admin/Admin";
@@ -27,6 +29,8 @@ const AppRoutes = () => {
       <Route path="Photos" exact element={<Photos />} />
       <Route path="Contact" exact element={<Contact />} />
       <Route path="Register" exact element={<Register />} />
+      <Route path="Lostpassword" exact element={<Lostpass />} />
+      <Route path="verif/:rand" element={<VerifAuth />} />
       <Route path="Cgu" exact element={<Cgu />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

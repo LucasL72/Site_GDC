@@ -1,7 +1,9 @@
 /*
  * Import - Module
  * *************** */
-import axios from "axios";
+import {api} from "../../config/axios";
+
+
 
 /*
  * Import types { ... }
@@ -15,8 +17,7 @@ import { POST_PIC, GET_PIC, DELETE_PIC,} from "./ActionTypes";
 // getAll Article
 export const getPic = (data) => {
   return (dispatch) => {
-    console.log('reducers get pics')
-    return axios.get("http://localhost:3030/api/Photos")
+    return api.get("/Photos")
       .then((res) => {
         console.log('getPic', res.data)
         dispatch({ type: GET_PIC, payload: res.data})
@@ -28,8 +29,7 @@ export const getPic = (data) => {
 // getID Article
 export const getPicID = (id) => {
     return (dispatch) => {
-      console.log('reducers get pic')
-      return axios.get(`http://localhost:3030/api/Admin/Photos/${ id }`)
+      return api.get(`/Admin/Photos/${ id }`)
         .then((res) => {
           console.log('getPicID', res.data)
           dispatch({ type: GET_PIC, payload: res.data})
@@ -41,7 +41,7 @@ export const getPicID = (id) => {
 // Create Article
 export const createPic = (data) => {
   return (dispatch) => {
-    return axios.post("http://localhost:3030/api/Admin/Photos", data,{
+    return api.post("/Admin/Photos", data,{
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -56,7 +56,7 @@ export const createPic = (data) => {
 // Delete Article
 export const deletePic = (id) => {
   return (dispatch) => {
-    return axios.delete(`http://localhost:3030/api/Admin/Photos/${id}`)
+    return api.delete(`/Admin/Photos/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_PIC, payload: res.data})
       })

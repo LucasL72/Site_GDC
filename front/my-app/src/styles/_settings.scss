@@ -42,7 +42,7 @@ li {
 }
 
 .tab-tabs {
-  background-color:$color-3 ;
+  background-color: $color-3;
   border: 4mm ridge;
   border-radius: 10px;
   border-color: rgb(216, 164, 100);
@@ -51,7 +51,7 @@ li {
 }
 .tab-tabs:hover {
   background-color: $color-2;
-  transform: scale(0.90);
+  transform: scale(0.9);
 }
 
 .tab-tabs a.nav-link:hover {
@@ -99,7 +99,21 @@ a.btn-ghost:hover {
   transition: all 0.5s;
 }
 
-.link{
-  color:$white;
+.link {
+  color: $white;
   text-decoration: none;
+}
+
+.logo {
+  animation: img-spin infinite 10s linear;
+}
+
+@keyframes img-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

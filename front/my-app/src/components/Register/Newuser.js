@@ -1,15 +1,14 @@
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../store/actions/UsersActions";
 
 const Newuser = () => {
-  const dispatch = useDispatch();
   const [stateImgUpload, setStateImgUpload] = useState("");
   const [imgPreview, setPreview] = useState("");
   const [imgSelect, setSelect] = useState("");
@@ -22,7 +21,7 @@ const Newuser = () => {
   const [postal, setPostal] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setStateImgUpload("Image non enregistrée");
@@ -39,7 +38,7 @@ const Newuser = () => {
     }
   };
   // ici la fonction est asynchrone
-  const handleForm = async (e) => {
+  const handleFormUser = async (e) => {
     e.preventDefault();
     if (!imguser) {
       setStateImgUpload("image obligatoire");
@@ -72,22 +71,24 @@ const Newuser = () => {
     <div>
       <Container>
         <Row>
-          <Form onSubmit={(e) => handleForm(e)}>
+          <Form onSubmit={(e) => handleFormUser(e)}>
             <Col md={12}>
-              <Form.Label>Choisir une image de profil</Form.Label>
-              <Form.Control
-                className="mb-3"
-                type="file"
-                accept="image/*"
-                onChange={handleInputChange}
-              />
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Choisir une image de profil</Form.Label>
+                <Form.Control
+                 type="file"
+                  className="mb-3"
+                  accept="image/*"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
               {imgSelect ? (
                 <img
                   src={`${imgPreview}`}
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt="Image"
+                  alt=""
                 />
               ) : (
                 <img
@@ -95,7 +96,7 @@ const Newuser = () => {
                   width="200"
                   height="200"
                   className="img-fluid"
-                  alt="Profile-pic"
+                  alt=""
                 />
               )}
               {{ stateImgUpload } && (
@@ -104,7 +105,7 @@ const Newuser = () => {
             </Col>
             <Col md={12}>
               <FloatingLabel
-                controlId="floatingInput"
+                controlId="floatingInput1"
                 label="Votre Nom d'utilisateur"
                 className="mb-3"
               >
@@ -118,7 +119,7 @@ const Newuser = () => {
             <Row>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput2"
                   label="Votre Nom"
                   className="mb-3"
                 >
@@ -131,7 +132,7 @@ const Newuser = () => {
               </Col>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput3"
                   label="Votre Prénom"
                   className="mb-3"
                 >
@@ -144,7 +145,7 @@ const Newuser = () => {
               </Col>
             </Row>
             <Col md={12}>
-              <FloatingLabel controlId="floatingInput" label="Votre Email">
+              <FloatingLabel controlId="floatingInput4" label="Votre Email">
                 <Form.Control
                   type="email"
                   value={email}
@@ -157,7 +158,7 @@ const Newuser = () => {
             </Col>
             <Col md={12}>
               <FloatingLabel
-                controlId="floatingInput"
+                controlId="floatingInput5"
                 label="Votre Adresse"
                 className="mb-3"
               >
@@ -171,7 +172,7 @@ const Newuser = () => {
             <Row>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput6"
                   label="Ville"
                   className="mb-3"
                 >
@@ -184,7 +185,7 @@ const Newuser = () => {
               </Col>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput7"
                   label="Code Postal"
                   className="mb-3"
                 >
@@ -199,7 +200,7 @@ const Newuser = () => {
             <Row>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput8"
                   label="Mot de Passe"
                   className="mb-3"
                 >
@@ -213,7 +214,7 @@ const Newuser = () => {
               </Col>
               <Col md={6}>
                 <FloatingLabel
-                  controlId="floatingInput"
+                  controlId="floatingInput9"
                   label="Confirmation Mot de Passe"
                   className="mb-3"
                 >
@@ -230,7 +231,7 @@ const Newuser = () => {
               />
             </Form.Group>
             <div className="text-center mb-3">
-              <Button variant="outline-success" type="submit" value="send">
+              <Button variant="outline-success" type="submit"  value="send">
                 Submit
               </Button>
             </div>
