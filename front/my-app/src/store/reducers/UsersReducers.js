@@ -70,6 +70,12 @@ export function UsersReducer(state = initialState, action) {
         flash: action.payload.flash,
         token: action.payload.user,
       };
+      case Actions.VERIF_MAIL:
+        return {
+          ...state,
+          flash: action.payload.flash,
+          listUsers: action.payload.dbUsers,
+        };
   }
 }
 

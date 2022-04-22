@@ -43,6 +43,12 @@ export function MessagesReducer(state = initialState, action) {
         flash: action.payload.flash,
         listMessages: action.payload.dbMessages,
       };
+    case Actions.ADD_MESSAGE:
+      // console.log("ADD_MESSAGE", action.payload);
+      return {
+        ...state,
+        // listMessages: action.payload,
+      };
   }
 }
 

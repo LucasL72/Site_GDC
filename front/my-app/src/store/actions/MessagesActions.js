@@ -1,13 +1,12 @@
 /*
  * Import - Module
  * *************** */
-import {api} from "../../config/axios";
-
+import { api } from "../../config/axios";
 
 /*
  * Import types { ... }
  * ******************** */
-import { POST_MESSAGE, GET_MESSAGE, DELETE_MESSAGE } from "./ActionTypes";
+import { POST_MESSAGE, GET_MESSAGE, DELETE_MESSAGE,ADD_MESSAGE } from "./ActionTypes";
 
 /*
  * Actions
@@ -57,11 +56,26 @@ export const createMessage = (data) => {
 // Delete Article
 export const deleteMessage = (id) => {
   return (dispatch) => {
-    console.log("reducers get messages");
     return api
       .delete(`/Admin/Messages/${id}`)
       .then((res) => {
         dispatch({ type: DELETE_MESSAGE, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+// Reply Message (POST)
+export const replyMessage = (form) => {
+  return (dispatch) => {
+    return api
+      .post("/Admin/Messages/reply", form)
+      .then((res) => {
+        dispatch({
+          type: ADD_MESSAGE,
+
+          payload: res.data,
+        });
       })
       .catch((err) => console.log(err));
   };

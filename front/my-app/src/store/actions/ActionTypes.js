@@ -18,6 +18,7 @@ export const DELETE_USER = "DELETE_USER";
 export const BAN_USER = "BAN_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const CHECK_AUTH = "CHECK_AUTH"
+export const VERIF_MAIL = "VERIF_MAIL"
 
 
 // Pics
@@ -39,6 +40,7 @@ export const GET_MESSAGE = "GET_MESSAGE";
 export const GETID_MESSAGE = "GETID_MESSAGE";
 export const EDIT_MESSAGE = "EDIT_MESSAGE";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
+export const ADD_MESSAGE = "ADD_MESSAGE"
 
 //Coms
 export const POST_COM = "POST_COM";

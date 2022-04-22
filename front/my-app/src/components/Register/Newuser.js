@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../store/actions/UsersActions";
+import { useNavigate } from "react-router-dom";
 
 const Newuser = () => {
   const [stateImgUpload, setStateImgUpload] = useState("");
@@ -22,7 +23,11 @@ const Newuser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const toHome = async () => {
+    navigate("/");
+  };
   const handleInputChange = (e) => {
     setStateImgUpload("Image non enregistrée");
     e.preventDefault();
@@ -65,6 +70,7 @@ const Newuser = () => {
     setSelect(false);
 
     dispatch(createUser(formdata));
+    toHome()
   };
 
   return (

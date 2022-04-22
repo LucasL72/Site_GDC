@@ -15,6 +15,7 @@ import {
   BAN_USER,
   LOGIN_USER,
   CHECK_AUTH,
+  VERIF_MAIL,
 } from "./ActionTypes";
 
 /*
@@ -134,3 +135,13 @@ export const check = () => {
             .catch((err) => console.log(err));
     };
 }
+export const VerifMail = (id) => {
+  return (dispatch) => {
+    return api
+      .get(`/auth/verify/${id}`)
+      .then((res) => {
+        dispatch({ type: VERIF_MAIL, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};

@@ -27,6 +27,7 @@ const LigneMess = (props) => {
       <ModalAnswer
         show={modalAnswerShow}
         onHide={() => setModalAnswerShow(false)}
+        item={item}
       />
       <ModalDeleteMess
         show={modalDelShow}
