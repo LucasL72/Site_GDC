@@ -48,11 +48,11 @@ module.exports = {
 
   VerifUser: (req, res) => {
     rand = Math.floor(Math.random() * 100 + 54);
-    host = process.env.URL_SERV;
+    host = process.env.URL;
 
     link = host + "/api/auth/verify/" + rand;
 
-    mailOptions = {
+   const mailOptions = {
       from: process.env.MAIL,
       to: req.body.email,
       subject: "Vérification du compte, site Graine de Citoyen Montgesnois",
@@ -74,6 +74,7 @@ module.exports = {
     };
     // On demande à notre transporter d'envoyer notre mail
     transporter.sendMail(mailOptions, (err, info) => {
+         console.log("mailoptions",mailOptions)
       if (err) {
         console.log("err", err),
           res.status(500).send({
@@ -101,7 +102,7 @@ module.exports = {
               .send({ flash: err.message || "Une erreur est survenue" });
           else
             return res.redirect(
-              process.env.URL + "/#/verif/" + mailOptions.rand
+              process.env.URL + "/verif/" + mailOptions.rand
             );
         });
       } catch (error) {
@@ -109,6 +110,7 @@ module.exports = {
       }
     } else res.end("<h1>Bad Request</h1>");
   },
+
   lostpassword: (req, res) => {
     // génération d'un chiffre random
     rand = Math.floor(Math.random() * 100 + 54);
@@ -144,6 +146,38 @@ module.exports = {
           status: "success",
           flash: "success mail new password!",
           mailoptions: mailOptions,
+        });
+      }
+    });
+  },
+  replyMessage: (req, res) => {
+
+    // console.log(arrayFiles); // On configure notre mail à envoyer par nodemailer
+    // console.log("Reply NodeMailer Config");
+    const mailOptions = {
+      from: process.env.USER_NODMAILER,
+      to: req.body.email,
+      text: req.body.reply,
+      html: `
+      <h2 style="color:#ABC4FF;"> Bonjour,  ${req.body.author} </h2>
+      </br> <p>${req.body.reply}</br></p>  
+      <div style="display: flex;margin-bottom: 15px;">
+      <div> Cordialement, l'équipe de Graine de Citoyen Montgesnois </div>
+  `,
+    };
+    // console.log(mailOptions);
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.log("err", err),
+          res.status(500).json({
+            message: err.message || "Une erreur est survenue",
+          });
+      } else {
+        // console.log('callback res nodemail reply')
+        res.json({
+          method: req.method,
+          status: "success",
+          message: "Email SENDED !!! ",
         });
       }
     });

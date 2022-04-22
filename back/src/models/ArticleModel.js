@@ -46,7 +46,7 @@ Article.getById = function (id, result) {
 };
 
 Article.create = function (newArticle, result) {
-  const { imgarticle, title, description, contenu, auteur, user_id } =
+  const { imgarticle, title, description, contenu, auteur, user_id, id } =
     newArticle;
   connection.getConnection(function (error, conn) {
     conn.query(
@@ -55,11 +55,15 @@ Article.create = function (newArticle, result) {
       { imgarticle, title, description, contenu, auteur, user_id },
       (error, data) => {
         if (error) throw error;
-        conn.query(`SELECT * FROM articles`, (error, data) => {
-          if (error) throw error;
-          result(null, data);
-          conn.release();
-        });
+        conn.query(
+          `SELECT * FROM articles where id= :id`,
+          { id },
+          (error, data) => {
+            if (error) throw error;
+            result(null, data[0]);
+          }
+        );
+        conn.release();
       }
     );
   });
@@ -79,7 +83,7 @@ Article.editOne = function (articleObj, result) {
       { title, contenu, description, auteur },
       (error, data) => {
         if (error) throw error;
-        conn.query(`SELECT * FROM articles`, (error, data) => {
+        conn.query(`SELECT * FROM articles where id= id`,{id}, (error, data) => {
           if (error) throw error;
           result(null, data);
           conn.release();

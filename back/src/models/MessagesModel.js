@@ -4,6 +4,7 @@
  ******************************/
 const connection = require("../config/ConnectionDB");
 
+
 class Message {
   constructor(messages) {
     (this.id = Number(messages.id)),
@@ -82,6 +83,26 @@ class Message {
             conn.release();
           });
         });
+      });
+    });
+  }
+
+  replyMessage() {
+    const { email } = this;
+    return new Promise((resolve, reject) => {
+      connection.getConnection(function (error, conn) {
+        if (error) throw error;
+        conn.query(
+          `
+          SELECT author,email FROM messages WHERE email = :email
+      `,
+          { email },
+          (error, data) => {
+            if (error) reject(error);
+            resolve(data);
+            conn.release();
+          }
+        );
       });
     });
   }

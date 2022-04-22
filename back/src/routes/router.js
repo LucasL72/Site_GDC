@@ -111,6 +111,10 @@ router
   .get(new MessagesController().getAll)
   .post(new MessagesController().create);
 
+  router
+  .route("/api/Admin/Messages/reply")
+  .post(new MessagesController().replyMessage);
+
 router
   .route("/api/Admin/Messages/:id")
   .get(new MessagesController().getId)

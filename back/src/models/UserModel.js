@@ -62,6 +62,7 @@ User.create = function (newUser, result) {
     postal,
     email,
     password,
+    id,
   } = newUser;
 
   const hash = bcrypt.hashSync(password, 10);
@@ -73,10 +74,14 @@ User.create = function (newUser, result) {
       { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash },
       (error, data) => {
         if (error) throw error;
-        conn.query(`SELECT * FROM user`, (error, data) => {
-          if (error) throw error;
-          result(null, data);
-        });
+        conn.query(
+          `SELECT * FROM user where id= :id`,
+          { id },
+          (error, data) => {
+            if (error) throw error;
+            result(null, data[0]);
+          }
+        );
         conn.release();
       }
     );
@@ -107,11 +112,11 @@ User.editOne = function (userObj, result) {
       { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash, id },
       (error, d) => {
         if (error) throw error;
-        conn.query(`SELECT * FROM user`, (error, data) => {
+        conn.query(`SELECT * FROM user where id= :id `, (error, data) => {
           if (error) throw error;
-          result(null, data);
-          conn.release();
+          result(null, data[0]);
         });
+        conn.release();
       }
     );
   });

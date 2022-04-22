@@ -1,4 +1,5 @@
 const Message = require("../models/MessagesModel");
+const nodemailer = require("../config/Nodemailer");
 
 class MessagesController {
   async getAll(req, res) {
@@ -23,7 +24,7 @@ class MessagesController {
   }
 
   async create(req, res) {
-  const {email,author,content} = req.body;
+    const { email, author, content } = req.body;
     let newMessage = new Message({
       email: email,
       content: content,
@@ -47,11 +48,11 @@ class MessagesController {
   }
 
   async getId(req, res) {
-    let messObj = new Event({
+    let messObj = new Message({
       id: req.params.id,
       email: email,
       content: content,
-      author:author,
+      author: author,
     });
     try {
       messObj.getById().then((data) => {
@@ -77,6 +78,27 @@ class MessagesController {
           method: req.method,
           status: "success",
           flash: "delete message Success !",
+          dbMessages: data,
+        });
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // POST MESSAGE
+  async replyMessage(req, res) {
+    const { email, author} = req.body;
+    let messObj = new Message({
+      id: req.params.id,
+      email: email,
+      author: author,
+    });
+    try {
+      messObj.replyMessage().then((data) => {
+        nodemailer.replyMessage(req, res);
+        return res.send({
+          message: "Error",
           dbMessages: data,
         });
       });

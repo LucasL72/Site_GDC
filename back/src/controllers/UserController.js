@@ -30,7 +30,7 @@ class UserController {
     const { pseudo, prenom, nom, adresse, city, postal, email, password } =
       req.body;
     const imguser =
-      req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
+    req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newUser = new User({
       imguser: String(imguser),
       pseudo: String(pseudo),
@@ -44,15 +44,21 @@ class UserController {
     });
     try {
       User.create(newUser, (err, data) => {
-        if (err) res.send(err);
-        nodemailer.VerifUser(req, res, (res) => {
-          return res.send({
-            method: req.method,
-            status: "success",
-            flash: "Create user Success !",
-            dbUsers: data,
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
+          nodemailer.VerifUser(req, res, (res) => {
+            return res.send({
+              status: "success",
+              flash: "Create user Success !",
+              dbUsers: data,
+              mailoption:mailOptions,
+            });
           });
-        });
+        }
       });
     } catch (error) {
       throw error;
