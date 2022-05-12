@@ -117,7 +117,7 @@ module.exports = {
     // on definit notre host
     host = process.env.URL;
     // on définit le lien
-    link = host + "/lostpassword/" + rand;
+    link = host + "/Lostpassword/" + rand;
     // et enfin notre mail
     mailOptions = {
       from: process.env.MAIL,

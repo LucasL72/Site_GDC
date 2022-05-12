@@ -30,7 +30,7 @@ class UserController {
     const { pseudo, prenom, nom, adresse, city, postal, email, password } =
       req.body;
     const imguser =
-    req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
+      req.file.filename.split(".").slice(0, -1).join(".") + ".webp";
     let newUser = new User({
       imguser: String(imguser),
       pseudo: String(pseudo),
@@ -50,13 +50,10 @@ class UserController {
               message: err.message || "Une erreur est survenue",
             });
         } else {
-          nodemailer.VerifUser(req, res, (res) => {
-            return res.send({
-              status: "success",
-              flash: "Create user Success !",
-              dbUsers: data,
-              mailoption:mailOptions,
-            });
+          return res.send({
+            status: "success",
+            flash: "Create user Success !",
+            dbUsers: data,
           });
         }
       });
@@ -133,12 +130,8 @@ class UserController {
     }
   }
   async BanUser(req, res) {
-    const id = req.params;
-    let userObj = new User({
-      id: req.params.id,
-    });
     try {
-      userObj.BanUser({ id }, (err, data) => {
+      User.BanUser(req.params.id, (err, data) => {
         // console.log("response controller user update", data);
         if (err) res.send({ message: "error in request db" });
         // Sinon retourner cette réponse avec les data
@@ -147,7 +140,7 @@ class UserController {
             method: req.method,
             status: "success",
             message: " The user has been successfully BANNED.!!!",
-            user: data,
+            dbUsers: data,
           });
       });
     } catch (error) {
@@ -172,6 +165,11 @@ class UserController {
                 id: data.id,
                 email: data.email,
                 pseudo: data.pseudo,
+                prenom: data.prenom,
+                nom: data.nom,
+                adresse: data.adresse,
+                city: data.city,
+                postal: data.postal,
                 imguser: data.imguser,
                 isVerified: data.isVerified,
                 isBan: data.isBan,
@@ -216,6 +214,11 @@ class UserController {
         user: {
           id: user.id,
           pseudo: user.pseudo,
+          prenom: user.prenom,
+          nom: user.nom,
+          adresse: user.adresse,
+          city: user.city,
+          postal: user.postal,
           email: user.email,
           imguser: user.imguser,
           isVerified: user.isVerified,

@@ -69,9 +69,9 @@ User.create = function (newUser, result) {
   connection.getConnection(function (error, conn) {
     conn.query(
       `
-          INSERT INTO user SET imguser=:imguser, pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
+          INSERT INTO user SET imguser=:imguser, pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash,isVerified= 1
       `,
-      { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash },
+      { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash},
       (error, data) => {
         if (error) throw error;
         conn.query(
@@ -106,7 +106,7 @@ User.editOne = function (userObj, result) {
     if (error) throw error;
     conn.query(
       `UPDATE user
-                      SET imguser=:imguser,pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash
+                      SET imguser=:imguser,pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash, isVerified= 1,
                       WHERE id = :id;
           `,
       { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash, id },
@@ -124,7 +124,6 @@ User.editOne = function (userObj, result) {
 
 User.BanUser = function (id) {
   let isBan;
-  // console.log("Method BANNED Model User", user);
   //Declarations des constantes de user pour mysql
   connection.getConnection(function (error, conn) {
     if (error) throw error;

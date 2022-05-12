@@ -35,7 +35,7 @@ class ArticleControllers {
       description: String(description),
       contenu: String(contenu),
       auteur: String(auteur),
-      user_id:Number(user_id),
+      user_id: Number(user_id),
     });
     try {
       Article.create(newArticle, (err, data) => {
@@ -54,8 +54,11 @@ class ArticleControllers {
 
   async editOne(req, res) {
     const { title, description, contenu, auteur } = req.body;
+    const imgart =
+      req.file.filename.split(".").slice(0, -1).join(".") + ".webp"; 
     let articleObj = new Article({
       id: Number(req.params.id),
+      imgarticle: String(imgart),
       title: String(title),
       description: String(description),
       contenu: String(contenu),

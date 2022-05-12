@@ -69,28 +69,101 @@ Article.create = function (newArticle, result) {
   });
 };
 
-Article.editOne = function (articleObj, result) {
+Article.editOne = function (articleObj, result, reqfile) {
   const { title, contenu, description, auteur, id } = articleObj;
-  connection.getConnection(function (error, conn) {
-    conn.query(
-      `UPDATE articles
-                      SET title = :title,
-                      description = :description,
-                          contenu = :contenu,
-                          auteur= :auteur
-                      WHERE id = ${id}
-          `,
-      { title, contenu, description, auteur },
-      (error, data) => {
-        if (error) throw error;
-        conn.query(`SELECT * FROM articles where id= id`,{id}, (error, data) => {
-          if (error) throw error;
-          result(null, data);
+
+  let pathAvatar = "./Public/Images/Articles/",
+    pathAvatarWebp = "",
+    pathImgWebp = "";
+
+  const dateImg = new Date().getTime();
+
+  if (reqfile) {
+    pathImgWebp =
+      pathAvatar +
+      (reqfile.filename.split(".").slice(0, -1).join(".") + ".webp");
+
+    pathAvatarWebp = pathAvatar + "_" + dateImg + ".webp";
+
+    help.renameFile(pathImgWebp, pathAvatarWebp).then((data) => {
+      if (data) {
+        const ArtImg = "_" + dateImg + ".webp";
+        connection.getConnection(function (error, conn) {
+          conn.query(
+            `SELECT imgarticle
+            FROM articles WHERE id = :id`,
+            { id },
+            (error, data) => {
+              if (error) throw error;
+              const nameAvatar = data[0].imgarticle;
+              const pathAvatarDbDel = pathAvatar + nameAvatar;
+              if (nameAvatar != undefined) help.removeFile(pathAvatarDbDel);
+              conn.query(
+                `
+                UPDATE articles
+                SET title = :title,
+                imgarticle =:ArtImg,
+                desccription = :description,
+                contenu = :auteur,
+                auteur = :auteur,
+                WHERE id = :id;
+         `,
+                {
+                  title,
+                  imgarticle,
+                  ArtImg,
+                  description,
+                  contenu,
+                  auteur,
+                  id,
+                },
+                (error, data) => {
+                  if (error) throw error;
+                  conn.query(
+                    `SELECT *
+                FROM articles WHERE id = :id`,
+                    { id },
+                    (error, data) => {
+                      if (error) throw error;
+                      result(null, data[0]);
+                    }
+                  );
+                }
+              );
+            }
+          );
           conn.release();
         });
       }
-    );
-  });
+    });
+  } else {
+    connection.getConnection(function (error, conn) {
+      conn.query(
+        `
+        UPDATE articles
+        SET title = :title,
+        desccription = :description,
+        contenu = :contenu,
+        auteur = :auteur,
+        WHERE id = :id;
+  `,
+        { title, description, contenu, auteur, id },
+        (error, data) => {
+          if (error) throw error;
+          conn.query(
+            `SELECT *
+            FROM articles WHERE id = :id`,
+            { id },
+            (error, data) => {
+              if (error) throw error;
+              result(null, data[0]);
+            }
+          );
+          conn.release();
+        }
+      );
+    });
+  }
 };
 
 Article.deleteOne = function (id, result) {
@@ -101,7 +174,6 @@ Article.deleteOne = function (id, result) {
       { id },
       (error, data) => {
         const name = data[0].imgarticle;
-        console.log(data[0].imgarticle);
         const dir = "./Public/Images/Articles/";
         const image = dir + name;
         if (data[0].imgarticle) help.removeFile(image);
