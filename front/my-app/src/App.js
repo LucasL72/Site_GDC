@@ -29,7 +29,7 @@ const AppRoutes = () => {
       <Route path="Photos" exact element={<Photos />} />
       <Route path="Contact" exact element={<Contact />} />
       <Route path="Register" exact element={<Register />} />
-      <Route path="Lostpassword" exact element={<Lostpass />} />
+      <Route path="Lostpassword/:rand" exact element={<Lostpass />} />
       <Route path="verif/:rand" element={<VerifAuth />} />
       <Route path="Cgu" exact element={<Cgu />} />
       <Route path="*" element={<NotFound />} />

@@ -38,7 +38,60 @@ const Navigbar = () => {
       </a>
     ));
 
-    if (userToken === "visitor")
+    if (!userToken)
+      return (
+        <>
+          <Nav className="me-auto">
+            <Nav.Item>
+              <Nav.Link href="/">Accueil</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/Blog">Actualités</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/Photos">Photos</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/Contact">Contact</Nav.Link>
+            </Nav.Item>
+            <Button
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              variant="warning"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Adhérer
+            </Button>
+            <a
+              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
+            </a>
+          </Nav>
+          <Nav>
+            <a
+              className="btn btn-full text-center"
+              onClick={() => setModalConnShow(true)}
+            >
+              S'Inscrire/Se Connecter
+            </a>
+            <ModalCon
+              show={modalConnShow}
+              onHide={() => setModalConnShow(false)}
+            />
+          </Nav>
+        </>
+      );
+      else if (userToken === "visitor")
       return (
         <>
           <Nav className="me-auto">
@@ -202,6 +255,7 @@ const Navigbar = () => {
           </Nav>
         </>
       );
+      
   };
 
   return (

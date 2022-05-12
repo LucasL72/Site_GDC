@@ -29,11 +29,11 @@ const User = () => {
                   <h4 className="text-center ssligne"> Vos informations</h4>
                   <Card.Title>Pseudo :  {jwt_decode(userToken).pseudo}</Card.Title>
                   <Card.Title>Email : {jwt_decode(userToken).email} </Card.Title>
-                  <Card.Title>Nom : </Card.Title>
-                  <Card.Title>Prénom : </Card.Title>
-                  <Card.Title>Adresse : </Card.Title>
-                  <Card.Title>Ville : </Card.Title>
-                  <Card.Title>Code Postal : </Card.Title>
+                  <Card.Title>Nom : {jwt_decode(userToken).nom} </Card.Title>
+                  <Card.Title>Prénom : {jwt_decode(userToken).prenom} </Card.Title>
+                  <Card.Title>Adresse : {jwt_decode(userToken).adresse} </Card.Title>
+                  <Card.Title>Ville : {jwt_decode(userToken).city} </Card.Title>
+                  <Card.Title>Code Postal : {jwt_decode(userToken).postal} </Card.Title>
                 </Col>
               </Row>
             </Card.Body>

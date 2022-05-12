@@ -1,13 +1,13 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import PhotoAlbum from "./PhotoAlbum";
+import Row from "react-bootstrap/Row";
 
 const Album = (props) => {
   const { list } = props;
   return (
     <div>
-      <Container fluid>
+      <Container>
         <Row>
           {list.length > 0 &&
             list.map((item) => {

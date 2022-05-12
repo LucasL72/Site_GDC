@@ -10,6 +10,9 @@ import ModalLostPass from "./ModalLostPass";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { login, check } from "../../store/actions/UsersActions";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import { red } from '@mui/material/colors';
 
 const ModalCon = (props) => {
   const [email, setEmail] = useState("");
@@ -62,11 +65,8 @@ const ModalCon = (props) => {
                       required
                     />
                   </FloatingLabel>
-                  <Form.Text className="text-muted mb-3">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
                 </Col>
-                <Col md={12}>
+                <Col md={12} className="mt-2">
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Mot de Passe"
@@ -94,10 +94,8 @@ const ModalCon = (props) => {
                   <Button variant="outline-success" href="/Register">
                     S'Inscrire
                   </Button>
-                </Col>
-                <Col md={12}>
+                  {" "}
                   <Button
-                    className="mt-3"
                     onClick={() => setModalLostShow(true)}
                   >
                     Mot de passe oublié
@@ -108,6 +106,26 @@ const ModalCon = (props) => {
                   />
                 </Col>
               </Form>
+              <Row className="mt-3">
+              <Col md={12} >
+                <div className="text-center">
+                  <a
+                    href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FacebookIcon  fontSize="large" />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <YouTubeIcon sx={{ color: red[500] }} fontSize="large" />
+                  </a>
+                </div>
+              </Col>
+            </Row>
             </Row>
           </Container>
         </Modal.Body>

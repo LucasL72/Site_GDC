@@ -13,7 +13,7 @@ const ModalEditArt = (props) => {
   const [stateImgUpload, setStateImgUpload] = useState("");
   const [imgPreview, setPreview] = useState("");
   const [imgSelect, setSelect] = useState("");
-  const [imgarticle, setImg] = useState(item.imgarticle);
+  const [imgarticle, setImg] = useState("");
   const [title, setTitle] = useState(item.title);
   const [description, setDesc] = useState(item.description);
   const [contenu, setCont] = useState(item.contenu);
@@ -157,7 +157,6 @@ const ModalEditArt = (props) => {
                 variant="outline-dark"
                 type="submit"
                 onClick={props.onHide}
-                value="send"
               >
                 Valider Modification ?
               </Button>

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import ModalDeletePic from "../Modals/ModalDelete/ModalDeletePic";
 import jwt_decode from "jwt-decode";
 
+
 const PhotoAlbum = (props) => {
   const [modalDelShow, setModalDelShow] = React.useState(false);
   const { item } = props;
@@ -17,7 +18,7 @@ const PhotoAlbum = (props) => {
         jwt_decode(userToken).isAdmin === 0)
     )
       return (
-          <div key={item.id} className="mb-4 img-border">
+        <div key={item.id} className="mb-4 img-border">
             <img
               src={`${urlImgAlbum + item.photo}`}
               alt={item.authorname}
@@ -32,8 +33,7 @@ const PhotoAlbum = (props) => {
       jwt_decode(userToken).isAdmin === 1
     )
       return (
-        <>
-          <div key={item.id} className="mb-4 img-border">
+        <div key={item.id} className="mb-4 img-border">
             <img
               src={`${urlImgAlbum + item.photo}`}
               alt={item.authorname}
@@ -55,7 +55,6 @@ const PhotoAlbum = (props) => {
               item={item}
             />
           </div>
-        </>
       );
   };
 
