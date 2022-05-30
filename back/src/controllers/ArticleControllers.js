@@ -53,26 +53,25 @@ class ArticleControllers {
   }
 
   async editOne(req, res) {
-    const { title, description, contenu, auteur } = req.body;
-    const imgart =
-      req.file.filename.split(".").slice(0, -1).join(".") + ".webp"; 
     let articleObj = new Article({
-      id: Number(req.params.id),
-      imgarticle: String(imgart),
-      title: String(title),
-      description: String(description),
-      contenu: String(contenu),
-      auteur: String(auteur),
+      id: id,
+      ...req.body,
     });
     try {
-      Article.editOne(articleObj, (err, data) => {
-        if (err) res.send(err);
-        return res.send({
-          method: req.method,
-          status: "success",
-          flash: "Create Article Success !",
-          dbArticles: data,
-        });
+      Article.editOne(articleObj, req.file, async (err, data) => {
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
+          return res.json({
+            method: req.method,
+            status: "success",
+            message: "Votre article a été modifié",
+            dbArticles: data,
+          });
+        }
       });
     } catch (error) {
       throw error;

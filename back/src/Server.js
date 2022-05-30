@@ -2,6 +2,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const router = require("./routes/router");
+const helmet = require("helmet");
 
 class Server {
   constructor(app, port) {
@@ -22,7 +23,14 @@ class Server {
         credentials: true,
       })
     );
+      // Disable header express default
+    this.app.disable("x-powered-by");
 
+    // this.app.use(helmet())
+    // hidePoweredBy() => disable("x-powered-by")
+    this.app.use(helmet.hidePoweredBy());
+    // contentSecurityPolicy() => Cela aide à prévenir les attaques de scripts intersites
+    this.app.use(helmet.contentSecurityPolicy());
     // Body Parser
     this.app.use(bodyParser.json());
     this.app.use(
