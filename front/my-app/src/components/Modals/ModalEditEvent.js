@@ -94,7 +94,6 @@ const ModalEditEvent = (props) => {
             <Col sm={12}>
               <div className="text-center">
                 <Button
-                  cla
                   variant="outline-dark"
                   type="submit"
                   onClick={props.onHide}

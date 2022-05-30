@@ -1,7 +1,7 @@
 /*
  * Import - Module
  * *************** */
-import {api} from "../../config/axios";
+import { api } from "../../config/axios";
 
 /*
  * Import types { ... }
@@ -23,7 +23,6 @@ export const getArticles = (data) => {
     return api
       .get("/Blog")
       .then((res) => {
-        console.log("getArticles", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
       })
       .catch((err) => console.log(err));
@@ -37,7 +36,6 @@ export const getArticleID = (id) => {
     return api
       .get(`/Blog/${id}`)
       .then((res) => {
-        console.log("getArticleID", res.data);
         dispatch({ type: GET_ARTICLE, payload: res.data });
       })
       .catch((err) => console.log(err));

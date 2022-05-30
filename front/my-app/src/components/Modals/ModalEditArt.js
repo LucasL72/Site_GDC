@@ -35,7 +35,7 @@ const ModalEditArt = (props) => {
     }
   };
 
-  const handleEdit = (e) => {
+  const handleEditArt = (e) => {
     e.preventDefault();
 
     if (!imgarticle) {
@@ -55,11 +55,9 @@ const ModalEditArt = (props) => {
     });
     if (imgSelect) {
       formdata.append("image", imgarticle);
-    }
+    };
     setSelect(false);
-
     dispatch(editArticle(formdata));
-
   };
   return (
     <div>
@@ -76,7 +74,7 @@ const ModalEditArt = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e) => handleEdit(e)}>
+          <Form onSubmit={(e) => handleEditArt(e)}>
             <Col md={12}>
               <Form.Label>Choisir votre image</Form.Label>
               <Form.Control
@@ -153,10 +151,10 @@ const ModalEditArt = (props) => {
             </Col>
             <div className="text-center">
               <Button
-                cla
                 variant="outline-dark"
                 type="submit"
                 onClick={props.onHide}
+                value="send"
               >
                 Valider Modification ?
               </Button>

@@ -17,8 +17,8 @@ const ModalBan = (props) => {
       isBan: isBan,
       id: item.id,
     };
-
     dispatch(BanUser(editData));
+    window.location.reload();
   };
   return (
     <div>

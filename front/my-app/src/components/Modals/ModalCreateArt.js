@@ -17,6 +17,7 @@ const ModalCreateArt = (props) => {
   const [contenu, setCont] = useState("");
   const [auteur, setAuteur] = useState("");
   const dispatch = useDispatch();
+ 
 
   const handleInputChange = (e) => {
     setStateImgUpload("Image non enregistrée");
@@ -33,14 +34,13 @@ const ModalCreateArt = (props) => {
     }
   };
 
-  // ici la fonction est asynchrone
   const handleForm = async (e) => {
     e.preventDefault();
     if (!imgarticle) {
       setStateImgUpload("image obligatoire");
     } else {
       setStateImgUpload("");
-    }
+    };
     const dataArticle = {
       title,
       description,
