@@ -116,7 +116,7 @@ const ModalAddPic = (props) => {
                   type="submit"
                   onClick={props.onHide}
                 >
-                  Submit
+                  Confirmer
                 </Button>
               </div>
             </Col>

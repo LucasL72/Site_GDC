@@ -38,20 +38,23 @@ const LIgneUsers = (props) => {
         <td>{item.city}</td>
         <td>{item.postal}</td>
         <td>
+          {/*
           <a onClick={() => setModalEditUserShow(true)}>
             <EditIcon color="success" />
-          </a>{" "}
+          </a>{" "} */}
           <a onClick={() => setModalDelShow(true)}>
             <DangerousIcon sx={{ color: orange[500] }} />
           </a>{" "}
           <a onClick={() => setModalBanShow(true)}>
             <RemoveCircleIcon sx={{ color: red[500] }} />
           </a>
+          {/*
           <ModalEditUser
             show={modalEditUserShow}
             onHide={() => setModalEditUserShow(false)}
             item={item}
           />
+          */}
           <ModalDeleteUser
             show={modalDelShow}
             onHide={() => setModalDelShow(false)}
@@ -87,20 +90,22 @@ const LIgneUsers = (props) => {
         <td>{item.city}</td>
         <td>{item.postal}</td>
         <td>
+          {/*
           <a onClick={() => setModalEditUserShow(true)}>
             <EditIcon color="success" />
-          </a>{" "}
+    </a>{" "} */}
           <a onClick={() => setModalDelShow(true)}>
             <DangerousIcon sx={{ color: orange[500] }} />
           </a>{" "}
           <a onClick={() => setModalBanShow(true)}>
             <RemoveCircleIcon sx={{ color: red[500] }} />
           </a>
+          {/*
           <ModalEditUser
             show={modalEditUserShow}
             onHide={() => setModalEditUserShow(false)}
             item={item}
-          />
+  /> */}
           <ModalDeleteUser
             show={modalDelShow}
             onHide={() => setModalDelShow(false)}

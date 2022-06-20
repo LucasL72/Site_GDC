@@ -154,7 +154,6 @@ const ModalEditArt = (props) => {
                 variant="outline-dark"
                 type="submit"
                 onClick={props.onHide}
-                value="send"
               >
                 Valider Modification ?
               </Button>

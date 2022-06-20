@@ -99,7 +99,7 @@ const ModalEditEvent = (props) => {
                   onClick={props.onHide}
                   value="send"
                 >
-                  Submit
+                   Valider Modification ?
                 </Button>
               </div>
             </Col>

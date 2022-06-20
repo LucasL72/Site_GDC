@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { urlImgArt } from "../../utils/url";
+import Moment from "react-moment";
+import "moment-timezone";
 const DetailBlog = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -29,7 +31,9 @@ const DetailBlog = () => {
           </Col>
           <Col md={12}>
             <p className="text-justify">{state && state.item.contenu}</p>
-            <p className="text-justify">Auteur :{state && state.item.auteur}</p>
+            <p className="text-justify text-muted">Publié par {state && state.item.auteur} le <Moment updateLocale="fr" tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
+              {state && state.item.dateart}
+              </Moment>{" "} </p>
           </Col>
         </Row>
       </Container>

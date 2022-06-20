@@ -41,7 +41,7 @@ const ModalBan = (props) => {
           <Modal.Footer>
             <Form onSubmit={(e) => handleStatut(e)}>
               <Button
-                cla
+                
                 variant="outline-danger"
                 type="submit"
                 onClick={props.onHide}

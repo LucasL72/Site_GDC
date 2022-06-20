@@ -142,7 +142,7 @@ const ModalEditUser = (props) => {
             </Row>
             <div className="text-center">
               <Button
-                cla
+                
                 variant="outline-dark"
                 type="submit"
                 onClick={props.onHide}

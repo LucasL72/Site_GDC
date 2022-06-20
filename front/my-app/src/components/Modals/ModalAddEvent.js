@@ -89,13 +89,13 @@ const handleForm = async (e) => {
             <Col sm={12}>
               <div className="text-center">
                 <Button
-                  cla
+                  
                   variant="outline-dark"
                   type="submit"
                   onClick={props.onHide}
                   value="send"
                 >
-                  Submit
+                  Confirmer
                 </Button>
               </div>
             </Col>

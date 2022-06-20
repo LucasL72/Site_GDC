@@ -7,6 +7,8 @@ import React from "react";
 import ModalDeleteArt from "../Modals/ModalDelete/ModalDeleteArt";
 import { urlImgArt } from "../../utils/url";
 import jwt_decode from "jwt-decode";
+import Moment from "react-moment";
+import "moment-timezone";
 
 const CardArticle = (props) => {
   const [modalEditShow, setModalEditShow] = React.useState(false);
@@ -43,6 +45,15 @@ const CardArticle = (props) => {
             >
               Voir plus...
             </Button>
+            <Card.Footer>
+              <p className="text-muted">
+                {" "}
+                Posté le{" "}
+                <Moment tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
+                  {item.dateart}
+                </Moment>{" "}
+              </p>
+            </Card.Footer>
           </Card.Body>
         </>
       );
@@ -62,7 +73,6 @@ const CardArticle = (props) => {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
-              cla
               variant="outline-dark"
               type="submit"
               onClick={() => toArticleID(item.id)}
@@ -72,7 +82,6 @@ const CardArticle = (props) => {
           </Card.Body>
           <Card.Footer>
             <Button
-              cla
               variant="outline-danger"
               type="submit"
               onClick={() => setModalDelShow(true)}
@@ -80,7 +89,6 @@ const CardArticle = (props) => {
               Supprimer
             </Button>{" "}
             <Button
-              cla
               variant="outline-success"
               type="submit"
               onClick={() => setModalEditShow(true)}
@@ -97,6 +105,13 @@ const CardArticle = (props) => {
               onHide={() => setModalDelShow(false)}
               item={item}
             />
+            <p className="text-muted">
+              {" "}
+              Posté le{" "}
+              <Moment tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
+                {item.dateart}
+              </Moment>{" "}
+            </p>
           </Card.Footer>
         </>
       );

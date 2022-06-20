@@ -156,7 +156,7 @@ const ModalCreateArt = (props) => {
                   onClick={props.onHide}
                   value="send"
                 >
-                  Submit
+                  Confirmer
                 </Button>
               </div>
             </Col>

@@ -29,7 +29,7 @@ const ModalDeleteMess = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button
-            cla
+            
             variant="outline-danger"
             type="submit"
             onClick={() => handleDelete(item.id)}
