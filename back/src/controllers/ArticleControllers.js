@@ -23,6 +23,28 @@ class ArticleControllers {
       throw error;
     }
   }
+  async getNews(req, res) {
+    try {
+      Article.getNews((err, data) => {
+        console.log("data res", data);
+        if (err) {
+          console.log("err", err),
+            res.status(500).send({
+              message: err.message || "Une erreur est survenue",
+            });
+        } else {
+          return res.send({
+            method: req.method,
+            status: "success",
+            flash: "Create Article Success !",
+            dbArticles: data,
+          });
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async create(req, res) {
     const { title, description, contenu, auteur } = req.body;

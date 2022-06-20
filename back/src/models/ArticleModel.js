@@ -28,6 +28,19 @@ Article.getAll = function (result) {
   });
 };
 
+Article.getNews = function (result) {
+  connection.getConnection(function (error, conn) {
+    if (error) throw error;
+    conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3;`, (error, data) => {
+      if (error) throw error;
+      console.log("model data", data);
+      result(null, data);
+      // Mettre fin à la connexion avec la db
+      conn.release();
+    });
+  });
+};
+
 Article.getById = function (id, result) {
   connection.getConnection(function (error, conn) {
     if (error) throw error;
@@ -103,8 +116,8 @@ Article.editOne = function (articleObj, result, reqfile) {
                 UPDATE articles
                 SET title = :title,
                 imgarticle =:ArtImg,
-                desccription = :description,
-                contenu = :auteur,
+                description = :description,
+                contenu = :contenu,
                 auteur = :auteur,
                 WHERE id = :id;
          `,
@@ -142,7 +155,7 @@ Article.editOne = function (articleObj, result, reqfile) {
         `
         UPDATE articles
         SET title = :title,
-        desccription = :description,
+        description = :description,
         contenu = :contenu,
         auteur = :auteur,
         WHERE id = :id;
