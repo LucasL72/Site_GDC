@@ -76,7 +76,7 @@ class ArticleControllers {
 
   async editOne(req, res) {
     let articleObj = new Article({
-      id: id,
+      id: req.params.id,
       ...req.body,
     });
     try {
@@ -103,7 +103,7 @@ class ArticleControllers {
   async getId(req, res) {
     try {
       Article.getById(String(req.params.id), (err, data) => {
-        console.log("dataid res", data);
+        console.log("data id res", data);
         if (err) {
           console.log("err", err),
             res.status(500).send({

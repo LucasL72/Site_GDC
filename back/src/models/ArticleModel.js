@@ -4,6 +4,7 @@
  ******************************/
 const connection = require("../config/ConnectionDB");
 const help = require("../utils/help");
+const path = require("path");
 
 const Article = function (articles) {
   (this.id = articles.id),
@@ -31,7 +32,7 @@ Article.getAll = function (result) {
 Article.getNews = function (result) {
   connection.getConnection(function (error, conn) {
     if (error) throw error;
-    conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 3;`, (error, data) => {
+    conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 2;`, (error, data) => {
       if (error) throw error;
       console.log("model data", data);
       result(null, data);
@@ -85,20 +86,20 @@ Article.create = function (newArticle, result) {
 Article.editOne = function (articleObj, result, reqfile) {
   const { title, contenu, description, auteur, id } = articleObj;
 
-  let pathAvatar = "./Public/Images/Articles/",
-    pathAvatarWebp = "",
+  let pathPic = "./Public/Images/Articles/",
+    pathPicWebp = "",
     pathImgWebp = "";
 
   const dateImg = new Date().getTime();
 
   if (reqfile) {
     pathImgWebp =
-      pathAvatar +
+      pathPic +
       (reqfile.filename.split(".").slice(0, -1).join(".") + ".webp");
 
-    pathAvatarWebp = pathAvatar + "_" + dateImg + ".webp";
+    pathPicWebp = pathPic + "_" + dateImg + ".webp";
 
-    help.renameFile(pathImgWebp, pathAvatarWebp).then((data) => {
+    help.renameFile(pathImgWebp, pathPicWebp).then((data) => {
       if (data) {
         const ArtImg = "_" + dateImg + ".webp";
         connection.getConnection(function (error, conn) {
@@ -108,9 +109,9 @@ Article.editOne = function (articleObj, result, reqfile) {
             { id },
             (error, data) => {
               if (error) throw error;
-              const nameAvatar = data[0].imgarticle;
-              const pathAvatarDbDel = pathAvatar + nameAvatar;
-              if (nameAvatar != undefined) help.removeFile(pathAvatarDbDel);
+              const namePic = data[0].imgarticle;
+              const pathPicDbDel = pathPic + namePic;
+              if (namePic != undefined) help.removeFile(pathPicDbDel);
               conn.query(
                 `
                 UPDATE articles

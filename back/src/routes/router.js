@@ -24,6 +24,8 @@ router
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
+  router.route("/api/Actu").get(new ArticleControllers().getNews);
+
   router.route("/api/login").post(new UserController().login);
 // Session
 router
