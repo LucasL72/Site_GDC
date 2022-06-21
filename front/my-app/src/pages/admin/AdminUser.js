@@ -7,8 +7,7 @@ const AdminUser = () => {
         <div>
             <AdminLayout>
                 <GestionUser />
-            </AdminLayout>
-            
+            </AdminLayout> 
         </div>
     );
 };

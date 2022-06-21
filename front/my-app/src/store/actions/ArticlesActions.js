@@ -11,6 +11,7 @@ import {
   GET_ARTICLE,
   DELETE_ARTICLE,
   EDIT_ARTICLE,
+  GET_ARTNEWS,
 } from "./ActionTypes";
 
 /*
@@ -24,6 +25,17 @@ export const getArticles = (data) => {
       .get("/Blog")
       .then((res) => {
         dispatch({ type: GET_ARTICLE, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+// getNews 2 last
+export const getNews = (data) => {
+  return (dispatch) => {
+    return api
+      .get("/Actu")
+      .then((res) => {
+        dispatch({ type: GET_ARTNEWS, payload: res.data });
       })
       .catch((err) => console.log(err));
   };

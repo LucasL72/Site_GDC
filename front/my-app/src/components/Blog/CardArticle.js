@@ -38,9 +38,8 @@ const CardArticle = (props) => {
             <Card.Title>{item.title}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
-              cla
               variant="outline-dark"
-              type="submit"
+              type="button"
               onClick={() => toArticleID(item.id)}
             >
               Voir plus...
@@ -74,7 +73,7 @@ const CardArticle = (props) => {
             <Card.Text>{item.description}</Card.Text>
             <Button
               variant="outline-dark"
-              type="submit"
+              type="button"
               onClick={() => toArticleID(item.id)}
             >
               Voir plus...
@@ -83,14 +82,14 @@ const CardArticle = (props) => {
           <Card.Footer>
             <Button
               variant="outline-danger"
-              type="submit"
+              type="button"
               onClick={() => setModalDelShow(true)}
             >
               Supprimer
             </Button>{" "}
             <Button
               variant="outline-success"
-              type="submit"
+              type="button"
               onClick={() => setModalEditShow(true)}
             >
               Editer

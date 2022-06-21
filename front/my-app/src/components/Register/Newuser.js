@@ -8,6 +8,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../store/actions/UsersActions";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Newuser = () => {
   const [stateImgUpload, setStateImgUpload] = useState("");
@@ -70,7 +71,7 @@ const Newuser = () => {
     setSelect(false);
 
     dispatch(createUser(formdata));
-    toHome()
+    toHome();
   };
 
   return (
@@ -82,7 +83,7 @@ const Newuser = () => {
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Choisir une image de profil</Form.Label>
                 <Form.Control
-                 type="file"
+                  type="file"
                   className="mb-3"
                   accept="image/*"
                   onChange={handleInputChange}
@@ -159,7 +160,7 @@ const Newuser = () => {
                 />
               </FloatingLabel>
               <Form.Text className="text-muted mb-3">
-                We'll never share your email with anyone else.
+                Nous ne partagerons jamais votre mail.
               </Form.Text>
             </Col>
             <Col md={12}>
@@ -229,15 +230,14 @@ const Newuser = () => {
               </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Agree to terms and conditions"
-                required
-              />
-            </Form.Group>
+            
+            <ReCAPTCHA
+              sitekey="6Ldv9WYgAAAAAKY8VrPRKpWNJVW7vANecIFNNNVK"
+              required
+            />
+
             <div className="text-center mb-3">
-              <Button variant="outline-success" type="submit"  value="send">
+              <Button variant="outline-success" type="submit" value="send">
                 Submit
               </Button>
             </div>

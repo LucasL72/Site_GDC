@@ -56,6 +56,7 @@ const ModalCreateArt = (props) => {
     }
     setSelect(false);
     dispatch(createArticle(formdata));
+    window.location.reload();
   };
   return (
     <div>
@@ -154,7 +155,6 @@ const ModalCreateArt = (props) => {
                   variant="outline-dark"
                   type="submit"
                   onClick={props.onHide}
-                  value="send"
                 >
                   Confirmer
                 </Button>

@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createMessage, getMessage } from "../../store/actions/MessagesActions";
 import EmailIcon from "@mui/icons-material/Email";
+import ReCAPTCHA from "react-google-recaptcha";
 const ContForm = () => {
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
@@ -61,7 +62,7 @@ const ContForm = () => {
                   >
                     <EmailIcon color="success" sx={{ fontSize: 30 }} />
                   </a>
-                   grainecitoyenmlg@gmail.com
+                  grainecitoyenmlg@gmail.com
                 </p>
               </Col>
             </Row>
@@ -100,6 +101,11 @@ const ContForm = () => {
                   rows={3}
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
+                />
+
+                <ReCAPTCHA
+                  sitekey="6Ldv9WYgAAAAAKY8VrPRKpWNJVW7vANecIFNNNVK"
+                  required
                 />
               </FloatingLabel>
               <div className="text-center">

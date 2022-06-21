@@ -51,6 +51,7 @@ const ModalAddPic = (props) => {
     setSelect(false);
 
     dispatch(createPic(formdata));
+    window.location.reload();
   };
   return (
     <div>

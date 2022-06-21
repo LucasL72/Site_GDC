@@ -18,6 +18,8 @@ const Admin = () => {
               Lien collaboratif
             </a>
           </div>
+          <p className="text-muted text-center">Identifiant : "membre" </p>
+          <p className="text-muted text-center">Mot de passe : "grainedecitoyen"</p>
         </Container>
       </AdminLayout>
     </div>

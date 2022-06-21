@@ -35,7 +35,7 @@ const ModalEditArt = (props) => {
     }
   };
 
-  const handleEditArt = (e) => {
+  const handleEditArt = async (e) => {
     e.preventDefault();
 
     if (!imgarticle) {
@@ -44,10 +44,11 @@ const ModalEditArt = (props) => {
       setStateImgUpload("");
     }
     const dataArticle = {
-      title,
-      description,
-      contenu,
-      auteur,
+      title: title,
+      description: description,
+      contenu: contenu,
+      auteur: auteur,
+      id: item.id,
     };
     const formdata = new FormData();
     Object.entries(dataArticle).forEach(([cle, valeur]) => {
@@ -55,9 +56,10 @@ const ModalEditArt = (props) => {
     });
     if (imgSelect) {
       formdata.append("image", imgarticle);
-    };
+    }
     setSelect(false);
     dispatch(editArticle(formdata));
+    window.location.reload();
   };
   return (
     <div>
@@ -153,7 +155,6 @@ const ModalEditArt = (props) => {
               <Button
                 variant="outline-dark"
                 type="submit"
-                onClick={props.onHide}
               >
                 Valider Modification ?
               </Button>

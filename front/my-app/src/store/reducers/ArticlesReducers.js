@@ -25,6 +25,12 @@ export function ArticlesReducer(state = initialState, action) {
         flash: action.payload.flash,
         listArticles: action.payload.dbArticles,
       };
+      case Actions.GET_ARTNEWS:
+        return {
+          ...state,
+          flash: action.payload.flash,
+          listArticles: action.payload.dbArticles,
+        };
     case Actions.GETID_ARTICLE:
       return {
         ...state,

@@ -80,7 +80,7 @@ const MentionsLég = () => {
             www.grainedecitoyenmontgesnois.fr
           </a>
           .<br />
-          Le site <strong>www.grainesdecitoyen.com</strong>
+          Le site <strong>www.grainedecitoyenmontgesnois.fr</strong>
           <strong> </strong>regroupe un ensemble de services, dans l'état, mis à
           la disposition des utilisateurs. Il est ici précisé que ces derniers
           doivent rester courtois et faire preuve de bonne foi tant envers les

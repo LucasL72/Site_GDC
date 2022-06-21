@@ -35,7 +35,7 @@ const ModalEditEvent = (props) => {
       <Modal {...props} size="md" aria-labelledby="ModalEditEvent" centered>
         <Modal.Header closeButton>
           <Modal.Title id="ModalEditEvent">
-            Ajouter un évènement {""}
+             Modifier évènement {""}
             <img
               alt="Logo association"
               src="../logoGDC.png"

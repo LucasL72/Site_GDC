@@ -12,7 +12,7 @@ const CreateArt = () => {
         <Col md={12}>
           <h1 className="text-center ssligne"> Gestion Articles</h1>
           <div className="text-center">
-            <Button className="mt-3" onClick={() => setModalCreateShow(true)}>
+            <Button type="button" className="mt-3" onClick={() => setModalCreateShow(true)}>
               Créer Article
             </Button>
           </div>

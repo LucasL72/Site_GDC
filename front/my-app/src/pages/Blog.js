@@ -14,14 +14,14 @@ const Blog = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <MainLayout>
         <div>
           <h2 className="text-center ssligne">Nos Articles</h2>
           <ListArticle list={listArticles} />
         </div>
       </MainLayout>
-    </>
+    </div>
   );
 };
 

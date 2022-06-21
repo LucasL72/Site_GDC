@@ -13,8 +13,7 @@ const Prog = () => {
         <Card.Body>
           <Card.Title>Programme 2022</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+           Le Programme de l'année
           </Card.Text>
           <Button
             cla
