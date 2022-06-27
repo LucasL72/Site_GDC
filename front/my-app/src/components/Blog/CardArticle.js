@@ -35,22 +35,23 @@ const CardArticle = (props) => {
             alt={item.title}
           />
           <Card.Body>
-            <Card.Title>{item.title}</Card.Title>
+            <Card.Title className="text-center ftitleb">{item.title}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
-              variant="outline-dark"
+              variant="outline-success"
               type="button"
               onClick={() => toArticleID(item.id)}
+              className="mb-2"
             >
-              Voir plus...
-            </Button>
+              En savoir plus...
+            </Button>{" "}
             <Card.Footer>
               <p className="text-muted">
                 {" "}
                 Posté le{" "}
                 <Moment tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
                   {item.dateart}
-                </Moment>{" "}
+                </Moment>
               </p>
             </Card.Footer>
           </Card.Body>
@@ -69,24 +70,27 @@ const CardArticle = (props) => {
             alt={item.title}
           />
           <Card.Body>
-            <Card.Title>{item.title}</Card.Title>
+            <Card.Title className="text-center ftitleb">{item.title}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
-              variant="outline-dark"
+              variant="outline-success"
               type="button"
               onClick={() => toArticleID(item.id)}
             >
-              Voir plus...
-            </Button>
+              En savoir plus...
+            </Button>{" "}
           </Card.Body>
           <Card.Footer>
             <Button
               variant="outline-danger"
               type="button"
               onClick={() => setModalDelShow(true)}
+              className="mx-auto"
             >
               Supprimer
             </Button>{" "}
+            {/*
+            //Boutton edit à corriger pour fonctionner
             <Button
               variant="outline-success"
               type="button"
@@ -99,6 +103,7 @@ const CardArticle = (props) => {
               onHide={() => setModalEditShow(false)}
               item={item}
             />
+      */}
             <ModalDeleteArt
               show={modalDelShow}
               onHide={() => setModalDelShow(false)}
@@ -118,7 +123,7 @@ const CardArticle = (props) => {
 
   return (
     <Col md={4} className="g-3">
-      <Card className="scale" key={item.id}>
+      <Card border="success" className="scale" key={item.id}>
         <CheckLog />
       </Card>
     </Col>

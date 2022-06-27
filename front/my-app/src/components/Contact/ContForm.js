@@ -46,23 +46,24 @@ const ContForm = () => {
               à l'administration du site{" "}
             </p>
             <Row>
-              <Col md={6}>
+              <Col md={8}>
                 <p>
                   <AddLocationAltIcon color="success" sx={{ fontSize: 30 }} />{" "}
                   56 Grande Rue 72450 Montfort-le-Gesnois
                 </p>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
                 <p>
                   {" "}
                   <a
                     href="mailto: grainecitoyenmlg@gmail.com"
                     target="_blank"
                     rel="noreferrer"
+                    className="linkb"
                   >
                     <EmailIcon color="success" sx={{ fontSize: 30 }} />
+                    Nous contacter
                   </a>
-                  grainecitoyenmlg@gmail.com
                 </p>
               </Col>
             </Row>

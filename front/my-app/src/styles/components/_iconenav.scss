@@ -29,3 +29,12 @@
   box-shadow: 0 0 5px;
   border-width: 7px;
 }
+
+.navnav:hover:after {
+  display: block;
+  height: 3.5px;
+  background-color: rgb(216, 164, 100);
+  width: 40px;
+  content: "";
+  margin: 0 auto;
+}

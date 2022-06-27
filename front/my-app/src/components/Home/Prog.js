@@ -4,14 +4,14 @@ import Button from "react-bootstrap/Button";
 const Prog = () => {
   return (
     <div>
-      <Card border="success">
+      <Card className="scale" border="success">
         <Card.Img
           className="img-fluid"
           variant="top"
           src="../Docs/gdc_prog.png"
         />
         <Card.Body>
-          <Card.Title>Programme 2022</Card.Title>
+          <Card.Title >Programme 2022</Card.Title>
           <Card.Text>
            Le Programme de l'année
           </Card.Text>

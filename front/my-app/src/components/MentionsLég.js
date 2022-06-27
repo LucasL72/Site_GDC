@@ -9,7 +9,7 @@ const MentionsLég = () => {
           2004-575 du 21 juin 2004 pour la Confiance dans l'économie numérique,
           dite L.C.E.N., nous portons à la connaissance des utilisateurs et
           visiteurs du site :{" "}
-          <a href="http://www.grainedecitoyenmontgesnois.fr" target="_blank">
+          <a href="http://www.grainedecitoyenmontgesnois.fr" target="_blank" rel="noreferrer" >
             www.grainedecitoyenmontgesnois.fr
           </a>{" "}
           les informations suivantes :
@@ -43,8 +43,8 @@ const MentionsLég = () => {
           <br />
           Contacter le Webmaster :{" "}
           <strong>
-            <a href="mailto:lucasj.ledoux@gmail.com?subject=Contact a partir des mentions lÃ©gales via le site www.grainedecitoyenmontgesnois.fr">
-              à changer
+            <a href="mailto:grainecitoyenmlg@gmail.com?subject=Contact a partir des mentions lÃ©gales via le site www.grainedecitoyenmontgesnois.fr" rel="noreferrer" >
+            grainecitoyenmlg@gmail.com
             </a>
           </strong>
           <br />
@@ -60,6 +60,7 @@ const MentionsLég = () => {
             <a
               href="https://www.generer-mentions-legales.com/generateur-mentions-legales.html"
               target="_blank"
+              rel="noreferrer" 
             >
               générateur de mentions legales
             </a>
@@ -76,7 +77,7 @@ const MentionsLég = () => {
         <p>
           Est désigné ci-après : <strong>Utilisateur</strong>, tout internaute
           se connectant et utilisant le site susnommé :{" "}
-          <a href="http://www.grainedecitoyenmontgesnois.fr" target="_blank">
+          <a href="http://www.grainedecitoyenmontgesnois.fr" target="_blank" rel="noreferrer" >
             www.grainedecitoyenmontgesnois.fr
           </a>
           .<br />
@@ -85,7 +86,7 @@ const MentionsLég = () => {
           la disposition des utilisateurs. Il est ici précisé que ces derniers
           doivent rester courtois et faire preuve de bonne foi tant envers les
           autres utilisateurs qu'envers le webmaster du site
-          www.grainesdecitoyen.com. Le site www.grainesdecitoyenmontgesnois.com est mis à
+          www.grainesdecitoyenmontgesnois.com. Le site www.grainesdecitoyenmontgesnois.com est mis à
           jour régulièrement par L'association Graine de Citoyen Montgesnois .<br />
           L'association Graine de Citoyen Montgesnois s’efforce de fournir sur le site www.grainesdecitoyenmontgesnois.com
           des informations les plus précises possibles (sous réserve de
@@ -109,7 +110,7 @@ const MentionsLég = () => {
           à faire son maximum afin de rétablir l’accès au service et s’efforcera
           alors de communiquer préalablement aux utilisateurs les dates et
           heures de l’intervention. N’étant soumis qu’à une obligation de moyen,
-          www.grainesdecitoyen.com ne saurait être tenu pour responsable de tout
+          www.grainesdecitoyenmontgesnois.com ne saurait être tenu pour responsable de tout
           dommage, quelle qu’en soit la nature, résultant d’une indisponibilité
           du service.
         </p>
@@ -128,7 +129,7 @@ const MentionsLég = () => {
           adaptation totale ou partielle de l'un quelconque de ces éléments,
           quel que soit le moyen ou le procédé utilisé, est interdite, sauf
           autorisation écrite préalable de L'association Graine de Citoyen Montgesnois , propriétaire du site à
-          l'email : à changer , à défaut elle sera considérée comme
+          l'email : grainecitoyenmlg@gmail.com , à défaut elle sera considérée comme
           constitutive d’une contrefaçon et passible de poursuite conformément
           aux dispositions des articles L.335-2 et suivants du Code de Propriété
           Intellectuelle.
@@ -152,7 +153,7 @@ const MentionsLég = () => {
           Le paramétrage du logiciel de navigation permet d’informer de la
           présence de cookie et éventuellement, de la refuser de la manière
           décrite à l’adresse suivante :{" "}
-          <a href="http://www.cnil.fr">www.cnil.fr</a>. L’utilisateur peut
+          <a href="http://www.cnil.fr" rel="noreferrer" >www.cnil.fr</a>. L’utilisateur peut
           toutefois configurer le navigateur de son ordinateur pour refuser
           l’installation des cookies, sachant que le refus d'installation d'un
           cookie peut entraîner l’impossibilité d’accéder à certains services.
@@ -190,8 +191,8 @@ const MentionsLég = () => {
           le concernant. Pour l’exercer, adressez votre demande à
           www.grainedecitoyenmontgesnois.fr par email :{" "}
           <strong>
-            <a href="mailto:lucasj.ledoux@gmail.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site www.grainedecitoyenmontgesnois.fr">
-            a changer
+            <a href="mailto:grainecitoyenmlg@gmail.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site www.grainedecitoyenmontgesnois.fr">
+            grainecitoyenmlg@gmail.com
             </a>
           </strong>
           ou par écrit dûment signée, accompagnée d’une copie du titre
@@ -204,13 +205,13 @@ const MentionsLég = () => {
           www.grainedecitoyenmontgesnois.fr n'est publiée à l'insu de
           l'utilisateur, échangée, transférée, cédée ou vendue sur un support
           quelconque à des tiers. Seule l'hypothèse du rachat du site
-          www.grainesdecitoyen.com et de ses droits autorise Lucas Ledoux à
+          www.grainesdecitoyenmontegsnois.com et de ses droits autorise Lucas Ledoux à
           transmettre les dites informations à l'éventuel acquéreur qui serait à
           son tour tenu à la même obligation de conservation et de modification
           des données vis à vis de l'utilisateur du site
           www.grainedecitoyenmontgesnois.fr.
           <br />
-          Le site www.grainesdecitoyen.com est en conformité avec le RGPD{" "}
+          Le site www.grainesdecitoyenmontgesnois.com est en conformité avec le RGPD{" "}
           <a href="https://www.cnil.fr/"> voir CNIL</a>
         </p>
 

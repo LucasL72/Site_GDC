@@ -10,30 +10,40 @@ const User = () => {
   return (
     <div>
       <Container>
-        <Col md={12} className="mt-3">
+        <Col className="mx-auto mt-3" md={6}>
           <Card text="light" className="user-details">
-            <Card.Header className="text-center  ssligne h2">Mon Profil</Card.Header>
-            <Card.Body>
-              <Row md={2}>
-                <Col md={6}>
-                  <h4 className="text-center ssligne"> Votre Photo de profil</h4>
-                  <img
-                    className="img-fluid rounded-circle circle"
-                    src={`${urlImgUsers + jwt_decode(userToken).imguser }`}
-                    alt="Profile pic"
-                    width="600"
-                    height="500"
-                  ></img>
-                </Col>
-                <Col md={6}>
+            <Card.Header className="text-center">
+              <h2 className="text-center ssligne"> Mon Profil</h2>
+              <img
+                className="rounded-circle icon img-fluid"
+                SS
+                src={`${urlImgUsers + jwt_decode(userToken).imguser}`}
+                alt="Profile pic"
+                width="175"
+                height="250"
+              ></img>
+            </Card.Header>
+            <Card.Body className="text-center">
+              <Row>
+                <Col md={12}>
                   <h4 className="text-center ssligne"> Vos informations</h4>
-                  <Card.Title>Pseudo :  {jwt_decode(userToken).pseudo}</Card.Title>
-                  <Card.Title>Email : {jwt_decode(userToken).email} </Card.Title>
+                  <Card.Title>
+                    Pseudo : {jwt_decode(userToken).pseudo}
+                  </Card.Title>
+                  <Card.Title>
+                    Email : {jwt_decode(userToken).email}{" "}
+                  </Card.Title>
                   <Card.Title>Nom : {jwt_decode(userToken).nom} </Card.Title>
-                  <Card.Title>Prénom : {jwt_decode(userToken).prenom} </Card.Title>
-                  <Card.Title>Adresse : {jwt_decode(userToken).adresse} </Card.Title>
+                  <Card.Title>
+                    Prénom : {jwt_decode(userToken).prenom}{" "}
+                  </Card.Title>
+                  <Card.Title>
+                    Adresse : {jwt_decode(userToken).adresse}{" "}
+                  </Card.Title>
                   <Card.Title>Ville : {jwt_decode(userToken).city} </Card.Title>
-                  <Card.Title>Code Postal : {jwt_decode(userToken).postal} </Card.Title>
+                  <Card.Title>
+                    Code Postal : {jwt_decode(userToken).postal}{" "}
+                  </Card.Title>
                 </Col>
               </Row>
             </Card.Body>

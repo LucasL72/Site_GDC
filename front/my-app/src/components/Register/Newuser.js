@@ -159,7 +159,7 @@ const Newuser = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </FloatingLabel>
-              <Form.Text className="text-muted mb-3">
+              <Form.Text className="text-muted">
                 Nous ne partagerons jamais votre mail.
               </Form.Text>
             </Col>

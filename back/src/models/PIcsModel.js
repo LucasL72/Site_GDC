@@ -81,7 +81,6 @@ class Albums {
           { id },
           (error, data) => {
             const name = data[0].photo;
-            console.log(data[0].photo);
             const dir = "./Public/Images/Album/";
             const image = dir + name;
             if (data[0].photo) help.removeFile(image);

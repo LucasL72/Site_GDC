@@ -16,67 +16,64 @@ const Navigbar = () => {
     const [modalConnShow, setModalConnShow] = React.useState(false);
     const navigate = useNavigate();
     const logout = () => {
-      localStorage.setItem('user_token', 'visitor')
+      localStorage.setItem("user_token", "visitor");
       navigate("/");
     };
     const userToken = localStorage.getItem("user_token");
     const CustomToggle = React.forwardRef(({ onClick }, ref) => (
-      <a
-        ref={ref}
-        onClick={(e) => {
-          e.preventDefault();
-          onClick(e);
-        }}
-      >
-       <img
-        src={`${urlImgUsers + jwt_decode(userToken).imguser }`}
-        width="60"
-        height="60"
-        alt={jwt_decode (userToken).pseudo}
-        className="rounded-circle icon"
-      ></img>
-      </a>
+      <div className="text-center">
+        <a
+          ref={ref}
+          onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+          }}
+        >
+          <img
+            src={`${urlImgUsers + jwt_decode(userToken).imguser}`}
+            width="60"
+            height="60"
+            alt={jwt_decode(userToken).pseudo}
+            className="rounded-circle icon"
+          ></img>
+        </a>
+      </div>
     ));
 
     if (!userToken)
       return (
         <>
-          <Nav className="me-auto">
-            <Nav.Item>
+          <Nav>
+            <Nav.Item className="navnav">
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Blog">Actualités</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Photos">Photos</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Contact">Contact</Nav.Link>
-            </Nav.Item>
-            <Button
-              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
-              variant="warning"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Adhérer
-            </Button>
-            <a
-              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
           </Nav>
+          <Nav className="mx-auto">
+            <div className="text-center">
+              {" "}
+              <a
+                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YouTubeIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+            </div>
+          </Nav>
+
           <Nav>
             <a
               className="btn btn-full text-center"
@@ -88,25 +85,6 @@ const Navigbar = () => {
               show={modalConnShow}
               onHide={() => setModalConnShow(false)}
             />
-          </Nav>
-        </>
-      );
-      else if (userToken === "visitor")
-      return (
-        <>
-          <Nav className="me-auto">
-            <Nav.Item>
-              <Nav.Link href="/">Accueil</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Blog">Actualités</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Photos">Photos</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Contact">Contact</Nav.Link>
-            </Nav.Item>
             <Button
               href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
               variant="warning"
@@ -115,21 +93,43 @@ const Navigbar = () => {
             >
               Adhérer
             </Button>
-            <a
-              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
           </Nav>
+        </>
+      );
+    else if (userToken === "visitor")
+      return (
+        <>
+          <Nav>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/">Accueil</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <Nav className="mx-auto">
+            <div className="text-center">
+              {" "}
+              <a
+                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YouTubeIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+            </div>
+          </Nav>
+
           <Nav>
             <a
               className="btn btn-full text-center"
@@ -141,26 +141,38 @@ const Navigbar = () => {
               show={modalConnShow}
               onHide={() => setModalConnShow(false)}
             />
+            <Button
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              variant="warning"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Adhérer
+            </Button>
           </Nav>
         </>
       );
-    else if (jwt_decode (userToken).isVerified === 1 && jwt_decode (userToken).isBan === 0 && jwt_decode (userToken).isAdmin === 1)
+    else if (
+      jwt_decode(userToken).isVerified === 1 &&
+      jwt_decode(userToken).isBan === 0 &&
+      jwt_decode(userToken).isAdmin === 1
+    )
       return (
         <>
-          <Nav className="me-auto">
-            <Nav.Item>
+          <Nav>
+            <Nav.Item className="navnav">
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Blog">Actualités</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Photos">Photos</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Contact">Contact</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
+            <Nav.Item className="navnav">
               <Nav.Link href="/Admin">Admin</Nav.Link>
             </Nav.Item>
             <Button
@@ -171,20 +183,24 @@ const Navigbar = () => {
             >
               Adhérer
             </Button>
-            <a
-              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
+          </Nav>
+          <Nav className="mx-auto">
+            <div className="text-center">
+              <a
+                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YouTubeIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>{" "}
+            </div>
           </Nav>
           <Nav>
             <Dropdown drop="start">
@@ -204,19 +220,19 @@ const Navigbar = () => {
     else
       return (
         <>
-          <Nav className="me-auto">
-            <Nav.Item>
+          <Nav>
+            <Nav.Item className="navnav">
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Blog">Actualités</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Photos">Photos</Nav.Link>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Contact">Contact</Nav.Link>
-            </Nav.Item>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+            </Nav.Item>{" "}
             <Button
               href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
               variant="warning"
@@ -225,20 +241,24 @@ const Navigbar = () => {
             >
               Adhérer
             </Button>
-            <a
-              href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FacebookIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <YouTubeIcon color="disabled" sx={{ fontSize: 40 }} />
-            </a>
+          </Nav>
+          <Nav className="mx-auto">
+            <div className="text-center">
+              <a
+                href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YouTubeIcon color="disabled" sx={{ fontSize: 45 }} />
+              </a>
+            </div>
           </Nav>
           <Nav>
             <Dropdown drop="start">
@@ -255,7 +275,6 @@ const Navigbar = () => {
           </Nav>
         </>
       );
-      
   };
 
   return (

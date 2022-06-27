@@ -78,14 +78,6 @@ const EditUser = (props) => {
                 </FloatingLabel>
               </Col>
             </Row>
-
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Agree to terms and conditions"
-                required
-              />
-            </Form.Group>
             <div className="text-center mb-3">
               <Button variant="outline-success" type="submit">
                 Submit

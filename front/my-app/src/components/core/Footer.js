@@ -1,3 +1,4 @@
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -7,9 +8,113 @@ import EmailIcon from "@mui/icons-material/Email";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { red } from '@mui/material/colors';
+import { red } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const Footer = () => {
+  const CheckLoggedInFooter = () => {
+    const [modalConnShow, setModalConnShow] = React.useState(false);
+    const navigate = useNavigate();
+    const logout = () => {
+      localStorage.setItem("user_token", "visitor");
+      navigate("/");
+    };
+    const userToken = localStorage.getItem("user_token");
+
+    if (!userToken)
+      return (
+        <>
+          <div className="text-center">
+            <p className="ftitle">Plan du site</p>
+            <Nav className="flex-column">
+              <Nav.Item className="navnav">
+                <Nav.Link href="/">Accueil</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Nos Actualités">Actualités</Nav.Link>
+              </Nav.Item>
+
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Qui Sommes Nous ?">Contact</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+        </>
+      );
+    else if (userToken === "visitor")
+      return (
+        <>
+          <div className="text-center">
+            <p className="ftitle">Plan du site</p>
+            <Nav className="flex-column">
+              <Nav.Item className="navnav">
+                <Nav.Link href="/">Accueil</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+        </>
+      );
+    else if (
+      jwt_decode(userToken).isVerified === 1 &&
+      jwt_decode(userToken).isBan === 0 &&
+      jwt_decode(userToken).isAdmin === 1
+    )
+      return (
+        <>
+          <div className="text-center">
+            <p className="ftitle">Plan du site</p>
+            <Nav className="flex-column">
+              <Nav.Item className="navnav">
+                <Nav.Link href="/">Accueil</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                {" "}
+                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Admin">Admin</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+        </>
+      );
+    else
+      return (
+        <>
+          <div className="text-center">
+            <p className="ftitle">Plan du site</p>
+            <Nav className="flex-column">
+              <Nav.Item className="navnav">
+                <Nav.Link href="/">Accueil</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                {" "}
+                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+        </>
+      );
+  };
   return (
     <div className="Footer">
       <div className="text-center">
@@ -25,29 +130,9 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col md={4}>
-            <div className="text-center">
-              <p className="ftitle">Plan du site</p>
-              <Nav className="flex-column">
-                <Nav.Item>
-                  <Nav.Link href="/">Accueil</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href="/Blog">Actualités</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  {" "}
-                  <Nav.Link href="/Photos">Photos</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href="/Contact">Contact</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href="/Admin">Admin</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </div>
+            <CheckLoggedInFooter />
           </Col>
-          <Col md={4}>
+          <Col md={4} className="text-center">
             <p className=" ftitle text-center">Nos Partenaires</p>
             <p className="text-wrap fs-6 text-break lh-1 text-justify">
               Ils ont contribué à nos activités, soit par le don de matériaux,
@@ -59,70 +144,85 @@ const Footer = () => {
                   href="https://www.reseaupro.fr/"
                   target="_blank"
                   rel="noreferrer"
+                  className="link"
                 >
                   <img
                     src="../Docs/reso_pro.png"
                     alt="reseau-pro"
                     height="50"
                     width="50"
+                    className="icon rounded-circle"
                   ></img>
+                  Réseau Pro de Saint Mars la Brière
                 </a>{" "}
-                Réseau Pro de Saint Mars la Brière
               </li>
               <li className="mt-2">
                 <a
                   href="https://hunaudieresmateriaux.fr"
                   target="_blank"
                   rel="noreferrer"
+                  className="link"
                 >
                   <img
                     src="../Docs/hunmat.png"
                     alt="huneaudiére_materieux"
                     height="50"
                     width="50"
+                    className="icon rounded-circle"
                   ></img>
+                  Hunaudières Matériaux à Ruaudin
                 </a>{" "}
-                Hunaudières Matériaux à Ruaudin
               </li>
               <li className="mt-2">
                 <a
                   href="https://agrocampus-lagerminiere.fr"
                   target="_blank"
                   rel="noreferrer"
+                  className="link"
                 >
                   <img
                     src="../Docs/germiniere.png"
                     alt="agrocampus-lagerminière"
                     height="50"
                     width="50"
+                    className="icon rounded-circle"
                   ></img>
+                  CFPPA la germinière
                 </a>{" "}
-                CFPPA la germinière
               </li>
-              <li className="mt-2">
-                <img
-                  src="../Docs/ca.webp"
-                  height="50"
-                  width="50"
-                  alt="Crédit agricole"
-                ></img>{" "}
-                Crédit Agricole de Montfort le Gesnois
+              <li className="mt2">
+                <a
+                  href="https://www.credit-agricole.fr/ca-anjou-maine/particulier/agence/anjou-maine/montfort-le-gesnois-2894.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  <img
+                    src="../Docs/ca.webp"
+                    height="50"
+                    width="50"
+                    alt="Crédit agricole"
+                    className="icon rounded-circle"
+                  ></img>{" "}
+                  Crédit Agricole de Montfort le Gesnois
+                </a>
               </li>
               <li className="mt-2">
                 <a
                   href="https://www.montfort-le-gesnois.fr/"
                   target="_blank"
                   rel="noreferrer"
-                  className="link-part"
+                  className="link"
                 >
                   <img
                     src="../Docs/mtfcolor2.webp"
                     alt="commune Montfort-le-gesnois"
                     height="50"
                     width="50"
+                    className="icon rounded-circle"
                   ></img>
+                  Commune de Montfort-Le-Gesnois
                 </a>{" "}
-                Commune de Montfort-Le-Gesnois
               </li>
             </ul>
           </Col>
@@ -139,14 +239,15 @@ const Footer = () => {
                   href="mailto: grainecitoyenmlg@gmail.com"
                   target="_blank"
                   rel="noreferrer"
+                  className="link"
                 >
-                  <EmailIcon color="disabled" sx={{ fontSize: 30 }} />
+                  <EmailIcon color="disabled" sx={{ fontSize: 30 }} /> Nous
+                  Contacter
                 </a>
-                grainecitoyenmlg@gmail.com
               </p>
             </div>
             <Row className="mt-5">
-              <Col md={12} >
+              <Col md={12}>
                 <div className="text-center">
                   <p className="ftitle">Nos réseaux sociaux</p>
                   <a
@@ -154,7 +255,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FacebookIcon  fontSize="large" />
+                    <FacebookIcon fontSize="large" />
                   </a>
                   <a
                     href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
@@ -179,7 +280,9 @@ const Footer = () => {
               >
                 <GitHubIcon color="disabled" fontSize="large" />
               </a>{" "}
-              <a href="/Cgu">Mentions légales</a>
+              <a className="link" href="/Cgu">
+                Mentions légales
+              </a>
             </p>
           </Col>
         </Row>

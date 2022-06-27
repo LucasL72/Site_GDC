@@ -7,7 +7,7 @@ import Adhe from "./Adhe";
 
 const accueil = () => {
   return (
-    <div>
+    <div className="mb-4 mt-4">
       <Container>
         <h2 className="text-center ssligne"> Accueil</h2>
         <Row>

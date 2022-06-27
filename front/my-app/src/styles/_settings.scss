@@ -62,7 +62,7 @@ a.nav-link {
 }
 
 a.nav-link:hover {
-  color: rgb(212, 212, 212);
+  color: rgb(216, 164, 100);
 }
 
 a.btn {
@@ -103,6 +103,18 @@ a.btn-ghost:hover {
   color: $white;
   text-decoration: none;
 }
+.link:hover {
+  color: $white;
+  text-decoration: none;
+}
+.linkb {
+  color: black;
+  text-decoration: none;
+}
+.linkb:hover {
+  color: black;
+  text-decoration: none;
+}
 
 .logo {
   animation: img-spin infinite 10s linear;
@@ -117,3 +129,28 @@ a.btn-ghost:hover {
     transform: rotate(360deg);
   }
 }
+
+.widget{
+  width:450px;
+  height: 450px;
+}
+
+@media (max-width: 1250px) {
+  .widget{
+    width: 300px;
+    height: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .widget{
+    width: 200px;
+    height: 400px;
+  }
+}
+@media (max-width: 320px) {
+  .widget{
+    width: auto;
+    height: 400px;
+  }
+}
+

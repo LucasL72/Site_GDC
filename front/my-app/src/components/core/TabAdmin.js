@@ -10,7 +10,7 @@ const TabAdmin = () => {
           </Nav.Item>
           <Nav.Item className="tab-tabs">
             <Nav.Link href="/Admin/User" eventKey="link-1">
-              Gestion User
+              Gestion Utilisateurs
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="tab-tabs">

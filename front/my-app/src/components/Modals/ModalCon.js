@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { login, check } from "../../store/actions/UsersActions";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { red } from '@mui/material/colors';
+import { red } from "@mui/material/colors";
 
 const ModalCon = (props) => {
   const [email, setEmail] = useState("");
@@ -93,11 +93,8 @@ const ModalCon = (props) => {
                   </Button>{" "}
                   <Button variant="outline-success" href="/Register">
                     S'Inscrire
-                  </Button>
-                  {" "}
-                  <Button
-                    onClick={() => setModalLostShow(true)}
-                  >
+                  </Button>{" "}
+                  <Button onClick={() => setModalLostShow(true)}>
                     Mot de passe oublié
                   </Button>
                   <ModalLostPass
@@ -107,25 +104,25 @@ const ModalCon = (props) => {
                 </Col>
               </Form>
               <Row className="mt-3">
-              <Col md={12} >
-                <div className="text-center">
-                  <a
-                    href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FacebookIcon  fontSize="large" />
-                  </a>
-                  <a
-                    href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <YouTubeIcon sx={{ color: red[500] }} fontSize="large" />
-                  </a>
-                </div>
-              </Col>
-            </Row>
+                <Col md={12}>
+                  <div className="text-center">
+                    <a
+                      href="https://www.facebook.com/Graine-de-Citoyen-Montgesnois-103923238009537/?ref=page_internal"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FacebookIcon fontSize="large" />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/channel/UClvNSJpDc7GoYhQonhXKUqQ"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <YouTubeIcon sx={{ color: red[500] }} fontSize="large" />
+                    </a>
+                  </div>
+                </Col>
+              </Row>
             </Row>
           </Container>
         </Modal.Body>

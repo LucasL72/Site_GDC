@@ -18,7 +18,7 @@ const Adhe = () => {
             target="_blank"
             variant="success"
           >
-            En savoir plus....
+            En savoir plus...
           </Button>
         </Card.Body>
       </Card>

@@ -21,7 +21,6 @@ Article.getAll = function (result) {
     if (error) throw error;
     conn.query(`SELECT * FROM articles;`, (error, data) => {
       if (error) throw error;
-      console.log("model data", data);
       result(null, data);
       // Mettre fin à la connexion avec la db
       conn.release();
@@ -34,7 +33,6 @@ Article.getNews = function (result) {
     if (error) throw error;
     conn.query(`SELECT * FROM articles ORDER BY dateart DESC LIMIT 2;`, (error, data) => {
       if (error) throw error;
-      console.log("model data", data);
       result(null, data);
       // Mettre fin à la connexion avec la db
       conn.release();

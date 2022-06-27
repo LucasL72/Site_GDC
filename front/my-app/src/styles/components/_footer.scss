@@ -9,9 +9,22 @@
   }
   
   .ftitle:after {
+      display:block;
+      height: 2px;
+      background-color: rgb(216, 164, 100);
+      width: 50px;
+      content: "";
+      margin: 0 auto;
+  }
+  
+.ftitleb {
+    margin-bottom: 5px;
+  }
+  
+  .ftitleb:after {
       display: block;
       height: 2px;
-      background-color: $white;
+      background-color: $color-2;
       width: 50px;
       content: "";
       margin: 0 auto;

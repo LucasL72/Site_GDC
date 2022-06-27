@@ -21,7 +21,7 @@ const DetailBlog = () => {
           <Col md={12}>
             <div className="text-center">
               <img
-                className="img-fluid"
+                className="img-fluid img-border"
                 src={`${urlImgArt + state.item.imgarticle}`}
                 alt={state && state.item.title}
                 width="700"
