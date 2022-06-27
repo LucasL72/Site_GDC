@@ -22,29 +22,29 @@ const MentionsLég = () => {
         <p>
           Statut du propriétaire : <strong>particulier</strong>
           <br />
-          Le Propriétaire est : <strong>Lucas Ledoux </strong>
+          Le Propriétaire est : <strong>L'association Graine de Citoyen Montgesnois</strong>
           <br />
           Adresse postale du propriétaire :{" "}
-          <strong>20 avenue de la libération 72450 montfort-le-gesnois</strong>
+          <strong></strong>
           <br />
           <br />
           Le Créateur du site est : <strong>Lucas Ledoux</strong>
           <br />
-          Le Responsable de la publication est : <strong>Lucas Ledoux</strong>
+          Le Responsable de la publication est : <strong>L'association Graine de Citoyen Montgesnois</strong>
           <br />
           Contacter le responsable de la publication :{" "}
-          <strong>lucasj.ledoux@gmail.com</strong>
+          <strong></strong>
           <br />
           Le responsable de la publication est une
           <strong> personne physique</strong>
           <br />
           <br />
-          Le Webmaster est : <strong>Lucas Ledoux </strong>
+          Le Webmaster est : <strong>L'association Graine de Citoyen Montgesnois </strong>
           <br />
           Contacter le Webmaster :{" "}
           <strong>
             <a href="mailto:lucasj.ledoux@gmail.com?subject=Contact a partir des mentions lÃ©gales via le site www.grainedecitoyenmontgesnois.fr">
-              lucasj.ledoux@gmail.com
+              à changer
             </a>
           </strong>
           <br />
@@ -85,9 +85,9 @@ const MentionsLég = () => {
           la disposition des utilisateurs. Il est ici précisé que ces derniers
           doivent rester courtois et faire preuve de bonne foi tant envers les
           autres utilisateurs qu'envers le webmaster du site
-          www.grainesdecitoyen.com. Le site www.grainesdecitoyen.com est mis à
-          jour régulièrement par Lucas Ledoux .<br />
-          Lucas Ledoux s’efforce de fournir sur le site www.grainesdecitoyen.com
+          www.grainesdecitoyen.com. Le site www.grainesdecitoyenmontgesnois.com est mis à
+          jour régulièrement par L'association Graine de Citoyen Montgesnois .<br />
+          L'association Graine de Citoyen Montgesnois s’efforce de fournir sur le site www.grainesdecitoyenmontgesnois.com
           des informations les plus précises possibles (sous réserve de
           modifications apportées depuis leur mise en ligne), mais ne saurait
           garantir l'exactitude, la complétude et l'actualité des informations
@@ -102,10 +102,10 @@ const MentionsLég = () => {
         <br />
         <br />
         <p>
-          Le site www.grainesdecitoyen.com est par principe accessible aux
+          Le site www.grainesdecitoyenmontgesnois.com est par principe accessible aux
           utilisateurs 24/24h, 7/7j, sauf interruption, programmée ou non, pour
           les besoins de sa maintenance ou en cas de force majeure. En cas
-          d’impossibilité d’accès au service, www.grainesdecitoyen.com s’engage
+          d’impossibilité d’accès au service, www.grainesdecitoyenmontgesnois.com s’engage
           à faire son maximum afin de rétablir l’accès au service et s’efforcera
           alors de communiquer préalablement aux utilisateurs les dates et
           heures de l’intervention. N’étant soumis qu’à une obligation de moyen,
@@ -118,17 +118,17 @@ const MentionsLég = () => {
 
         <p>
           <br />
-          Lucas Ledoux est propriétaire exclusif de tous les droits de propriété
+          L'association Graine de Citoyen Montgesnoisest propriétaire exclusif de tous les droits de propriété
           intellectuelle ou détient les droits d’usage sur tous les éléments
           accessibles sur le site, tant sur la structure que sur les textes,
           images, graphismes, logo, icônes, sons, logiciels…
           <br />
           Toute reproduction totale ou partielle du site
-          www.grainesdecitoyen.com, représentation, modification, publication,
+          www.grainesdecitoyenmontgesnois.com, représentation, modification, publication,
           adaptation totale ou partielle de l'un quelconque de ces éléments,
           quel que soit le moyen ou le procédé utilisé, est interdite, sauf
-          autorisation écrite préalable de Lucas Ledoux , propriétaire du site à
-          l'email : lucasj.ledoux@gmail.com, à défaut elle sera considérée comme
+          autorisation écrite préalable de L'association Graine de Citoyen Montgesnois , propriétaire du site à
+          l'email : à changer , à défaut elle sera considérée comme
           constitutive d’une contrefaçon et passible de poursuite conformément
           aux dispositions des articles L.335-2 et suivants du Code de Propriété
           Intellectuelle.
@@ -136,7 +136,7 @@ const MentionsLég = () => {
 
         <h2>5. Liens hypertextes et cookies </h2>
         <p>
-          Le site www.grainesdecitoyen.com contient un certain nombre de liens
+          Le site www.grainesdecitoyenmontgesnois.com contient un certain nombre de liens
           hypertextes vers d’autres sites (partenaires, informations …) mis en
           place avec l’autorisation de Lucas Ledoux . Cependant, Lucas Ledoux
           n’a pas la possibilité de vérifier l'ensemble du contenu des sites
@@ -191,7 +191,7 @@ const MentionsLég = () => {
           www.grainedecitoyenmontgesnois.fr par email :{" "}
           <strong>
             <a href="mailto:lucasj.ledoux@gmail.com?subject=Contact ï¿½ partir des mentions lï¿½gales via le site www.grainedecitoyenmontgesnois.fr">
-              lucasj.ledoux@gmail.com
+            a changer
             </a>
           </strong>
           ou par écrit dûment signée, accompagnée d’une copie du titre
