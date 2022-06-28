@@ -6,12 +6,16 @@ const Qui = () => {
       <Card border="success" className="scale">
         <Card.Img className="img-fluid" variant="top" src="../Docs/logo.png" />
         <Card.Body>
-          <Card.Title >Qui Sommes Nous ? </Card.Title>
+          <Card.Title>
+            <strong>Qui Sommes Nous ? </strong>
+          </Card.Title>
           <Card.Text>
-            L'association vise à encourager les initiatives locales de ses
-            membres en matière de transition écologique, développement durable,
-            échanges de savoirs et connaissances, nouvelles façons de consommer,
-            d’œuvrer...
+            L'<strong>association</strong> vise à encourager les initiatives
+            locales de ses membres en matière de{" "}
+            <strong>
+              transition écologique, développement durable, échanges de savoirs
+              et connaissances, nouvelles façons de consommer, d’œuvrer...
+            </strong>
           </Card.Text>
           <Button href="/Contact" variant="success">
             En savoir plus...

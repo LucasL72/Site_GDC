@@ -25,22 +25,34 @@ const Nous = () => {
               "Graine de Citoyen Montgesnois"{" "}
             </h2>
             <p className="text-justify">
-              L'association vise à encourager les initiatives locales de ses
-              membres en matière de transition écologique, développement
-              durable, échanges de savoirs et connaissances, nouvelles façons de
-              consommer, d’œuvrer... L'association n'a pas de président ni de
+              L'<strong>association</strong> vise à encourager les initiatives
+              locales de ses membres en matière de{" "}
+              <strong>
+                transition écologique, développement durable, échanges de
+                savoirs et connaissances, nouvelles façons de consommer,
+                d’œuvrer...
+              </strong>{" "}
+              L'
+              <strong>association</strong> n'a pas de président ni de
               secrétaire. Seuls la trésorière et le trésorier adjoint ont été
               élus. La direction collégiale (6 personnes à ce jour) valide les
-              activités (par exemple : "mise en place d'une conférence sur le
-              jardinage", "atelier produits cosmétiques", "initiation à la
-              taille des fruitiers"). Les membres de l’association peuvent
-              rejoindre l’activité qui les intéresse ou en proposer dans le
-              respect des valeurs de l’association.
+              activités (par exemple :{" "}
+              <strong>
+                "mise en place d'une conférence sur le jardinage", "atelier
+                produits cosmétiques", "initiation à la taille des fruitiers"
+              </strong>
+              ). Les membres de l’
+              <strong>association</strong> peuvent rejoindre l’activité qui les
+              intéresse ou en proposer dans le respect des valeurs de l’
+              <strong>association</strong>.
             </p>
             <p className="text-justify">
-              Rejoignez l'aventure ! L'équipe de la Direction collégiale de
-              Graine de Citoyen Montgesnois Amandine, Céline, Chloé, Gilles,
-              Jérémy, Karine et Stéphane
+              <strong>
+                {" "}
+                Rejoignez l'aventure ! L'équipe de la Direction collégiale de
+                Graine de Citoyen Montgesnois Amandine, Céline, Chloé, Gilles,
+                Jérémy, Karine et Stéphane
+              </strong>
             </p>
           </Col>
         </Row>

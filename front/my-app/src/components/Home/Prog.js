@@ -11,10 +11,10 @@ const Prog = () => {
           src="../Docs/gdc_prog.png"
         />
         <Card.Body>
-          <Card.Title >Programme 2022</Card.Title>
-          <Card.Text>
-           Le Programme de l'année
-          </Card.Text>
+          <Card.Title>
+            <strong>Programme 2022</strong>
+          </Card.Title>
+          <Card.Text>Le Programme de l'année</Card.Text>
           <Button
             cla
             variant="success"

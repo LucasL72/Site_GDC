@@ -35,7 +35,9 @@ const CardArticle = (props) => {
             alt={item.title}
           />
           <Card.Body>
-            <Card.Title className="text-center ftitleb">{item.title}</Card.Title>
+            <Card.Title className="text-center ftitleb">
+              {item.title}
+            </Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
               variant="outline-success"
@@ -70,7 +72,9 @@ const CardArticle = (props) => {
             alt={item.title}
           />
           <Card.Body>
-            <Card.Title className="text-center ftitleb">{item.title}</Card.Title>
+            <Card.Title className="text-center ftitleb">
+              <strong>{item.title}</strong>
+            </Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Button
               variant="outline-success"

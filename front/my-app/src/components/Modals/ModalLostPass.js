@@ -36,21 +36,7 @@ const ModalLostPass = (props) => {
                     />
                   </FloatingLabel>
                   <Form.Text className="text-muted mb-3">
-                    We'll never share your email with anyone else.
                   </Form.Text>
-                </Col>
-                <Col md={12}>
-                  <FloatingLabel
-                    controlId="floatingInput"
-                    label="Votre Pseudo"
-                    className="mb-3"
-                  >
-                    <Form.Control
-                      type="name"
-                      placeholder="Votre pseudo"
-                      required
-                    />
-                  </FloatingLabel>
                 </Col>
                 <Col md={12}>
                   {" "}
