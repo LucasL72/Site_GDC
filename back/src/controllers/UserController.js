@@ -242,7 +242,7 @@ class UserController {
         return res.send({
           method: req.method,
           status: "success",
-          flash: "Create user Success !",
+          flash: "Update user Success !",
           dbUsers: data,
         });
       });

@@ -16,8 +16,8 @@ class Server {
       cors({
         origin: [
           "http://localhost:3000",
-          "https://domain.com/",
-          "http://domain.com/",
+          "https://grainesdecitoyenmontgesnois.fr/",
+          "http://grainesdecitoyenmontgesnois.fr/",
         ],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,

@@ -234,13 +234,13 @@ User.verify = function (data, result) {
   });
 };
 
-User.editPassword = function (userObj, result) {
-  const { password, email } = userObj;
+User.editPassword = function (userObj,user, result) {
+  const { password } = userObj;
   const hash = bcrypt.hashSync(password, 10);
   connection.getConnection(function (error, conn) {
     if (error) throw error;
     conn.query(
-      `UPDATE user SET password = "${hash}" WHERE email= "${email}"`,
+      `UPDATE user SET password = "${hash}" WHERE email= "${user.email}"`,
       (error, d) => {
         if (error) throw error;
         conn.query(`SELECT * FROM user`, (error, data) => {
