@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <div>
       <MainLayout>
-        <h2 className="text-center ssligne">S'inscrire</h2>
+        <h2 className="text-center ssligne">Créer un compte</h2>
         <Newuser />
       </MainLayout>
     </div>

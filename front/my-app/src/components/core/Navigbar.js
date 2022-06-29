@@ -51,6 +51,9 @@ const Navigbar = () => {
               <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
+              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="navnav">
               <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
           </Nav>
@@ -105,6 +108,9 @@ const Navigbar = () => {
             </Nav.Item>
             <Nav.Item className="navnav">
               <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="navnav">
+              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
               <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>

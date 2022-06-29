@@ -7,19 +7,11 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import { red } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const Footer = () => {
   const CheckLoggedInFooter = () => {
-    const [modalConnShow, setModalConnShow] = React.useState(false);
-    const navigate = useNavigate();
-    const logout = () => {
-      localStorage.setItem("user_token", "visitor");
-      navigate("/");
-    };
     const userToken = localStorage.getItem("user_token");
 
     if (!userToken)
@@ -34,7 +26,10 @@ const Footer = () => {
               <Nav.Item className="navnav">
                 <Nav.Link href="/Nos Actualités">Actualités</Nav.Link>
               </Nav.Item>
-
+              <Nav.Item className="navnav">
+                {" "}
+                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+              </Nav.Item>
               <Nav.Item className="navnav">
                 <Nav.Link href="/Qui Sommes Nous ?">Contact</Nav.Link>
               </Nav.Item>
@@ -53,6 +48,10 @@ const Footer = () => {
               </Nav.Item>
               <Nav.Item className="navnav">
                 <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+              </Nav.Item>
+              <Nav.Item className="navnav">
+                {" "}
+                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
@@ -272,14 +271,7 @@ const Footer = () => {
         <Row className="mt-3">
           <Col md={12}>
             <p className="text-center">
-              Created by Lucas Ledoux©2022{" "}
-              <a
-                href="https://github.com/LucasL72"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <GitHubIcon color="disabled" fontSize="large" />
-              </a>{" "}
+              Created by Lucas Ledoux ©2022{" "}
               <a className="link" href="/Cgu">
                 Mentions légales
               </a>
