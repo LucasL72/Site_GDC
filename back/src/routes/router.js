@@ -3,7 +3,7 @@
  * ************* */
 const express = require("express");
 const router = express.Router();
-const upload = require("../config/multer"),
+const upload = require("../config/Multer"),
   sharpArticles = require("../config/SharpArticles"),
   sharpAlbum = require("../config/SharpAlbum"),
   SharpUser = require("../config/SharpUser");
