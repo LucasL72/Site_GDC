@@ -71,7 +71,7 @@ User.create = function (newUser, result) {
       `
           INSERT INTO user SET imguser=:imguser, pseudo= :pseudo , prenom=:prenom, nom= :nom, adresse= :adresse, city= :city, postal= :postal, email= :email, password= :hash,isVerified= 1
       `,
-      { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash},
+      { imguser, pseudo, prenom, nom, adresse, city, postal, email, hash },
       (error, data) => {
         if (error) throw error;
         conn.query(
@@ -234,18 +234,44 @@ User.verify = function (data, result) {
   });
 };
 
-User.editPassword = function (userObj,user, result) {
-  const { password } = userObj;
+User.editPassword = function (userObj) {
+  const { password, email } = userObj;
   const hash = bcrypt.hashSync(password, 10);
   connection.getConnection(function (error, conn) {
     if (error) throw error;
     conn.query(
-      `UPDATE user SET password = "${hash}" WHERE email= "${user.email}"`,
-      (error, d) => {
+      "select password from user where email = :email",
+      { email },
+      (error, data) => {
+        if (error) throw error;
+        conn.query(
+          `UPDATE user SET password = "${hash}" WHERE email= :email`,
+          { email },
+          (error, d) => {
+            if (error) throw error;
+            conn.query(`SELECT * FROM user  `, (error) => {
+              if (error) throw error;
+              else null, data;
+            });
+          }
+        );
+      }
+    );
+    conn.release();
+  });
+};
+
+User.sendPass = function (body, result) {
+  connection.getConnection(function (error, conn) {
+    if (error) throw error;
+    conn.query(
+      `SELECT * FROM user where email = :email`,
+      { email: body.email },
+      (error, data) => {
         if (error) throw error;
         conn.query(`SELECT * FROM user`, (error, data) => {
           if (error) throw error;
-          result(null, data);
+          else result(null, data);
           conn.release();
         });
       }

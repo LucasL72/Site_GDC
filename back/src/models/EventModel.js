@@ -71,7 +71,6 @@ class Event {
 
   editOne() {
     const { title, content,date,heure, id } = this;
-    console.log("edit", typeof id);
     return new Promise((resolve, reject) => {
       connection.getConnection(function (error, conn) {
         conn.query(

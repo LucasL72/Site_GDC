@@ -233,7 +233,6 @@ class UserController {
   async editPassword(req, res) {
     const { email, password } = req.body;
     let userObj = new User({
-      id: Number(req.params.id),
       email: String(email),
       password: String(password),
     });
@@ -253,6 +252,19 @@ class UserController {
 
   async verifMail(req, res) {
     nodemailer.verifMail(req, res);
+  }
+
+  async sendPass(req, res) {
+   const email = req.body.email
+    try {
+      User.sendPass(email, (err, data) => {
+        nodemailer.lostpassword(email, res, (res) => {
+          return res.send({ status: "success" });
+        });
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 }
 

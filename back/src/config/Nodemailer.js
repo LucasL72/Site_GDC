@@ -5,23 +5,23 @@
 const user = require("../models/UserModel");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-  // Déclaration ne notre transporter
-  // C'est en quelque sorte notre connexion à notre boite mail
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    service: "gmail",
-    port: "587",
-    secure: false,
-    auth: {
-      user: process.env.MAIL,
-      pass: process.env.MDP_MAIL,
-    },
-  });
+// Déclaration ne notre transporter
+// C'est en quelque sorte notre connexion à notre boite mail
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  service: "gmail",
+  port: "587",
+  secure: false,
+  auth: {
+    user: process.env.MAIL,
+    pass: process.env.MDP_MAIL,
+  },
+});
 
 let rand, host, link, mailOptions;
 
 module.exports = {
-  SendMessage:(req, res) => {
+  SendMessage: (req, res) => {
     const mailOptions = {
       from: process.env.MAIL,
       to: req.body.email,
@@ -52,7 +52,7 @@ module.exports = {
 
     link = host + "/api/auth/verify/" + rand;
 
-   const mailOptions = {
+    const mailOptions = {
       from: process.env.MAIL,
       to: req.body.email,
       subject: "Vérification du compte, site Graine de Citoyen Montgesnois",
@@ -74,7 +74,7 @@ module.exports = {
     };
     // On demande à notre transporter d'envoyer notre mail
     transporter.sendMail(mailOptions, (err, info) => {
-         console.log("mailoptions",mailOptions)
+      console.log("mailoptions", mailOptions);
       if (err) {
         console.log("err", err),
           res.status(500).send({
@@ -101,9 +101,7 @@ module.exports = {
               .status(500)
               .send({ flash: err.message || "Une erreur est survenue" });
           else
-            return res.redirect(
-              process.env.URL + "/verif/" + mailOptions.rand
-            );
+            return res.redirect(process.env.URL + "/verif/" + mailOptions.rand);
         });
       } catch (error) {
         throw error;
@@ -121,25 +119,27 @@ module.exports = {
     // et enfin notre mail
     mailOptions = {
       from: process.env.MAIL,
-      to: req.body.email,
+      to:req.body.email,
       subject: "Mot de passe oublié, site Graine de Citoyen Montgesnois",
       rand: rand,
       html:
         `
+        <h1>Bonjour</h1>
         <h2>Encore un effort</h2><br>
-        <h4>Cliquer sur le lien suivant afin de finir la procédure  de mot de passe oublié.</h4><br>
+        <h3>Cliquer sur le lien suivant afin de finir la procédure  de mot de passe oublié.</h3><br>
         <a href=" ` +
         link +
-        ` ">Click here to create password</a>
+        ` ">Cliquez ici pour créer un nouveau mot de passe</a>
         <div> Cordialement, l'équipe de Graine de Citoyen Montgesnois </div>
       `,
     };
     // Et envoi notre mail avec nos callback
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
-        res.status(500).send({
-          message: err.message || "Une erreur est survenue",
-        });
+        console.log("err", err),
+          res.status(200).json({
+            message: err.message || "Une erreur est survenue",
+          });
       } else {
         return res.json({
           method: req.method,
@@ -150,10 +150,8 @@ module.exports = {
       }
     });
   },
-  replyMessage: (req, res) => {
 
-    // console.log(arrayFiles); // On configure notre mail à envoyer par nodemailer
-    // console.log("Reply NodeMailer Config");
+  replyMessage: (req, res) => {
     const mailOptions = {
       from: process.env.USER_NODMAILER,
       to: req.body.email,

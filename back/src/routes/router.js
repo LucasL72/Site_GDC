@@ -24,15 +24,18 @@ router
   .get(new EventController().getAll)
   .post(new MessagesController().create);
 
-  router.route("/api/Actu").get(new ArticleControllers().getNews);
+router.route("/api/Actu").get(new ArticleControllers().getNews);
 
-  router.route("/api/login").post(new UserController().login);
+router.route("/api/login").post(new UserController().login);
+
+router.route("/api/lostpassword").put(new UserController().editPassword);
+router.route("/api/lostpassword/:id").put(new UserController().editPassword);
 // Session
 router
   .route("/api/auth/:token")
   .get(new TokenJWT().checkIsValid, new UserController().checkToken);
 
-  router.route("/api/auth/verify/:id").get(new UserController().verifMail);
+router.route("/api/auth/verify/:id").get(new UserController().verifMail);
 
 router
   .route("/api/Contact")
@@ -54,9 +57,7 @@ router
   .post(new ComsController().create);
 
 // ADMIN
-router
-.route("/api/Admin/User")
-.get(new UserController().getAll);
+router.route("/api/Admin/User").get(new UserController().getAll);
 
 router
   .route("/api/Admin/User/:id")
@@ -113,7 +114,7 @@ router
   .get(new MessagesController().getAll)
   .post(new MessagesController().create);
 
-  router
+router
   .route("/api/Admin/Messages/reply")
   .post(new MessagesController().replyMessage);
 
