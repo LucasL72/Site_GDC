@@ -57,6 +57,7 @@ const ModalCreateArt = (props) => {
     setSelect(false);
     dispatch(createArticle(formdata));
     window.location.reload();
+    alert("Article Créé")
   };
   return (
     <div>

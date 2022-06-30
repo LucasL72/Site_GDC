@@ -6,11 +6,14 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { editUser2 } from "../store/actions/UsersActions";
+import { useNavigate } from "react-router";
 
 const Lostpass = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -21,7 +24,9 @@ const Lostpass = () => {
       password: password,
     };
 
-    dispatch(editData);
+    dispatch(editUser2(editData));
+    alert("mot de passe changé ! ");
+    navigate("/");
   };
   return (
     <div>
@@ -50,10 +55,7 @@ const Lostpass = () => {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </FloatingLabel>
-                  <Form.Text className="text-muted mb-3">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
-                </Col>
+                </Col>{" "}
                 <Row>
                   <Col md={6}>
                     <FloatingLabel
@@ -79,7 +81,6 @@ const Lostpass = () => {
                     </FloatingLabel>
                   </Col>
                 </Row>
-
                 <div className="text-center mb-3">
                   <Button variant="outline-success" type="submit" value="send">
                     Submit

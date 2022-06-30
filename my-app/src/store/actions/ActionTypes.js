@@ -18,8 +18,9 @@ export const EDIT_USER = "EDIT_USER";
 export const DELETE_USER = "DELETE_USER";
 export const BAN_USER = "BAN_USER";
 export const LOGIN_USER = "LOGIN_USER";
-export const CHECK_AUTH = "CHECK_AUTH"
-export const VERIF_MAIL = "VERIF_MAIL"
+export const CHECK_AUTH = "CHECK_AUTH";
+export const VERIF_MAIL = "VERIF_MAIL";
+export const LOSTPASS_USER = "LOSTPASS_USER";
 
 
 // Pics

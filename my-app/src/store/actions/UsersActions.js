@@ -1,8 +1,8 @@
 /*
  * Import - Module
  * *************** */
-import {api} from "../../config/axios";
-import jwt_decode from 'jwt-decode'
+import { api } from "../../config/axios";
+import jwt_decode from "jwt-decode";
 
 /*
  * Import types { ... }
@@ -16,6 +16,7 @@ import {
   LOGIN_USER,
   CHECK_AUTH,
   VERIF_MAIL,
+  LOSTPASS_USER,
 } from "./ActionTypes";
 
 /*
@@ -80,11 +81,18 @@ export const deleteUser = (id) => {
 export const editUser = (data) => {
   return (dispatch) => {
     return api
-      .put(`/Admin/User/${data.id}`, data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      .put(`/lostpassword/${data.id}`, data)
+      .then((res) => {
+        dispatch({ type: EDIT_USER, payload: res.data });
       })
+      .catch((err) => console.log(err));
+  };
+};
+// Edit user
+export const editUser2 = (data) => {
+  return (dispatch) => {
+    return api
+      .put(`/lostpassword`, data)
       .then((res) => {
         dispatch({ type: EDIT_USER, payload: res.data });
       })
@@ -128,19 +136,32 @@ export const login = (data) => {
 export const check = () => {
   return (dispatch) => {
     return api
-      .get(
-        `/auth/${localStorage["user_token"]}`
-      )
-      .then((res) => { if (res.data.user) { dispatch({ type: CHECK_AUTH, payload: res.data }); } })
-            .catch((err) => console.log(err));
-    };
-}
+      .get(`/auth/${localStorage["user_token"]}`)
+      .then((res) => {
+        if (res.data.user) {
+          dispatch({ type: CHECK_AUTH, payload: res.data });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+};
 export const VerifMail = (id) => {
   return (dispatch) => {
     return api
       .get(`/auth/verify/${id}`)
       .then((res) => {
         dispatch({ type: VERIF_MAIL, payload: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const Lostpass = (data) => {
+  return (dispatch) => {
+    return api
+      .post("/lostpassword", data)
+      .then((res) => {
+        dispatch({ type: LOSTPASS_USER, payload: res.data });
       })
       .catch((err) => console.log(err));
   };

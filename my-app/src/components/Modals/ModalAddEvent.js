@@ -28,6 +28,7 @@ const handleForm = async (e) => {
     setHeure("");
     dispatch(getEvent());
   }
+  alert("Evenements ajouté !")
 };
 
   return (

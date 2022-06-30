@@ -52,6 +52,7 @@ const ModalAddPic = (props) => {
 
     dispatch(createPic(formdata));
     window.location.reload();
+    alert("Photo ajouté !")
   };
   return (
     <div>

@@ -36,7 +36,7 @@ const MentionsLég = () => {
           <strong></strong>
           <br />
           Le responsable de la publication est une
-          <strong> personne physique</strong>
+          <strong> personne morale</strong>
           <br />
           <br />
           Le Webmaster est : <strong>L'association Graine de Citoyen Montgesnois </strong>

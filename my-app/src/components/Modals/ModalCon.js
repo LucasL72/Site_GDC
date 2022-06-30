@@ -23,9 +23,6 @@ const ModalCon = (props) => {
   // ici la fonction est asynchrone
   const handleForm = async (e) => {
     e.preventDefault();
-
-    console.log("submit form login");
-
     if (email && password) {
       await dispatch(login({ email, password }));
       setEmail("");
@@ -94,7 +91,7 @@ const ModalCon = (props) => {
                   <Button variant="outline-success" href="/Register">
                     S'Inscrire
                   </Button>{" "}
-                  <Button onClick={() => setModalLostShow(true)}>
+                  <Button href="/Lostpassword">
                     Mot de passe oublié
                   </Button>
                   <ModalLostPass

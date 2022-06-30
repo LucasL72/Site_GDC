@@ -9,36 +9,31 @@ import { useDispatch } from "react-redux";
 import { editUser } from "../../store/actions/UsersActions";
 import jwt_decode from "jwt-decode";
 
-const EditUser = (props) => {
+const EditUser = () => {
   const userToken = localStorage.getItem("user_token");
-  const { item } = props;
-  const [password,setPassword] = useState("")
-  const [email] = useState(jwt_decode(userToken).email)
-
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [email] = useState(jwt_decode(userToken).email);
   const dispatch = useDispatch();
 
-  const handleEdit = (e) => {
+  const sendForm = (e) => {
     e.preventDefault();
 
-    //important il faut remettre tout les champs de la data autrement il serait ecraser par un champ vide
     const editData = {
-      password:password,
-      email:email,
-      id: item.id,
+      password: password,
+      email: email,
+      id: jwt_decode(userToken).id,
     };
     dispatch(editUser(editData));
+    alert("mot de passe changé ! ");
+    window.location.reload();
   };
   return (
     <div>
       <Container>
-      <h2 className="text-center ssligne">Modifier</h2>
+        <h2 className="text-center ssligne">Modifier mot de passe</h2>
         <Row>
-        <Form onSubmit={(e) => handleEdit(e)}>
-            <Col md={12}>
-              <Form.Label>Choisir une image de profil</Form.Label>
-              <Form.Control className="mb-3" type="file" />
-            </Col>
-           
+          <Form onSubmit={(e) => sendForm(e)}>
             <Row>
               <Col md={12}>
                 <FloatingLabel
@@ -46,10 +41,7 @@ const EditUser = (props) => {
                   label="Email"
                   className="mb-3"
                 >
-                  <Form.Control
-                    type="email"
-                    value={email}
-                  />
+                  <Form.Control type="email" value={email} />
                 </FloatingLabel>
               </Col>
             </Row>
@@ -74,7 +66,12 @@ const EditUser = (props) => {
                   label="Confirmation Mot de Passe"
                   className="mb-3"
                 >
-                  <Form.Control type="password" required />
+                  <Form.Control
+                    type="password"
+                    value={confirmPass}
+                    onChange={(e) => setConfirmPass(e.target.value)}
+                    required
+                  />
                 </FloatingLabel>
               </Col>
             </Row>

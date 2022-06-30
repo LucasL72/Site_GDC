@@ -71,7 +71,9 @@ const Newuser = () => {
     setSelect(false);
 
     dispatch(createUser(formdata));
+    alert("Votre compte a été créé")
     toHome();
+
   };
 
   return (

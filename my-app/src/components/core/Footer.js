@@ -7,6 +7,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { red } from "@mui/material/colors";
 import jwt_decode from "jwt-decode";
 
@@ -271,7 +272,14 @@ const Footer = () => {
         <Row className="mt-3">
           <Col md={12}>
             <p className="text-center">
-              Created by Lucas Ledoux ©2022{" "}
+              Created by ©Lucas Ledoux 2022{" "}
+              <a
+                href="https://www.linkedin.com/in/lucas-ledoux-244b0a175/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LinkedInIcon color="disabled" sx={{ fontSize: 30 }} />
+              </a>{" "}
               <a className="link" href="/Cgu">
                 Mentions légales
               </a>
