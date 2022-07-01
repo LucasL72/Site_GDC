@@ -15,11 +15,9 @@ import { POST_EVENT, GET_EVENT, DELETE_EVENT, EDIT_EVENT } from "./ActionTypes";
 // getAll Article
 export const getEvent = (data) => {
   return (dispatch) => {
-    console.log("reducers get events");
     return api
       .get("/Admin/Events")
       .then((res) => {
-        console.log("getArticles", res.data);
         dispatch({ type: GET_EVENT, payload: res.data });
       })
       .catch((err) => console.log(err));

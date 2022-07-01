@@ -15,7 +15,6 @@ import { POST_MESSAGE, GET_MESSAGE, DELETE_MESSAGE,ADD_MESSAGE } from "./ActionT
 // getAll Article
 export const getMessage = (data) => {
   return (dispatch) => {
-    console.log("reducers get message");
     return api
       .get("/Admin/Messages")
       .then((res) => {
@@ -29,7 +28,7 @@ export const getMessage = (data) => {
 // getID Article
 export const getMessageID = (id) => {
   return (dispatch) => {
-    console.log("reducers get messages");
+  
     return api
       .get(`/Admin/Messages/${id}`)
       .then((res) => {
@@ -43,7 +42,7 @@ export const getMessageID = (id) => {
 // Create Article
 export const createMessage = (data) => {
   return (dispatch) => {
-    console.log("reducers get messages");
+
     return api
       .post("/Contact", data)
       .then((res) => {
