@@ -32,7 +32,7 @@ class Server {
     // hidePoweredBy() => disable("x-powered-by")
     this.app.use(helmet.hidePoweredBy());
     // contentSecurityPolicy() => Cela aide à prévenir les attaques de scripts intersites
-    this.app.use(helmet.contentSecurityPolicy());
+    //this.app.use(helmet.contentSecurityPolicy());
     // Body Parser
     this.app.use(bodyParser.json());
     this.app.use(
