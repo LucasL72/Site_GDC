@@ -25,14 +25,14 @@ const Footer = () => {
                 <Nav.Link href="/">Accueil</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Nos Actualités">Actualités</Nav.Link>
+                <Nav.Link href="/Blog">Actualités</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 {" "}
-                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+                <Nav.Link href="/Photos">Nos Photos</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Qui Sommes Nous ?">Contact</Nav.Link>
+                <Nav.Link href="/Contact">Contact</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
@@ -48,14 +48,14 @@ const Footer = () => {
                 <Nav.Link href="/">Accueil</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+                <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 {" "}
-                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+                <Nav.Link href="/Photos">Nos Photos</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+                <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
@@ -75,14 +75,14 @@ const Footer = () => {
                 <Nav.Link href="/">Accueil</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+                <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 {" "}
-                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+                <Nav.Link href="/Photos">Nos Photos</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+                <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 <Nav.Link href="/Admin">Admin</Nav.Link>
@@ -101,14 +101,14 @@ const Footer = () => {
                 <Nav.Link href="/">Accueil</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Nos Actualités">Nos Actualités</Nav.Link>
+                <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
                 {" "}
-                <Nav.Link href="/Nos Photos">Nos Photos</Nav.Link>
+                <Nav.Link href="/Photos">Nos Photos</Nav.Link>
               </Nav.Item>
               <Nav.Item className="navnav">
-                <Nav.Link href="/Qui Sommes Nous ?">Qui Sommes Nous ?</Nav.Link>
+                <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
