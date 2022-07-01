@@ -1,4 +1,4 @@
-const Albums = require("../models/PicsModel");
+const Albums = require("../models/PcsModel");
 const help = require("../utils/help");
 
 class PicsController {
