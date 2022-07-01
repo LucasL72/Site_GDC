@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const router = require("./routes/router");
 const helmet = require("helmet");
+const path = require('path');
 
 class Server {
   constructor(app, port) {
@@ -11,6 +12,11 @@ class Server {
   }
 
   run() {
+    this.app.use(express.static(path.join(__dirname, "build")));
+
+    this.app.get("/*", function (req, res) {
+      res.sendFile(path.join(__dirname, "build", "index.html"));
+    });
     // Cors
     this.app.use(
       cors({
@@ -25,7 +31,7 @@ class Server {
         credentials: true,
       })
     );
-      // Disable header express default
+    // Disable header express default
     this.app.disable("x-powered-by");
 
     // this.app.use(helmet())
@@ -40,7 +46,6 @@ class Server {
         extended: false,
       })
     );
-  
 
     // Express static permet de diriger un chemin sur un dossier en particulier
     this.app.use("/api/assets", express.static("Public"));
