@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const router = require("./routes/router");
 const helmet = require("helmet");
-const path = require('path');
+const path = require("path");
 
 class Server {
   constructor(app, port) {
@@ -12,20 +12,15 @@ class Server {
   }
 
   run() {
-    this.app.use(express.static(path.join(__dirname, "build")));
-
-    this.app.get("/*", function (req, res) {
-      res.sendFile(path.join(__dirname, "build", "index.html"));
-    });
     // Cors
     this.app.use(
       cors({
         origin: [
-          "http://localhost:3000",
           "https://www.grainedecitoyenmontgesnois.fr",
           "http://www.grainedecitoyenmontgesnois.fr",
           "https://grainedecitoyenmontgesnois.fr",
           "http://grainedecitoyenmontgesnois.fr",
+          "http://localhost:3000",
         ],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
@@ -52,6 +47,15 @@ class Server {
     // Routes
     this.app.use(router);
 
+    this.app.use(
+      express.static(path.join(__dirname + "/Site_GDC/my-app/build"))
+    );
+
+    this.app.get("/*", function (req, res) {
+      res.sendFile(
+        path.join(__dirname + "/Site_GDC/my-app/build", "index.html")
+      );
+    });
     // Run app
     return this.app.listen(this.port, () => {
       try {
