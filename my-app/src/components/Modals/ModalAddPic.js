@@ -52,7 +52,7 @@ const ModalAddPic = (props) => {
 
     dispatch(createPic(formdata));
     window.location.reload();
-    alert("Photo ajouté !")
+    alert("Photo ajouté !");
   };
   return (
     <div>
@@ -78,6 +78,7 @@ const ModalAddPic = (props) => {
                 accept="image/*"
                 onChange={handleInputChange}
               />
+              <p className="text-danger">Limité à moins de 1mo SVP</p>
               {imgSelect ? (
                 <img
                   src={`${imgPreview}`}

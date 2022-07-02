@@ -91,6 +91,7 @@ const Newuser = () => {
                   onChange={handleInputChange}
                 />
               </Form.Group>
+              <p className="text-danger">Limité à moins de 1mo SVP</p>
               {imgSelect ? (
                 <img
                   src={`${imgPreview}`}
@@ -231,8 +232,6 @@ const Newuser = () => {
                 </FloatingLabel>
               </Col>
             </Row>
-
-            
             <ReCAPTCHA
               sitekey="6Ldv9WYgAAAAAKY8VrPRKpWNJVW7vANecIFNNNVK"
               required

@@ -84,6 +84,7 @@ const ModalCreateArt = (props) => {
                   accept="image/*"
                   onChange={handleInputChange}
                 />
+                <p className="text-danger">Limité à moins de 1mo SVP</p>
               </Form.Group>
               {imgSelect ? (
                 <img

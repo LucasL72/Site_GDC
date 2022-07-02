@@ -28,7 +28,7 @@ const ModalCon = (props) => {
       setEmail("");
       setPassword("");
       dispatch(check());
-      navigate("/#/Profil");
+      navigate("/Profil");
     }
   };
 
