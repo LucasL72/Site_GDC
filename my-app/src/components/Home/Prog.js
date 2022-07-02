@@ -16,7 +16,6 @@ const Prog = () => {
           </Card.Title>
           <Card.Text>Le Programme de l'année</Card.Text>
           <Button
-            cla
             variant="success"
             target="_blank"
             href="../Docs/gdc_prog.png"

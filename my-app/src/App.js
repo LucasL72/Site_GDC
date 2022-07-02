@@ -10,7 +10,7 @@ import Cgu from "./pages/Cgu";
 import NotFound from "./pages/NotFound";
 import Lostpass from "./pages/Lostpass";
 import VerifAuth from "./pages/VerifAuth";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 //Admin
 import Admin from "./pages/admin/Admin";
 import AdminBlog from "./pages/admin/AdminBlog";
@@ -19,28 +19,10 @@ import AdminEven from "./pages/admin/AdminEven";
 import AdminMess from "./pages/admin/AdminMess";
 import AdminUser from "./pages/admin/AdminUser";
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" exact element={<Home />} />
-      <Route path="Blog" exact element={<Blog />} />
-      <Route path="Blog/:id" exact element={<BlogID />} />
-      <Route path="Profil" exact element={<Profil />} />
-      <Route path="Photos" exact element={<Photos />} />
-      <Route path="Contact" exact element={<Contact />} />
-      <Route path="Register" exact element={<Register />} />
-      <Route path="Lostpassword/" exact element={<Lostpass />} />
-      <Route path="verif/:rand" element={<VerifAuth />} />
-      <Route path="Cgu" exact element={<Cgu />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
-};
-
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="" exact element={<Admin />} />
+      <Route path="/" exact element={<Admin />} />
       <Route path="Blog" exact element={<AdminBlog />} />
       <Route path="Photos" exact element={<AdminPics />} />
       <Route path="Events" exact element={<AdminEven />} />
@@ -51,13 +33,24 @@ const AdminRoutes = () => {
   );
 };
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/*" exact element={<AppRoutes />} />
-        <Route path="/Admin/*" exact element={<AdminRoutes />} />
+        <Route path="/" exact element={<Home />} />
+        <Route path="Blog" exact element={<Blog />} />
+        <Route path="Blog/:id" exact element={<BlogID />} />
+        <Route path="Profil" exact element={<Profil />} />
+        <Route path="Photos" exact element={<Photos />} />
+        <Route path="Contact" exact element={<Contact />} />
+        <Route path="Register" exact element={<Register />} />
+        <Route path="Lostpassword/" exact element={<Lostpass />} />
+        <Route path="verif/:rand" element={<VerifAuth />} />
+        <Route path="Cgu" exact element={<Cgu />} />
+        <Route path="/admin/*" exact element={<AdminRoutes />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
+export default App;

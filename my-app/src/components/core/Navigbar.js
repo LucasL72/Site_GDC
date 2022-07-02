@@ -48,13 +48,13 @@ const Navigbar = () => {
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
+              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
           </Nav>
           <Nav className="mx-auto">
@@ -107,13 +107,13 @@ const Navigbar = () => {
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
+              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
           </Nav>
           <Nav className="mx-auto">
@@ -170,16 +170,16 @@ const Navigbar = () => {
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
+              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Admin">Admin</Nav.Link>
+              <Nav.Link href="/#/admin">Admin</Nav.Link>
             </Nav.Item>
             <Button
               href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
@@ -231,13 +231,13 @@ const Navigbar = () => {
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Blog">Nos Actualités</Nav.Link>
+              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Photos">Nos Photos</Nav.Link>
+              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
             <Nav.Item className="navnav">
-              <Nav.Link href="/Contact">Qui Sommes Nous ?</Nav.Link>
+              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>{" "}
             <Button
               href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
