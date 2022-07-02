@@ -88,7 +88,7 @@ const ModalCon = (props) => {
                   >
                     Se Connecter
                   </Button>{" "}
-                  <Button variant="outline-success" href="/Register">
+                  <Button variant="outline-success" href="/#/Register">
                     S'Inscrire
                   </Button>{" "}
                   <Button href="/Lostpassword">
