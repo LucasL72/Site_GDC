@@ -28,7 +28,7 @@ const ModalCon = (props) => {
       setEmail("");
       setPassword("");
       dispatch(check());
-      navigate("/Profil");
+      navigate("/#/Profil");
     }
   };
 
@@ -91,7 +91,7 @@ const ModalCon = (props) => {
                   <Button variant="outline-success" href="/#/Register">
                     S'Inscrire
                   </Button>{" "}
-                  <Button href="/Lostpassword">
+                  <Button href="/#/Lostpassword">
                     Mot de passe oublié
                   </Button>
                   <ModalLostPass
