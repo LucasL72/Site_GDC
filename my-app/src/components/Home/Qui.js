@@ -17,7 +17,7 @@ const Qui = () => {
               et connaissances, nouvelles façons de consommer, d’œuvrer...
             </strong>
           </Card.Text>
-          <Button href="/Contact" variant="success">
+          <Button href="/#/Contact" variant="success">
             En savoir plus...
           </Button>
         </Card.Body>
