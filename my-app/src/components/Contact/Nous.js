@@ -24,7 +24,7 @@ const Nous = () => {
               {" "}
               "Graine de Citoyen Montgesnois"{" "}
             </h2>
-            <p className="text-justify">
+            <p className="justif">
               L'<strong>association</strong> vise à encourager les initiatives
               locales de ses membres en matière de{" "}
               <strong>

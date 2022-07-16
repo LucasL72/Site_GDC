@@ -280,7 +280,7 @@ const Footer = () => {
               >
                 <LinkedInIcon color="disabled" sx={{ fontSize: 30 }} />
               </a>{" "}
-              <a className="link" href="/Cgu">
+              <a className="link" href="/#/Cgu">
                 Mentions légales
               </a>
             </p>

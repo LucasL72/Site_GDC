@@ -30,8 +30,8 @@ const DetailBlog = () => {
             </div>
           </Col>
           <Col md={12}>
-            <p className="text-justify">{state && state.item.contenu}</p>
-            <p className="text-justify text-muted">Publié par {state && state.item.auteur} le <Moment updateLocale="fr" tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
+            <p className="justif">{state && state.item.contenu}</p>
+            <p className="justif text-muted">Publié par {state && state.item.auteur} le <Moment updateLocale="fr" tz="Europe/Paris" format="DD MMMM YYYY à HH:mm">
               {state && state.item.dateart}
               </Moment>{" "} </p>
           </Col>

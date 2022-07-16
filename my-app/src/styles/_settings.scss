@@ -119,6 +119,10 @@ a.btn-ghost:hover {
 .logo {
   animation: img-spin infinite 10s linear;
 }
+.justif {
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 @keyframes img-spin {
   from {
@@ -130,27 +134,26 @@ a.btn-ghost:hover {
   }
 }
 
-.widget{
-  width:450px;
+.widget {
+  width: 450px;
   height: 450px;
 }
 
 @media (max-width: 1250px) {
-  .widget{
+  .widget {
     width: 300px;
     height: 400px;
   }
 }
 @media (max-width: 768px) {
-  .widget{
+  .widget {
     width: 200px;
     height: 400px;
   }
 }
 @media (max-width: 320px) {
-  .widget{
+  .widget {
     width: auto;
     height: 400px;
   }
 }
-
