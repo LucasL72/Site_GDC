@@ -8,7 +8,7 @@ const Prog = () => {
         <Card.Img
           className="img-fluid"
           variant="top"
-          src="../Docs/gdc_prog.png"
+          src="../Docs/prog2022.png"
         />
         <Card.Body>
           <Card.Title>
@@ -18,7 +18,7 @@ const Prog = () => {
           <Button
             variant="success"
             target="_blank"
-            href="../Docs/gdc_prog.png"
+            href="../Docs/prog2022.png"
             download
           >
             Télécharger le Programme
