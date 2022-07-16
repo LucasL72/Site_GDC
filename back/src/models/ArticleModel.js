@@ -19,7 +19,7 @@ const Article = function (articles) {
 Article.getAll = function (result) {
   connection.getConnection(function (error, conn) {
     if (error) throw error;
-    conn.query(`SELECT * FROM articles;`, (error, data) => {
+    conn.query(`SELECT * FROM articles ORDER BY id DESC ;`, (error, data) => {
       if (error) throw error;
       result(null, data);
       // Mettre fin à la connexion avec la db
