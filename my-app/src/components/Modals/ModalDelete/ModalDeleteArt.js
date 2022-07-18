@@ -9,6 +9,7 @@ const ModalDeleteArt = (props) => {
   const dispatch = useDispatch();
   const handleDelete = async (id) => {
     dispatch(deleteArticle(id));
+    window.location.reload();
   };
   return (
     <div>

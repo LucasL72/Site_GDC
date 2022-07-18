@@ -124,6 +124,7 @@ const ModalCreateArt = (props) => {
                   as="textarea"
                   rows={4}
                   value={description}
+                  maxLength={255}
                   onChange={(e) => setDesc(e.target.value)}
                   className="mb-3"
                 />

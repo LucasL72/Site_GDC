@@ -85,6 +85,7 @@ const ModalEditEvent = (props) => {
                   as="textarea"
                   rows={2}
                   className="mb-3"
+                  maxLength={255}
                   value={content}
                   onChange={(e) => setCont(e.target.value)}
                 />

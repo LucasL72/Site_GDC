@@ -9,6 +9,7 @@ const ModalDeletePic = (props) => {
   const dispatch = useDispatch();
   const handleDelete = async (id) => {
     dispatch(deletePic(id));
+    window.location.reload();
   };
   return (
     <div>

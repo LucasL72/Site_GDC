@@ -9,6 +9,7 @@ const ModalDeleteUser = (props) => {
   const dispatch = useDispatch();
   const handleDelete = async (id) => {
     dispatch(deleteUser(id));
+    window.location.reload();
   };
   return (
     <div>

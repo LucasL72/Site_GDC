@@ -5,10 +5,7 @@ import Col from "react-bootstrap/Col";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import {
-  createEvent,
-  getEvent,
-} from "../../store/actions/EventActions";
+import { createEvent, getEvent } from "../../store/actions/EventActions";
 
 const ModalAddEvent = (props) => {
   const [title, setTitle] = useState("");
@@ -16,20 +13,20 @@ const ModalAddEvent = (props) => {
   const [date, setDate] = useState("");
   const [heure, setHeure] = useState("");
   const dispatch = useDispatch();
-// ici la fonction est asynchrone
-const handleForm = async (e) => {
-  e.preventDefault();
+  // ici la fonction est asynchrone
+  const handleForm = async (e) => {
+    e.preventDefault();
 
-  if (title && content && date ) {
-    dispatch(createEvent({ title, content, date,heure }));
-    setTitle("");
-    setCont("");
-    setDate("");
-    setHeure("");
-    dispatch(getEvent());
-  }
-  alert("Evenements ajouté !")
-};
+    if (title && content && date) {
+      dispatch(createEvent({ title, content, date, heure }));
+      setTitle("");
+      setCont("");
+      setDate("");
+      setHeure("");
+      dispatch(getEvent());
+    }
+    alert("Evenements ajouté !");
+  };
 
   return (
     <div>
@@ -47,7 +44,7 @@ const handleForm = async (e) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => handleForm(e)}>
-          <Col sm={12}>
+            <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Date">
                 <Form.Control
                   type="date"
@@ -69,7 +66,7 @@ const handleForm = async (e) => {
                 />
               </FloatingLabel>
             </Col>
-          <Col sm={12}>
+            <Col sm={12}>
               <FloatingLabel controlId="floatingInputTitle" label="Titre">
                 <Form.Control
                   type="text"
@@ -82,15 +79,20 @@ const handleForm = async (e) => {
             </Col>
             <Col sm={12}>
               <FloatingLabel controlId="floatingInputDesc" label="Description">
-                <Form.Control as="textarea" rows={2} className="mb-3"  value={content}
-                  onChange={(e) => setCont(e.target.value)} />
+                <Form.Control
+                  as="textarea"
+                  rows={2}
+                  maxLength={255}
+                  className="mb-3"
+                  value={content}
+                  onChange={(e) => setCont(e.target.value)}
+                />
               </FloatingLabel>
             </Col>
 
             <Col sm={12}>
               <div className="text-center">
                 <Button
-                  
                   variant="outline-dark"
                   type="submit"
                   onClick={props.onHide}
