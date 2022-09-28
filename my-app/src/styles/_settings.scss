@@ -120,6 +120,7 @@ a.btn-ghost:hover {
   animation: img-spin infinite 10s linear;
 }
 .justif {
+   white-space: break-spaces;	
   text-align: justify;
   text-justify: inter-word;
 }
