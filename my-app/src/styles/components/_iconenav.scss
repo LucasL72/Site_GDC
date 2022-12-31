@@ -30,11 +30,33 @@
   border-width: 7px;
 }
 
-.navnav:hover:after {
-  display: block;
-  height: 3.5px;
-  background-color: rgb(216, 164, 100);
-  width: 40px;
-  content: "";
-  margin: 0 auto;
+a.navnav {
+  text-decoration: none;
+  color: #fdc11c;
+  --b: 3px;  /* the border thickness*/
+  --g: 2px; /* the gap */
+  --c: #fdc11c;
+  
+  padding: calc(var(--b) + var(--g));
+  --_l: var(--c) var(--b),#0000 0 calc(100% - var(--b)), var(--c) 0;
+  background:
+    linear-gradient(var(--_l)) 50%/calc(100% - var(--_i,80%)) 100% no-repeat,
+    linear-gradient(90deg,var(--_l)) 50% var(--_i,-100%)/100% 200% no-repeat;  
+  --_m:
+    conic-gradient(at 50% var(--b),#0000 25%,#000 0) calc(50% + var(--_i,50%))/200%,
+    conic-gradient(at 50% var(--b),#000 75%,#0000 0) calc(50% - var(--_i,50%))/200%; 
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  transition: 
+    .3s calc(.6s - var(--_t,.6s)) -webkit-mask-position, 
+    .3s .3s background-position,
+    .3s var(--_t,.6s) background-size,
+    .4s transform;
+  cursor: pointer;
+}
+.navnav:hover {
+  color: #fdc11c;
+  --c: #fdc11c;
+  --_i: 0%;
+  --_t: 0s;
 }

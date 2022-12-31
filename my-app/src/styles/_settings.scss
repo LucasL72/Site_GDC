@@ -94,9 +94,11 @@ a.btn-ghost:hover {
   border: 1px solid #5ee077;
   color: #fff;
 }
+.scale {
+  transition: all 0.3s ease-in-out;
+}
 .scale:hover {
   transform: scale(1.06);
-  transition: all 0.5s;
 }
 
 .link {

@@ -44,17 +44,17 @@ const Navigbar = () => {
       return (
         <>
           <Nav>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/">Accueil</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
           </Nav>
           <Nav className="mx-auto">
@@ -89,10 +89,11 @@ const Navigbar = () => {
               onHide={() => setModalConnShow(false)}
             />
             <Button
-              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2023"
               variant="warning"
               target="_blank"
               rel="noreferrer"
+              className="mx-auto"
             >
               Adhérer
             </Button>
@@ -103,17 +104,17 @@ const Navigbar = () => {
       return (
         <>
           <Nav>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/">Accueil</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
           </Nav>
           <Nav className="mx-auto">
@@ -148,10 +149,11 @@ const Navigbar = () => {
               onHide={() => setModalConnShow(false)}
             />
             <Button
-              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2023"
               variant="warning"
               target="_blank"
               rel="noreferrer"
+              className="mx-auto"
             >
               Adhérer
             </Button>
@@ -165,27 +167,28 @@ const Navigbar = () => {
     )
       return (
         <>
-          <Nav>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/">Accueil</Nav.Link>
+          <Nav >
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/admin">Admin</Nav.Link>
+            <Nav.Item className=" mx-auto">
+              <Nav.Link className="navnav" href="/#/admin">Admin</Nav.Link>
             </Nav.Item>
             <Button
-              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2023"
               variant="warning"
               target="_blank"
               rel="noreferrer"
+              className="mx-auto"
             >
               Adhérer
             </Button>
@@ -227,23 +230,24 @@ const Navigbar = () => {
       return (
         <>
           <Nav>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/">Accueil</Nav.Link>
+            <Nav.Item>
+              <Nav.Link className="navnav" href="/">Accueil</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Blog">Nos Actualités</Nav.Link>
+            <Nav.Item>
+              <Nav.Link className="navnav" href="/#/Blog">Nos Actualités</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Photos">Nos Photos</Nav.Link>
+            <Nav.Item>
+              <Nav.Link className="navnav" href="/#/Photos">Nos Photos</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="navnav">
-              <Nav.Link href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
+            <Nav.Item>
+              <Nav.Link className="navnav" href="/#/Contact">Qui Sommes Nous ?</Nav.Link>
             </Nav.Item>{" "}
             <Button
-              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2022-1"
+              href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2023"
               variant="warning"
               target="_blank"
               rel="noreferrer"
+              className="mx-auto"
             >
               Adhérer
             </Button>

@@ -14,7 +14,7 @@ const Prog = () => {
           <Card.Title>
             <strong>Programme 2022</strong>
           </Card.Title>
-          <Card.Text>Le Programme de l'année</Card.Text>
+          <Card.Text>Le Programme de l'année 2022, celui de 2023 est en-cours de validation. </Card.Text>
           <Button
             variant="success"
             target="_blank"

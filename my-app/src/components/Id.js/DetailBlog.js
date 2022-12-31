@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 import { urlImgArt } from "../../utils/url";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Moment from "react-moment";
 import "moment-timezone";
 const DetailBlog = () => {
@@ -13,6 +15,9 @@ const DetailBlog = () => {
   useEffect(() => {
     if (!state) navigate("/Blog");
   }, [navigate, state]);
+  const toBlog = async (id) => {
+    navigate("/Blog");
+  };
   return (
     <div>
       <Container>
@@ -35,6 +40,11 @@ const DetailBlog = () => {
               {state && state.item.dateart}
               </Moment>{" "} </p>
           </Col>
+          <div className="text-start">
+          <Button variant="dark" className="mb-3"   onClick={() => toBlog()}>
+             <ArrowBackIcon sx={{ fontSize: 30 }} />
+            </Button>
+          </div>
         </Row>
       </Container>
     </div>

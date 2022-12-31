@@ -1,5 +1,5 @@
-const urlImgArt= "https://grainedecitoyenmontgesnois.fr/api/assets/Images/Articles/"
-const urlImgAlbum= "https://grainedecitoyenmontgesnois.fr/api/assets/Images/Album/"
-const urlImgUsers= "https://grainedecitoyenmontgesnois.fr/api/assets/Images/Users/"
+const urlImgArt= process.env.REACT_APP_ART;
+const urlImgAlbum= process.env.REACT_APP_ALBUM;
+const urlImgUsers= process.env.REACT_APP_USER;
 
 module.exports = {urlImgArt,urlImgAlbum,urlImgUsers}

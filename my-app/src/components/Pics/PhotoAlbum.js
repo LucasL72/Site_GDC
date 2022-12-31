@@ -63,7 +63,7 @@ const PhotoAlbum = (props) => {
   };
 
   return (
-    <Col md={3}>
+    <Col md={4}>
       <CheckLog />
     </Col>
   );
