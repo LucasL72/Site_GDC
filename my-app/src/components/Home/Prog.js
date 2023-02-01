@@ -8,17 +8,17 @@ const Prog = () => {
         <Card.Img
           className="img-fluid"
           variant="top"
-          src="../Docs/prog2022.png"
+          src="../Docs/2023_Programme.jpg"
         />
         <Card.Body>
           <Card.Title>
-            <strong>Programme 2022</strong>
+            <strong>Programme 2023</strong>
           </Card.Title>
-          <Card.Text>Le Programme de l'année 2022, celui de 2023 est en-cours de validation. </Card.Text>
+          <Card.Text>Le Programme de l'année 2023 </Card.Text>
           <Button
             variant="success"
             target="_blank"
-            href="../Docs/prog2022.png"
+            href="../Docs/Programme_2023.pdf"
             download
           >
             Télécharger le Programme

@@ -9,7 +9,7 @@ const accueil = () => {
   return (
     <div className="mb-4 mt-4">
       <Container>
-        <h2 className="text-center ssligne"> Accueil</h2>
+        <h2 className="text-center ssligne mb-5"> Accueil</h2>
         <Row>
           <Col md={4}>
             {" "}

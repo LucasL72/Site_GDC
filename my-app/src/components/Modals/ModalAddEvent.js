@@ -82,7 +82,7 @@ const ModalAddEvent = (props) => {
                 <Form.Control
                   as="textarea"
                   rows={2}
-                  maxLength={255}
+                  maxLength={100}
                   className="mb-3"
                   value={content}
                   onChange={(e) => setCont(e.target.value)}
