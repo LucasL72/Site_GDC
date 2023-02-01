@@ -18,7 +18,7 @@ const Prog = () => {
           <Button
             variant="success"
             target="_blank"
-            href="../Docs/Programme_2023.pdf"
+            href="../Docs/Programme-2023.pdf"
             download
           >
             Télécharger le Programme
