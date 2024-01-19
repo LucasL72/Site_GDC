@@ -12,11 +12,11 @@ const Adhe = () => {
         />
         <Card.Body>
           <Card.Title>
-            <strong>Adhésion 2023</strong>
+            <strong>Adhésion 2024</strong>
           </Card.Title>
-          <Card.Text>Avez-vous pensé à votre adhésion 2023 ?</Card.Text>
+          <Card.Text>Avez-vous pensé à votre adhésion 2024 ?</Card.Text>
           <Button
-            href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2023"
+            href="https://www.helloasso.com/associations/graine-de-citoyen-montgesnois/adhesions/adhesions-2024"
             target="_blank"
             variant="success"
           >
